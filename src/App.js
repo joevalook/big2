@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import Player1 from "./components/Player1";
+import Player2 from "./components/Player1";
+import Player3 from "./components/Player1";
+import Player4 from "./components/Player1";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App`}>
+      <h1>Big 2 Score Keeping</h1>
+      <section>
+        <Player1 />
+        <Player2 />
+        <Player3 />
+        <Player4 />
+      </section>
     </div>
   );
 }
