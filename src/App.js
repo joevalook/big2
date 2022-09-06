@@ -10,6 +10,7 @@ function App() {
   const [player3, setPlayer3] = useState(0);
   const [player4, setPlayer4] = useState(0);
   const playerNames = ["player 1", "player 2","player 3","player 4"]
+  const [history, setHistory] = useState([])
   return (
     <div className={`App`}>
       <h1>Big 2 Score Keeping</h1>
@@ -17,10 +18,10 @@ function App() {
       <h2>Who came {position}?</h2>
       
       <section>
-        <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]}/>
-        <PlayerScore player = {player2} setPlayer = {setPlayer2} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[1]}/>
-        <PlayerScore player = {player3} setPlayer = {setPlayer3} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[2]}/>
-        <PlayerScore player = {player4} setPlayer = {setPlayer4} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[3]}/>
+        <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]} history={history} setHistory={setHistory}/>
+        <PlayerScore player = {player2} setPlayer = {setPlayer2} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[1]} history={history} setHistory={setHistory}/>
+        <PlayerScore player = {player3} setPlayer = {setPlayer3} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[2]} history={history} setHistory={setHistory}/>
+        <PlayerScore player = {player4} setPlayer = {setPlayer4} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[3]} history={history} setHistory={setHistory}/>
       </section>
     </div>
   );
