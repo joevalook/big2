@@ -13,6 +13,14 @@
   color: white;
 }
 
+.App > h2 {
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  background: rgb(66, 109, 102);
+  color: black;
+}
+
 section {
   height: 100%;
   display: flex;
