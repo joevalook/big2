@@ -1,13 +1,39 @@
 import React, { useState } from "react";
 
-  function CounterButton(){
-    const [clickAmount, setClickAmount] = useState(0);
+  function CounterButton(props){
+    
+    const clickAmount = props.player
+    const setClickAmount = props.setPlayer
+    const position = props.position
+    const setPosition = props.setPosition
+    const games = props.games
+    const setGames = props.setGames
+    const playerName = props.playerName
 
-    const handleClick = () => setClickAmount(clickAmount + 1);
 
+    const handleClick = () => {
+      
+      if (position === "first") {
+        setPosition("second")
+        setClickAmount(clickAmount + 2)
+      }
+      if (position === "second") {
+        setPosition("third")
+        setClickAmount(clickAmount + 1)
+      }
+      if (position === "third") {
+        setPosition("last")
+        setClickAmount(clickAmount - 1)
+      }
+      if (position === "last") {
+        setPosition("first")
+        setClickAmount(clickAmount - 2)
+        setGames(games+1)
+      }
+    }
     return (
       <button onClick={handleClick} className="CounterButton">
-        You clicked me {clickAmount} times
+        {playerName} is at ${clickAmount} 
       </button>
     );
   }
