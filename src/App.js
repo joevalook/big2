@@ -12,68 +12,79 @@ function App() {
   const playerNames = ["player 1", "player 2","player 3","player 4"]
   const [history, setHistory] = useState([])
 
+
+  const handleReset = () => {
+    setGames(0)
+    setPosition('first')
+    setPlayer1(0)
+    setPlayer2(0)
+    setPlayer3(0)
+    setPlayer4(0)
+    setHistory([])
+
+  }
   const handleBack = () => {
     if (history.length >= 1) {
       if (position === "first") {
         setPosition("last")
         setGames(games-1)
-        if (history[history.length -1] === 'player 1'){
+        if (history[history.length -1] === playerNames[0]){
           setPlayer1(player1 + 2)
         }
-        if (history[history.length -1] === 'player 2'){
+        if (history[history.length -1] === playerNames[1]){
           setPlayer2(player2 + 2)
         }
-        if (history[history.length -1] === 'player 3'){
+        if (history[history.length -1] === playerNames[2]){
           setPlayer3(player3 + 2)
         }
-        if (history[history.length -1] === 'player 4'){
+        if (history[history.length -1] === playerNames[3]){
           setPlayer4(player4 + 2)
         }
       }
       if (position === "second") {
         setPosition("first")
-        if (history[history.length -1] === 'player 1'){
+        if (history[history.length -1] === playerNames[0]){
           setPlayer1(player1 - 2)
         }
-        if (history[history.length -1] === 'player 2'){
+        if (history[history.length -1] === playerNames[1]){
           setPlayer2(player2 - 2)
         }
-        if (history[history.length -1] === 'player 3'){
+        if (history[history.length -1] === playerNames[2]){
           setPlayer3(player3 - 2)
         }
-        if (history[history.length -1] === 'player 4'){
+        if (history[history.length -1] === playerNames[3]){
           setPlayer4(player4 - 2)
         }
 
       }
       if (position === "third") {
         setPosition("second")
-        if (history[history.length -1] === 'player 1'){
+        if (history[history.length -1] === playerNames[0]){
           setPlayer1(player1 -1)
         }
-        if (history[history.length -1] === 'player 2'){
+        if (history[history.length -1] === playerNames[1]){
           setPlayer2(player2 -1)
         }
-        if (history[history.length -1] === 'player 3'){
+        if (history[history.length -1] === playerNames[2]){
           setPlayer3(player3 -1)
         }
-        if (history[history.length -1] === 'player 4'){
+        if (history[history.length -1] === playerNames[3]){
           setPlayer4(player4 -1)
         }
 
       }
       if (position === "last") {
         setPosition("third")
-        if (history[history.length -1] === 'player 1'){
+        if (history[history.length -1] === playerNames[0]){
           setPlayer1(player1 + 1)
         }
-        if (history[history.length -1] === 'player 2'){
+        if (history[history.length -1] === playerNames[1]){
           setPlayer2(player2 + 1)
         }
-        if (history[history.length -1] === 'player 3'){
+        if (history[history.length -1] === playerNames[2]){
           setPlayer3(player3 + 1)
         }
-        if (history[history.length -1] === 'player 4'){
+        if (history[history.length -1] === playerNames[3]){
           setPlayer4(player4 + 1)
         }
 
@@ -86,12 +97,14 @@ function App() {
       <h1>Big 2 Score Keeping</h1>
       <h2> Games Played: {games}</h2>
       <h2>Who came {position}?</h2>
-
-      <button className={`back`} onClick={handleBack}>
-        back 
-
-      </button>
-      
+      <div className={`row`}>
+        <button className={`back`} onClick={handleBack}>
+          back 
+        </button>
+        <button className={`reset`} onClick={handleReset}>
+          reset
+        </button>
+      </div>
       <section>
         <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]} history={history} setHistory={setHistory}/>
         <PlayerScore player = {player2} setPlayer = {setPlayer2} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[1]} history={history} setHistory={setHistory}/>
