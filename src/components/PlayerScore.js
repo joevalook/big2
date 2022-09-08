@@ -38,7 +38,7 @@ import React, { useState } from "react";
       }
     }
     return (
-      <button onClick={handleClick} >
+      <button className={'btn'}onClick={handleClick} >
         {playerName} is at ${clickAmount} 
 
       </button>

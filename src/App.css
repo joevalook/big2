@@ -30,7 +30,7 @@ section {
   flex-wrap: wrap;
 }
 
-button {
+.btn {
   margin: 1em;
   padding: 1em;
   width: 40%;

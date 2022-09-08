@@ -16,6 +16,11 @@ function App() {
       <h1>Big 2 Score Keeping</h1>
       <h2> Games Played: {games}</h2>
       <h2>Who came {position}?</h2>
+
+      <button  >
+        hello 
+
+      </button>
       
       <section>
         <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]} history={history} setHistory={setHistory}/>
