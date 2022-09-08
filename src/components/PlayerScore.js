@@ -45,7 +45,7 @@ import React, { useState } from "react";
           setOtherColor1('btn')
           setOtherColor2('btn')
           setOtherColor3('btn')
-        }, 5000)
+        }, 1000)
       }
       console.log(history);
     }

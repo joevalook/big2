@@ -30,6 +30,7 @@ section {
   flex-wrap: wrap;
 }
 
+
 .btn {
   margin: 1em;
   padding: 1em;
@@ -38,6 +39,19 @@ section {
   background: white;
   cursor:pointer;
   border-color: black;
+  z-index: 10;
+}
+
+.btnNames {
+  position: absolute;
+  margin: 1em;
+  padding: 1em;
+  width: 40%;
+  font-size: 3vh;
+  background: white;
+  cursor:pointer;
+  border-color: black;
+  z-index: 100;
 }
 
 .gold {

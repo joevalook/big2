@@ -1,4 +1,5 @@
 import PlayerScore from "./components/PlayerScore";
+import PlayerName from "./components/PlayerName"
 import './App.css';
 import React, { useState } from "react";
 
@@ -9,13 +10,13 @@ function App() {
   const [player2, setPlayer2] = useState(0);
   const [player3, setPlayer3] = useState(0);
   const [player4, setPlayer4] = useState(0);
-  const playerNames = ["player 1", "player 2","player 3","player 4"]
+  const [playerNames, setPlayerNames] = useState(["1", "2","3","4"])
   const [history, setHistory] = useState([])
   const [color1, setColor1] = useState('btn');
   const [color2, setColor2] = useState('btn');
   const [color3, setColor3] = useState('btn');
   const [color4, setColor4] = useState('btn');
-
+  const [names, setNames] = useState(false);
 
   const handleReset = () => {
     setGames(0)
@@ -267,10 +268,11 @@ function App() {
         </button>
       </div>
       <section>
-        <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4}/>
-        <PlayerScore player = {player2} setPlayer = {setPlayer2} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[1]} history={history} setHistory={setHistory} color={color2} setColor={setColor2} setOtherColor1={setColor1} setOtherColor2={setColor3} setOtherColor3={setColor4}/>
-        <PlayerScore player = {player3} setPlayer = {setPlayer3} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4}/>
-        <PlayerScore player = {player4} setPlayer = {setPlayer4} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[3]} history={history} setHistory={setHistory} color={color4} setColor={setColor4} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor3}/>
+        //{!names && <PlayerName playerNames = {playerNames} setPlayerNames = {setPlayerNames} setNames={setNames}/>}
+        {names && <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4}/>}
+        {names &&<PlayerScore player = {player2} setPlayer = {setPlayer2} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[1]} history={history} setHistory={setHistory} color={color2} setColor={setColor2} setOtherColor1={setColor1} setOtherColor2={setColor3} setOtherColor3={setColor4}/>}
+        {names &&<PlayerScore player = {player3} setPlayer = {setPlayer3} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4}/>}
+        {names &&<PlayerScore player = {player4} setPlayer = {setPlayer4} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[3]} history={history} setHistory={setHistory} color={color4} setColor={setColor4} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor3}/>}
       </section>
     </div>
   );
