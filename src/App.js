@@ -31,13 +31,11 @@ function App() {
     setColor4('btn')
 
   }
-  // if (position === 'first') {
-  //   setColor1('btn')
-  //   setColor2('btn')
-  //   setColor3('btn')
-  //   setColor4('btn')
-  // }
   const handleBack = () => {
+    var highestTimeoutId = setTimeout(";");
+    for (var i = 0 ; i < highestTimeoutId ; i++) {
+      clearTimeout(i); 
+    }
     if (history.length >= 1) {
       if (position === "first") {
         setPosition("last")

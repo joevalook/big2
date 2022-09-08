@@ -40,7 +40,7 @@ import React, { useState } from "react";
         setClickAmount(clickAmount - 2)
         setGames(games+1)
         setColor('last')
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           setColor('btn')
           setOtherColor1('btn')
           setOtherColor2('btn')
