@@ -34,25 +34,72 @@ section {
   margin: 1em;
   padding: 1em;
   width: 40%;
-  min-width: 300px;
-  font-size: 2em;
+  font-size: 3vh;
   background: white;
+  cursor:pointer;
+  border-color: black;
+}
+
+.gold {
+  margin: 1em;
+  padding: 1em;
+  width: 40%;
+  font-size: 3vh;
+  background: gold;
+  cursor:pointer;
+  border-color: black;
+}
+.silver {
+  margin: 1em;
+  padding: 1em;
+  width: 40%;
+  font-size: 3vh;
+  background: silver;
+  cursor:pointer;
+  border-color: black;
+}
+.bronze {
+  margin: 1em;
+  padding: 1em;
+  width: 40%;
+  font-size: 3vh;
+  background: burlywood;
+  cursor:pointer;
+  border-color: black;
+}
+.last {
+  margin: 1em;
+  padding: 1em;
+  width: 40%;
+  font-size: 3vh;
+  background: rgb(241, 71, 71);
+  cursor:pointer;
+  border-color: black;
+}
+
+.btn:hover{
+  background-color: antiquewhite;
 }
 
 .back {
   margin: 0.5em;
   padding: 0.5em;
-  width: 10%;
-  font-size: 1em;
+  font-size: 1.5em;
   background-color: rgb(235, 80, 80);
+  cursor:pointer;
+}
+.back:hover{
+  background-color: rgb(245, 123, 101);
 }
 .reset {
   margin: 0.5em;
   padding: 0.5em;
-  width: 10%;
-  font-size: 1em;
+  font-size: 1.5em;
   background-color: rgb(44, 177, 75);
-
+  cursor:pointer;
+}
+.reset:hover{
+  background-color: rgb(116, 207, 76);
 }
 
 .row {
@@ -69,4 +116,70 @@ section {
 
 i {
   font-style: normal;
+}
+
+@media screen and (max-width: 800px) {
+  section {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 100%;
+    cursor:pointer;
+    background: white;
+  }
+  .gold{
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 100%;
+    background: gold;
+    cursor:pointer;
+  }
+  .silver{
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 100%;
+    background: silver;
+    cursor:pointer;
+  }
+  .bronze{
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 100%;
+    background: burlywood;
+    cursor:pointer;
+  }
+  .last{
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 100%;
+    background: rgb(241, 71, 71);
+    cursor:pointer;
+  }
+  .App > h1 {
+    margin: 0;
+    padding: 0.5em;
+    text-align: center;
+    background: #333;
+    color: white;
+  }
+  
+  .App > h2 {
+    margin: 0;
+    padding: 0.5em;
+    text-align: center;
+    background: rgb(66, 109, 102);
+    color: black;
+  }
 }

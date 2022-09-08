@@ -11,6 +11,11 @@ import React, { useState } from "react";
     const playerName = props.playerName
     const history = props.history
     const setHistory = props.setHistory
+    const color = props.color
+    const setColor = props.setColor
+    const setOtherColor1 = props.setOtherColor1
+    const setOtherColor2 = props.setOtherColor2
+    const setOtherColor3 = props.setOtherColor3
 
 
     const handleClick = () => {
@@ -18,26 +23,38 @@ import React, { useState } from "react";
       if (position === "first") {
         setPosition("second")
         setClickAmount(clickAmount + 2)
+        setColor('gold')
       }
       if (position === "second") {
         setPosition("third")
         setClickAmount(clickAmount + 1)
+        setColor('silver')
       }
       if (position === "third") {
         setPosition("last")
         setClickAmount(clickAmount - 1)
+        setColor('bronze')
       }
       if (position === "last") {
         setPosition("first")
         setClickAmount(clickAmount - 2)
         setGames(games+1)
+        setColor('last')
+        setTimeout(() => {
+          setColor('btn')
+          setOtherColor1('btn')
+          setOtherColor2('btn')
+          setOtherColor3('btn')
+        }, 5000)
       }
       console.log(history);
     }
-    return (
-      <button className={'btn'}onClick={handleClick} >
-        {playerName} is at ${clickAmount} 
+    if (position !== 'fourth'){
 
+    }
+    return (
+      <button className={color}onClick={handleClick} >
+        {playerName} is at ${clickAmount} 
       </button>
     );
   }
