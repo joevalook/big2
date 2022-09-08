@@ -43,18 +43,151 @@ function App() {
         if (history[history.length -1] === playerNames[0]){
           setPlayer1(player1 + 2)
           setColor1('btn')
+          if (history[history.length -2] === playerNames[1]){
+            setColor2('bronze')
+            if (history[history.length -3] === playerNames[2]){
+              setColor3('silver')
+              setColor4('gold')
+            }
+            if (history[history.length -3] === playerNames[3]){
+              setColor4('silver')
+              setColor3('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[2]){
+            setColor3('bronze')
+            if (history[history.length -3] === playerNames[1]){
+              setColor2('silver')
+              setColor4('gold')
+            }
+            if (history[history.length -3] === playerNames[3]){
+              setColor4('silver')
+              setColor2('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[3]){
+            setColor4('bronze')
+            if (history[history.length -3] === playerNames[1]){
+              setColor2('silver')
+              setColor3('gold')
+            }
+            if (history[history.length -3] === playerNames[2]){
+              setColor3('silver')
+              setColor2('gold')
+            }
+          }
         }
         if (history[history.length -1] === playerNames[1]){
           setPlayer2(player2 + 2)
           setColor2('btn')
+          if (history[history.length -2] === playerNames[0]){
+            setColor2('bronze')
+            if (history[history.length -3] === playerNames[2]){
+              setColor3('silver')
+              setColor4('gold')
+            }
+            if (history[history.length -3] === playerNames[3]){
+              setColor4('silver')
+              setColor3('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[2]){
+            setColor3('bronze')
+            if (history[history.length -3] === playerNames[0]){
+              setColor1('silver')
+              setColor4('gold')
+            }
+            if (history[history.length -3] === playerNames[3]){
+              setColor4('silver')
+              setColor1('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[3]){
+            setColor4('bronze')
+            if (history[history.length -3] === playerNames[0]){
+              setColor1('silver')
+              setColor3('gold')
+            }
+            if (history[history.length -3] === playerNames[2]){
+              setColor3('silver')
+              setColor1('gold')
+            }
+          }
         }
         if (history[history.length -1] === playerNames[2]){
           setPlayer3(player3 + 2)
           setColor3('btn')
+          if (history[history.length -2] === playerNames[1]){
+            setColor2('bronze')
+            if (history[history.length -3] === playerNames[0]){
+              setColor1('silver')
+              setColor4('gold')
+            }
+            if (history[history.length -3] === playerNames[3]){
+              setColor4('silver')
+              setColor1('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[0]){
+            setColor3('bronze')
+            if (history[history.length -3] === playerNames[1]){
+              setColor2('silver')
+              setColor4('gold')
+            }
+            if (history[history.length -3] === playerNames[3]){
+              setColor4('silver')
+              setColor2('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[3]){
+            setColor4('bronze')
+            if (history[history.length -3] === playerNames[0]){
+              setColor1('silver')
+              setColor2('gold')
+              
+            }
+            if (history[history.length -3] === playerNames[1]){
+              setColor2('silver')
+              setColor1('gold')
+            }
+          }
         }
         if (history[history.length -1] === playerNames[3]){
           setPlayer4(player4 + 2)
           setColor4('btn')
+          if (history[history.length -2] === playerNames[1]){
+            setColor2('bronze')
+            if (history[history.length -3] === playerNames[0]){
+              setColor1('silver')
+              setColor3('gold')
+            }
+            if (history[history.length -3] === playerNames[2]){
+              setColor3('silver')
+              setColor1('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[2]){
+            setColor3('bronze')
+            if (history[history.length -3] === playerNames[0]){
+              setColor1('silver')
+              setColor2('gold')
+            }
+            if (history[history.length -3] === playerNames[1]){
+              setColor2('silver')
+              setColor1('gold')
+            }
+          }
+          if (history[history.length -2] === playerNames[0]){
+            setColor4('bronze')
+            if (history[history.length -3] === playerNames[1]){
+              setColor2('silver')
+              setColor3('gold')
+            }
+            if (history[history.length -3] === playerNames[2]){
+              setColor3('silver')
+              setColor2('gold')
+            }
+          }
         }
       }
       if (position === "second") {
