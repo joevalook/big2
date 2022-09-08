@@ -17,17 +17,65 @@ function App() {
       if (position === "first") {
         setPosition("last")
         setGames(games-1)
+        if (history[history.length -1] === 'player 1'){
+          setPlayer1(player1 + 2)
+        }
+        if (history[history.length -1] === 'player 2'){
+          setPlayer2(player2 + 2)
+        }
+        if (history[history.length -1] === 'player 3'){
+          setPlayer3(player3 + 2)
+        }
+        if (history[history.length -1] === 'player 4'){
+          setPlayer4(player4 + 2)
+        }
       }
       if (position === "second") {
         setPosition("first")
+        if (history[history.length -1] === 'player 1'){
+          setPlayer1(player1 - 2)
+        }
+        if (history[history.length -1] === 'player 2'){
+          setPlayer2(player2 - 2)
+        }
+        if (history[history.length -1] === 'player 3'){
+          setPlayer3(player3 - 2)
+        }
+        if (history[history.length -1] === 'player 4'){
+          setPlayer4(player4 - 2)
+        }
 
       }
       if (position === "third") {
         setPosition("second")
+        if (history[history.length -1] === 'player 1'){
+          setPlayer1(player1 -1)
+        }
+        if (history[history.length -1] === 'player 2'){
+          setPlayer2(player2 -1)
+        }
+        if (history[history.length -1] === 'player 3'){
+          setPlayer3(player3 -1)
+        }
+        if (history[history.length -1] === 'player 4'){
+          setPlayer4(player4 -1)
+        }
 
       }
       if (position === "last") {
         setPosition("third")
+        if (history[history.length -1] === 'player 1'){
+          setPlayer1(player1 + 1)
+        }
+        if (history[history.length -1] === 'player 2'){
+          setPlayer2(player2 + 1)
+        }
+        if (history[history.length -1] === 'player 3'){
+          setPlayer3(player3 + 1)
+        }
+        if (history[history.length -1] === 'player 4'){
+          setPlayer4(player4 + 1)
+        }
 
       }
       setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
