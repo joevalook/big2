@@ -11,14 +11,36 @@ function App() {
   const [player4, setPlayer4] = useState(0);
   const playerNames = ["player 1", "player 2","player 3","player 4"]
   const [history, setHistory] = useState([])
+
+  const handleBack = () => {
+    if (history.length >= 1) {
+      if (position === "first") {
+        setPosition("last")
+        setGames(games-1)
+      }
+      if (position === "second") {
+        setPosition("first")
+
+      }
+      if (position === "third") {
+        setPosition("second")
+
+      }
+      if (position === "last") {
+        setPosition("third")
+
+      }
+      setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
+    }
+  }
   return (
     <div className={`App`}>
       <h1>Big 2 Score Keeping</h1>
       <h2> Games Played: {games}</h2>
       <h2>Who came {position}?</h2>
 
-      <button  >
-        hello 
+      <button className={`back`} onClick={handleBack}>
+        back 
 
       </button>
       

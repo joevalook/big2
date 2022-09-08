@@ -18,24 +18,21 @@ import React, { useState } from "react";
       if (position === "first") {
         setPosition("second")
         setClickAmount(clickAmount + 2)
-        console.log(history);
       }
       if (position === "second") {
         setPosition("third")
         setClickAmount(clickAmount + 1)
-        console.log(history);
       }
       if (position === "third") {
         setPosition("last")
         setClickAmount(clickAmount - 1)
-        console.log(history);
       }
       if (position === "last") {
         setPosition("first")
         setClickAmount(clickAmount - 2)
         setGames(games+1)
-        console.log(history);
       }
+      console.log(history);
     }
     return (
       <button className={'btn'}onClick={handleClick} >
