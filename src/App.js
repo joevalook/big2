@@ -10,7 +10,7 @@ function App() {
   const [player2, setPlayer2] = useState(0);
   const [player3, setPlayer3] = useState(0);
   const [player4, setPlayer4] = useState(0);
-  const [playerNames, setPlayerNames] = useState(["1", "2","3","4"])
+  const [playerNames, setPlayerNames] = useState(["Player 1", "Player 2","Player 3","Player 4"])
   const [history, setHistory] = useState([])
   const [color1, setColor1] = useState('btn');
   const [color2, setColor2] = useState('btn');
@@ -30,6 +30,8 @@ function App() {
     setColor2('btn')
     setColor3('btn')
     setColor4('btn')
+    setNames(false)
+    setPlayerNames(["Player 1", "Player 2","Player 3","Player 4"])
 
   }
   const handleBack = () => {
@@ -261,14 +263,14 @@ function App() {
       <h2>Who came {position}?</h2>
       <div className={`row`}>
         <button className={`back`} onClick={handleBack}>
-          back 
+          BACK
         </button>
         <button className={`reset`} onClick={handleReset}>
-          reset
+          RESET
         </button>
       </div>
+      {!names && <PlayerName playerNames = {playerNames} setPlayerNames = {setPlayerNames} setNames={setNames}/>}
       <section>
-        //{!names && <PlayerName playerNames = {playerNames} setPlayerNames = {setPlayerNames} setNames={setNames}/>}
         {names && <PlayerScore player = {player1} setPlayer = {setPlayer1} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4}/>}
         {names &&<PlayerScore player = {player2} setPlayer = {setPlayer2} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[1]} history={history} setHistory={setHistory} color={color2} setColor={setColor2} setOtherColor1={setColor1} setOtherColor2={setColor3} setOtherColor3={setColor4}/>}
         {names &&<PlayerScore player = {player3} setPlayer = {setPlayer3} position = {position} setPosition={setPosition} games={games} setGames={setGames} playerName= {playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4}/>}
