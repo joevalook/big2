@@ -260,7 +260,8 @@ function App() {
     <div className={`App`}>
       <h1>Big 2 Score Keeping</h1>
       <h2> Games Played: {games}</h2>
-      <h2>Who came {position}?</h2>
+      {!names && <h2>Choose your name</h2>}
+      {names && <h2>Who came {position}?</h2>}
       <div className={`row`}>
         <button className={`back`} onClick={handleBack}>
           BACK
