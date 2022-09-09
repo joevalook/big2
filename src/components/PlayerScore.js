@@ -41,7 +41,7 @@ import React from "react";
         setPosition("First")
         setClickAmount(clickAmount + points[3])
         setGames(games+1)
-        setColor('Last')
+        setColor('last')
         setTimeout(() => {
           setColor('btn')
           setOtherColor1('btn')
