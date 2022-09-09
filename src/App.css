@@ -141,7 +141,10 @@ input {
   justify-content: space-between;
 }
 
-
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(186, 186, 186);
+  opacity: 1; /* Firefox */
+}
 
 .off i {
   filter: grayscale(100%);

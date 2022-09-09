@@ -22,26 +22,26 @@ import React from "react";
 
     const handleClick = () => {
       setHistory(history => [...history, playerName])
-      if (position === "first") {
-        setPosition("second")
+      if (position === "First") {
+        setPosition("Second")
         setClickAmount(clickAmount + points[0])
         setColor('gold')
       }
-      if (position === "second") {
-        setPosition("third")
+      if (position === "Second") {
+        setPosition("Third")
         setClickAmount(clickAmount + points[1])
         setColor('silver')
       }
-      if (position === "third") {
-        setPosition("last")
+      if (position === "Third") {
+        setPosition("Last")
         setClickAmount(clickAmount + points[2])
         setColor('bronze')
       }
-      if (position === "last") {
-        setPosition("first")
+      if (position === "Last") {
+        setPosition("First")
         setClickAmount(clickAmount + points[3])
         setGames(games+1)
-        setColor('last')
+        setColor('Last')
         setTimeout(() => {
           setColor('btn')
           setOtherColor1('btn')
@@ -50,9 +50,6 @@ import React from "react";
         }, 1000)
       }
       console.log(history);
-    }
-    if (position !== 'fourth'){
-
     }
     return (
       <button className={color}onClick={handleClick} >

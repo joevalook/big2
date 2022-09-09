@@ -5,7 +5,7 @@ import './App.css';
 import React, { useState } from "react";
 
 function App() {
-  const [position, setPosition] = useState('first');
+  const [position, setPosition] = useState('First');
   const [games, setGames] = useState(0);
   const [player1, setPlayer1] = useState(0);
   const [player2, setPlayer2] = useState(0);
@@ -22,7 +22,7 @@ function App() {
 
   const handleReset = () => {
     setGames(0);
-    setPosition('first');
+    setPosition('First');
     setPlayer1(0);
     setPlayer2(0);
     setPlayer3(0);
@@ -43,7 +43,7 @@ function App() {
       clearTimeout(i);
     }
     if (history.length >= 1) {
-      if (position === "first") {
+      if (position === "First") {
         setPosition("last");
         setGames(games - 1);
         if (history[history.length - 1] === playerNames[0]) {
@@ -197,7 +197,7 @@ function App() {
         }
       }
       if (position === "second") {
-        setPosition("first");
+        setPosition("First");
         if (history[history.length - 1] === playerNames[0]) {
           setPlayer1(player1 + points[3]);
           setColor1('btn');
@@ -261,14 +261,17 @@ function App() {
     if (names === 2) {
       setNames(1);
     }
+    if(names === 3 && history.length<1) {
+      setNames(2)
+    }
   };
   return (
     <div className={`App`}>
       <h1>Big 2 Score Keeping</h1>
       <h2> Games Played: {games}</h2>
-      {(names === 1) && <h2>Choose your name</h2>}
-      {(names === 2) && <h2>Choose your ruleset</h2>}
-      {(names === 3) && <h2>Who came {position}?</h2>}
+      {(names === 1) && <h2>Choose Your Character</h2>}
+      {(names === 2) && <h2>Choose your Rule Set</h2>}
+      {(names === 3) && <h2>Who Came {position}?</h2>}
       <div className={`row`}>
         <button className={`back`} onClick={handleBack}>
           BACK

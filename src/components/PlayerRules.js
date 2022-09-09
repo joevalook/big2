@@ -21,16 +21,16 @@ import React from "react";
     <main>
      <form class="form-style-4" action="" method="post">
     <label for="field1">
-    <span>Enter Winners Points</span><input type="text" name="field1" required="true" onChange={updateRuleChanged(0)} />
+    <span>Enter Winners Points</span><input type="text" name="field1" placeholder = "+2" required="true" onChange={updateRuleChanged(0)} />
     </label>
     <label for="field2">
-    <span>Enter Second Place's Points</span><input type="text" name="field2" required="true" onChange={updateRuleChanged(1)} />
+    <span>Enter Second Place's Points</span><input type="text" name="field2" required="true" onChange={updateRuleChanged(1)} placeholder = "+1"/>
     </label>
     <label for="field3">
-    <span>Enter Third Place's Points</span><input type="text" name="field3" required="true" onChange={updateRuleChanged(2)} />
+    <span>Enter Third Place's Points</span><input type="text" name="field3" required="true" onChange={updateRuleChanged(2)} placeholder = "-1"/>
     </label>
     <label for="field4">
-    <span>Enter Last Place's Points</span><input type="text" name="field3" required="true" onChange={updateRuleChanged(3)} />
+    <span>Enter Last Place's Points</span><input type="text" name="field3" required="true" onChange={updateRuleChanged(3)} placeholder = "-2"/>
     </label>
     <button className={'btnNames'}onClick={handleClick} >
         Start Game
