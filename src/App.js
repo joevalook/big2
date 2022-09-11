@@ -41,6 +41,10 @@ function App() {
   const changeRules = () => {
     setNames(2)
   }
+  const double = () => {
+    const doublePoints = points.map(x => x * 2);
+    setPoints(doublePoints)
+  }
   const handleBack = () => {
     const highestTimeoutId = setTimeout(";");
     for (var i = 0; i < highestTimeoutId; i++) {
@@ -282,6 +286,9 @@ function App() {
         </button>
         <button className={`changeRules`} onClick={changeRules}>
           Change Rules
+        </button>
+        <button className={`double`} onClick={double}>
+          Double Up
         </button>
         <button className={`reset`} onClick={handleReset}>
           RESET
