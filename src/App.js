@@ -37,6 +37,10 @@ function App() {
     setPoints([2, 1, -1, -2]);
 
   };
+
+  const changeRules = () => {
+    setNames(2)
+  }
   const handleBack = () => {
     const highestTimeoutId = setTimeout(";");
     for (var i = 0; i < highestTimeoutId; i++) {
@@ -276,9 +280,14 @@ function App() {
         <button className={`back`} onClick={handleBack}>
           BACK
         </button>
+        <button className={`changeRules`} onClick={changeRules}>
+          Change Rules
+        </button>
         <button className={`reset`} onClick={handleReset}>
           RESET
         </button>
+        
+
       </div>
       {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} />}
       {(names === 2) && <PlayerRules setNames={setNames} points={points} setPoints={setPoints} />}

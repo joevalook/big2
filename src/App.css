@@ -135,6 +135,17 @@ input {
   background-color: rgb(116, 207, 76);
 }
 
+.changeRules {
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: 1.5em;
+  background-color: rgb(62, 94, 235);
+  cursor:pointer;
+}
+.changeRules:hover{
+  background-color: rgb(59, 156, 201);
+}
+
 .row {
   display: flex;
   flex-direction: row;
