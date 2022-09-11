@@ -48,7 +48,7 @@ function App() {
     }
     if (history.length >= 1) {
       if (position === "First") {
-        setPosition("last");
+        setPosition("Last");
         setGames(games - 1);
         if (history[history.length - 1] === playerNames[0]) {
           setPlayer1(player1 + points[0]);
@@ -200,7 +200,7 @@ function App() {
           }
         }
       }
-      if (position === "second") {
+      if (position === "Second") {
         setPosition("First");
         if (history[history.length - 1] === playerNames[0]) {
           setPlayer1(player1 + points[3]);
@@ -220,8 +220,8 @@ function App() {
         }
 
       }
-      if (position === "third") {
-        setPosition("second");
+      if (position === "Third") {
+        setPosition("Second");
         if (history[history.length - 1] === playerNames[0]) {
           setPlayer1(player1 + points[2]);
           setColor1('btn');
@@ -240,8 +240,8 @@ function App() {
         }
 
       }
-      if (position === "last") {
-        setPosition("third");
+      if (position === "Last") {
+        setPosition("Third");
         if (history[history.length - 1] === playerNames[0]) {
           setPlayer1(player1 + points[1]);
           setColor1('btn');
