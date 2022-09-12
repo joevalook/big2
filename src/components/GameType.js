@@ -17,14 +17,14 @@ function GameType(props) {
 
 
   return (
-    <section>
+    <div className="big2Poker">
       <button className={`fire`} onClick={handleBig2}>
         Big 2
       </button>
       <button className={`ice`} onClick={handlePoker}>
         Poker
       </button>
-    </section>
+    </div>
   );
 }
 

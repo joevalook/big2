@@ -21,6 +21,7 @@ function App() {
   const [color4, setColor4] = useState('btn');
   const [names, setNames] = useState(0);
   const [typeOfGame, setTypeOfGame] = useState(2)
+  const [doubleUp, setDoubleUp] = useState(false)
 
   const handleReset = () => {
     setGames(0);
@@ -37,6 +38,7 @@ function App() {
     setNames(0);
     setPlayerNames(["Player 1", "Player 2", "Player 3", "Player 4"]);
     setPoints([2, 1, -1, -2]);
+    setDoubleUp(false);
 
   };
 
@@ -44,8 +46,16 @@ function App() {
     setNames(2)
   }
   const double = () => {
-    const doublePoints = points.map(x => x * 2);
-    setPoints(doublePoints)
+    if (doubleUp === false) {
+      const doublePoints = points.map(x => x * 2);
+      setPoints(doublePoints)
+      setDoubleUp(true);
+    }
+    else{
+      const halfPoints = points.map(x => x / 2);
+      setPoints(halfPoints)
+      setDoubleUp(false);
+    }
   }
   const handleBack = () => {
     const highestTimeoutId = setTimeout(";");
@@ -288,16 +298,19 @@ function App() {
       {(names === 3) && <h3 className="position">Who Came {position}?</h3>}
       <div className={`row`}>
         {(names != 0) && <button className={`back`} onClick={handleBack}>
-          BACK
+          Back
         </button>}
         {(names === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
-        {(names === 3) && <button className={`double`} onClick={double}>
+        {(names === 3) && (doubleUp === false) && <button className={`double`} onClick={double}>
           Double Up
         </button>}
+        {(names === 3) && (doubleUp === true) && <button className={`double`} onClick={double}>
+          Back to Normal
+        </button>}
         {(names != 0) && <button className={`reset`} onClick={handleReset}>
-          RESET
+          Reset
         </button>}
 
 
