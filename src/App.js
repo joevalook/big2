@@ -284,12 +284,12 @@ function App() {
         <button className={`back`} onClick={handleBack}>
           BACK
         </button>
-        <button className={`changeRules`} onClick={changeRules}>
+        {(names === 3) &&<button className={`changeRules`} onClick={changeRules}>
           Change Rules
-        </button>
-        <button className={`double`} onClick={double}>
+        </button>}
+        {(names === 3) &&<button className={`double`} onClick={double}>
           Double Up
-        </button>
+        </button>}
         <button className={`reset`} onClick={handleReset}>
           RESET
         </button>
