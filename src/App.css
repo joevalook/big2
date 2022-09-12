@@ -23,6 +23,14 @@
   color: black;
 }
 
+.cursive {
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  background: rgb(66, 109, 102);
+  color: black;
+  font-family: URW Chancery L, cursive;
+}
 section {
   height: 100%;
   display: flex;

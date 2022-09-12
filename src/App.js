@@ -281,7 +281,8 @@ function App() {
   return (
     <div className={`App`}>
       <h1>CHIPLESS</h1>
-      <h2> Games Played: {games}</h2>
+      {(names === 0) && <h2 className="cursive"> Gambling Without the Chips</h2>}
+      {(names === 3) && <h2 > Games Played: {games}</h2>}
       {(names === 1) && <h2>Choose Your Character</h2>}
       {(names === 2) && <h2>Choose your Rule Set</h2>}
       {(names === 3) && <h3 className="position">Who Came {position}?</h3>}
