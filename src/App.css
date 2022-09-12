@@ -255,6 +255,16 @@ i {
 background: #394D61;
 }
 
+.position{
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  background: rgb(66, 109, 102);
+  color: black;
+  font-size: 25px;
+  border-top: #333;
+  z-index: 500;
+}
 
 @media screen and (max-width: 800px) {
   section {

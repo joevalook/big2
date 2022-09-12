@@ -19,6 +19,7 @@ function App() {
   const [color3, setColor3] = useState('btn');
   const [color4, setColor4] = useState('btn');
   const [names, setNames] = useState(1);
+  const [typeOfGame, setTypeofGame] = useState(1)
 
   const handleReset = () => {
     setGames(0);
@@ -275,11 +276,11 @@ function App() {
   };
   return (
     <div className={`App`}>
-      <h1>Big 2 Score Keeping</h1>
+      <h1>Score Keeping</h1>
       <h2> Games Played: {games}</h2>
       {(names === 1) && <h2>Choose Your Character</h2>}
       {(names === 2) && <h2>Choose your Rule Set</h2>}
-      {(names === 3) && <h2>Who Came {position}?</h2>}
+      {(names === 3) && <h3 className="position">Who Came {position}?</h3>}
       <div className={`row`}>
         <button className={`back`} onClick={handleBack}>
           BACK
@@ -296,7 +297,8 @@ function App() {
         
 
       </div>
-      {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} />}
+      {(names === 0) && <GameType setNames={setNames} />}
+      {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} typeOfGame={typeOfGame} setTypeOfGame= {setTypeOfGame)/>}
       {(names === 2) && <PlayerRules setNames={setNames} points={points} setPoints={setPoints} />}
       <section>
         {(names === 3) && <PlayerScore player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
