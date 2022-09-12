@@ -22,6 +22,7 @@ function App() {
   const [names, setNames] = useState(0);
   const [typeOfGame, setTypeOfGame] = useState(2)
   const [doubleUp, setDoubleUp] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
 
   const handleReset = () => {
     setGames(0);
@@ -44,6 +45,10 @@ function App() {
 
   const changeRules = () => {
     setNames(2)
+  }
+
+  const handleDark = () => {
+    setDarkMode(!darkMode)
   }
   const double = () => {
     if (doubleUp === false) {
@@ -289,7 +294,7 @@ function App() {
     }
   };
   return (
-    <div className={`App`}>
+    <div className={'App ' + (darkMode ? 'black ' : 'white ') + (doubleUp ? 'red' : '')}>
       <h1>CHIPLESS</h1>
       {(names === 0) && <h2 className="cursive"> Gambling Without the Chips</h2>}
       {(names === 3) && <h2 > Games Played: {games}</h2>}
@@ -303,18 +308,15 @@ function App() {
         {(names === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
-        {(names === 3) && (doubleUp === false) && <button className={`double`} onClick={double}>
+        {(names === 3) && <button className={"double " + (doubleUp ? 'flame' : '')} onClick={double}>
           Double Up
-        </button>}
-        {(names === 3) && (doubleUp === true) && <button className={`double`} onClick={double}>
-          Back to Normal
         </button>}
         {(names != 0) && <button className={`reset`} onClick={handleReset}>
           Reset
         </button>}
-
-
       </div>
+      
+
       {(names === 0) && <GameType setNames={setNames} setTypeOfGame={setTypeOfGame} />}
       {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} typeOfGame={typeOfGame} setTypeOfGame={setTypeOfGame} />}
       {(names === 2) && <PlayerRules setNames={setNames} points={points} setPoints={setPoints} />}
@@ -324,6 +326,14 @@ function App() {
         {(names === 3) && <PlayerScore player={player3} setPlayer={setPlayer3} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
         {(names === 3) && <PlayerScore player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} color={color4} setColor={setColor4} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor3} points={points} setPoints={setPoints} />}
       </section>
+      {(!darkMode) && <button className={`blackWhite`} onClick={handleDark}>
+          Dark Mode
+        </button>
+      }
+      {(darkMode) && <button className={`whiteBlack`} onClick={handleDark}>
+          Light Mode
+        </button>
+      }
     </div>
   );
 }

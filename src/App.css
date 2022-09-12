@@ -3,9 +3,42 @@
   flex-direction: column;
   height: 100vh;
   transition: all 300ms linear;
+
 }
 
-.App > h1 {
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
+
+.blackWhite {
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.whiteBlack {
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: 1.5em;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.App>h1 {
   margin: 0;
   padding: 0.5em;
   text-align: center;
@@ -15,7 +48,7 @@
   font-size: 50px;
 }
 
-.App > h2 {
+.App>h2 {
   margin: 0;
   padding: 1em;
   text-align: center;
@@ -23,7 +56,7 @@
   color: black;
 }
 
-.big2Poker{
+.big2Poker {
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -40,6 +73,7 @@
   color: black;
   font-family: URW Chancery L, cursive;
 }
+
 section {
   height: 100%;
   display: flex;
@@ -53,7 +87,7 @@ main {
   height: 100%;
   display: flex;
   margin-left: auto;
-  margin-right:auto;
+  margin-right: auto;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -129,7 +163,7 @@ input {
   width: 40%;
   font-size: 3vh;
   background: white;
-  cursor:pointer;
+  cursor: pointer;
   border-color: black;
   z-index: 10;
 }
@@ -138,16 +172,17 @@ input {
   margin: 0.5em;
   width: 40%;
   font-size: 2vh;
-  cursor:pointer;
+  cursor: pointer;
   border-color: black;
   z-index: 100;
   background: #576E86;
-	border: none;
-	padding: 8px 10px 8px 10px;
-	border-radius: 5px;
-	color: #A8BACE;
+  border: none;
+  padding: 8px 10px 8px 10px;
+  border-radius: 5px;
+  color: #A8BACE;
 }
-.btnNames:hover{
+
+.btnNames:hover {
   background: #394D61;
 }
 
@@ -157,38 +192,41 @@ input {
   width: 40%;
   font-size: 3vh;
   background: gold;
-  cursor:pointer;
+  cursor: pointer;
   border-color: black;
 }
+
 .silver {
   margin: 1em;
   padding: 1em;
   width: 40%;
   font-size: 3vh;
   background: silver;
-  cursor:pointer;
+  cursor: pointer;
   border-color: black;
 }
+
 .bronze {
   margin: 1em;
   padding: 1em;
   width: 40%;
   font-size: 3vh;
   background: burlywood;
-  cursor:pointer;
+  cursor: pointer;
   border-color: black;
 }
+
 .last {
   margin: 1em;
   padding: 1em;
   width: 40%;
   font-size: 3vh;
   background: rgb(241, 71, 71);
-  cursor:pointer;
+  cursor: pointer;
   border-color: black;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: antiquewhite;
 }
 
@@ -197,19 +235,22 @@ input {
   padding: 0.5em;
   font-size: 1.5em;
   background-color: rgb(235, 80, 80);
-  cursor:pointer;
+  cursor: pointer;
 }
-.back:hover{
+
+.back:hover {
   background-color: rgb(245, 123, 101);
 }
+
 .reset {
   margin: 0.5em;
   padding: 0.5em;
   font-size: 1.5em;
   background-color: rgb(44, 177, 75);
-  cursor:pointer;
+  cursor: pointer;
 }
-.reset:hover{
+
+.reset:hover {
   background-color: rgb(116, 207, 76);
 }
 
@@ -218,11 +259,18 @@ input {
   padding: 0.5em;
   font-size: 1.5em;
   background-color: rgb(214, 88, 187);
-  cursor:pointer;
+  cursor: pointer;
   z-index: 2;
 }
-.double:hover{
+
+.double:hover {
   background-color: rgb(240, 150, 225);
+}
+
+.flame {
+  border-width: 5px;
+  border-color: green;
+  font-weight: bold;
 }
 
 .changeRules {
@@ -230,9 +278,10 @@ input {
   padding: 0.5em;
   font-size: 1.5em;
   background-color: rgb(62, 94, 235);
-  cursor:pointer;
+  cursor: pointer;
 }
-.changeRules:hover{
+
+.changeRules:hover {
   background-color: rgb(59, 156, 201);
 }
 
@@ -242,9 +291,11 @@ input {
   justify-content: space-between;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(186, 186, 186);
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
 
 .off i {
@@ -256,84 +307,87 @@ i {
 }
 
 
-.form-style-4{
+.form-style-4 {
   display: flex;
-	width: 350px;
-	font-size: 16px;
-	background: #495C70;
-	padding: 30px 30px 15px 30px;
-	border: 5px solid #53687E;
+  width: 350px;
+  font-size: 16px;
+  background: #495C70;
+  padding: 30px 30px 15px 30px;
+  border: 5px solid #53687E;
   align-items: center;
   flex-direction: column;
- 
+
 }
+
 .form-style-4 input[type=submit],
 .form-style-4 input[type=button],
 .form-style-4 input[type=text],
 .form-style-4 input[type=email],
 .form-style-4 textarea,
-.form-style-4 label
-{
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size: 16px;
-	color: #fff;
-
-}
 .form-style-4 label {
-	display:block;
-	margin-bottom: 10px;
-}
-.form-style-4 label > span{
-	display: inline-block;
-	float: left;
-	width: 250px;
-}
-.form-style-4 input[type=text],
-.form-style-4 input[type=email] 
-{
-	background: transparent;
-	border: none;
-	border-bottom: 1px dashed #83A4C5;
-	width: 275px;
-	outline: none;
-	padding: 0px 0px 0px 0px;
-	font-style: italic;
-}
-.form-style-4 textarea{
-	font-style: italic;
-	padding: 0px 0px 0px 0px;
-	background: transparent;
-	outline: none;
-	border: none;
-	border-bottom: 1px dashed #83A4C5;
-	width: 275px;
-	overflow: hidden;
-	resize:none;
-	height:20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  color: #fff;
+
 }
 
-.form-style-4 textarea:focus, 
+.form-style-4 label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-style-4 label>span {
+  display: inline-block;
+  float: left;
+  width: 250px;
+}
+
+.form-style-4 input[type=text],
+.form-style-4 input[type=email] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #83A4C5;
+  width: 275px;
+  outline: none;
+  padding: 0px 0px 0px 0px;
+  font-style: italic;
+}
+
+.form-style-4 textarea {
+  font-style: italic;
+  padding: 0px 0px 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px dashed #83A4C5;
+  width: 275px;
+  overflow: hidden;
+  resize: none;
+  height: 20px;
+}
+
+.form-style-4 textarea:focus,
 .form-style-4 input[type=text]:focus,
 .form-style-4 input[type=email]:focus,
-.form-style-4 input[type=email] :focus
-{
-	border-bottom: 1px dashed #D9FFA9;
+.form-style-4 input[type=email] :focus {
+  border-bottom: 1px dashed #D9FFA9;
 }
 
 .form-style-4 input[type=submit],
-.form-style-4 input[type=button]{
-	background: #576E86;
-	border: none;
-	padding: 8px 10px 8px 10px;
-	border-radius: 5px;
-	color: #A8BACE;
-}
-.form-style-4 input[type=submit]:hover,
-.form-style-4 input[type=button]:hover{
-background: #394D61;
+.form-style-4 input[type=button] {
+  background: #576E86;
+  border: none;
+  padding: 8px 10px 8px 10px;
+  border-radius: 5px;
+  color: #A8BACE;
 }
 
-.position{
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover {
+  background: #394D61;
+}
+
+.position {
   margin: 0;
   padding: 1em;
   text-align: center;
@@ -353,109 +407,137 @@ background: #394D61;
     align-items: center;
     flex-wrap: wrap;
   }
+
   .btn {
     margin: 0em;
     padding: 1em;
     font-size: 3vh;
-    width: 100%;
-    cursor:pointer;
+    width: 90%;
+    cursor: pointer;
     background: white;
   }
-  .gold{
+
+  .gold {
     margin: 0em;
     padding: 1em;
     font-size: 3vh;
-    width: 100%;
+    width: 90%;
     background: gold;
-    cursor:pointer;
+    cursor: pointer;
   }
-  .silver{
+
+  .silver {
     margin: 0em;
     padding: 1em;
     font-size: 3vh;
-    width: 100%;
+    width: 90%;
     background: silver;
-    cursor:pointer;
+    cursor: pointer;
   }
-  .bronze{
+
+  .bronze {
     margin: 0em;
     padding: 1em;
     font-size: 3vh;
-    width: 100%;
+    width: 90%;
     background: burlywood;
-    cursor:pointer;
+    cursor: pointer;
   }
-  .last{
+
+  .last {
     margin: 0em;
     padding: 1em;
     font-size: 3vh;
-    width: 100%;
+    width: 90%;
     background: rgb(241, 71, 71);
-    cursor:pointer;
+    cursor: pointer;
   }
-  .App > h1 {
+
+  .App>h1 {
     margin: 0;
     padding: 0.5em;
     text-align: center;
     background: #333;
     color: white;
   }
-  
-  .App > h2 {
+
+  .App>h2 {
     margin: 0;
     padding: 0.5em;
     text-align: center;
     background: rgb(66, 109, 102);
     color: black;
   }
+
   .back {
     margin: 0.5em;
     padding: 0.5em;
     font-size: 1em;
     font-weight: bold;
     background-color: rgb(235, 80, 80);
-    cursor:pointer;
+    cursor: pointer;
   }
-  .back:hover{
+
+  .back:hover {
     background-color: rgb(245, 123, 101);
   }
+
   .reset {
     margin: 0.5em;
     padding: 0.5em;
     font-size: 1em;
     font-weight: bold;
     background-color: rgb(44, 177, 75);
-    cursor:pointer;
+    cursor: pointer;
   }
-  .reset:hover{
+
+  .reset:hover {
     background-color: rgb(116, 207, 76);
   }
-  
+
   .double {
     margin: 0.5em;
     padding: 0.5em;
     font-size: 1em;
     font-weight: bold;
     background-color: rgb(214, 88, 187);
-    cursor:pointer;
+    cursor: pointer;
     z-index: 2;
+
   }
-  .double:hover{
+
+  .double:hover {
     background-color: rgb(240, 150, 225);
   }
-  
+
   .changeRules {
     margin: 0.5em;
     padding: 0.5em;
     font-size: 1em;
     font-weight: bold;
     background-color: rgb(62, 94, 235);
-    cursor:pointer;
+    cursor: pointer;
   }
-  .changeRules:hover{
+
+  .changeRules:hover {
     background-color: rgb(59, 156, 201);
   }
-  .big2Poker{
+
+  .blackwhite {
+    width: 100%;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1.5em;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+  .flame {
+    border-width: 5px;
+    border-color: red;
+  }
+
+  .big2Poker {
     margin-top: 50px;
     height: 100%;
     display: flex;
@@ -464,6 +546,7 @@ background: #394D61;
     align-items: center;
     flex-wrap: wrap;
   }
+
   .ice {
     margin-top: 50px;
     padding: 0.75em 1.5em;
