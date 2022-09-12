@@ -1,6 +1,7 @@
 import PlayerScore from "./components/PlayerScore";
 import PlayerName from "./components/PlayerName";
 import PlayerRules from "./components/PlayerRules"
+import GameType from "./components/GameType";
 import './App.css';
 import React, { useState } from "react";
 
@@ -18,8 +19,8 @@ function App() {
   const [color2, setColor2] = useState('btn');
   const [color3, setColor3] = useState('btn');
   const [color4, setColor4] = useState('btn');
-  const [names, setNames] = useState(1);
-  const [typeOfGame, setTypeofGame] = useState(1)
+  const [names, setNames] = useState(0);
+  const [typeOfGame, setTypeOfGame] = useState(2)
 
   const handleReset = () => {
     setGames(0);
@@ -33,7 +34,7 @@ function App() {
     setColor2('btn');
     setColor3('btn');
     setColor4('btn');
-    setNames(1);
+    setNames(0);
     setPlayerNames(["Player 1", "Player 2", "Player 3", "Player 4"]);
     setPoints([2, 1, -1, -2]);
 
@@ -267,38 +268,41 @@ function App() {
       }
       setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
     }
+    if (names === 1) {
+      setNames(0);
+    }
     if (names === 2) {
       setNames(1);
     }
-    if(names === 3 && history.length<1) {
+    if (names === 3 && history.length < 1) {
       setNames(2)
     }
   };
   return (
     <div className={`App`}>
-      <h1>Score Keeping</h1>
+      <h1>CHIPLESS</h1>
       <h2> Games Played: {games}</h2>
       {(names === 1) && <h2>Choose Your Character</h2>}
       {(names === 2) && <h2>Choose your Rule Set</h2>}
       {(names === 3) && <h3 className="position">Who Came {position}?</h3>}
       <div className={`row`}>
-        <button className={`back`} onClick={handleBack}>
+        {(names != 0) && <button className={`back`} onClick={handleBack}>
           BACK
-        </button>
-        {(names === 3) &&<button className={`changeRules`} onClick={changeRules}>
+        </button>}
+        {(names === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
-        {(names === 3) &&<button className={`double`} onClick={double}>
+        {(names === 3) && <button className={`double`} onClick={double}>
           Double Up
         </button>}
-        <button className={`reset`} onClick={handleReset}>
+        {(names != 0) && <button className={`reset`} onClick={handleReset}>
           RESET
-        </button>
-        
+        </button>}
+
 
       </div>
-      {(names === 0) && <GameType setNames={setNames} />}
-      {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} typeOfGame={typeOfGame} setTypeOfGame= {setTypeOfGame)/>}
+      {(names === 0) && <GameType setNames={setNames} setTypeOfGame={setTypeOfGame} />}
+      {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} typeOfGame={typeOfGame} setTypeOfGame={setTypeOfGame} />}
       {(names === 2) && <PlayerRules setNames={setNames} points={points} setPoints={setPoints} />}
       <section>
         {(names === 3) && <PlayerScore player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
