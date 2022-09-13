@@ -294,7 +294,7 @@ function App() {
     }
   };
   return (
-    <div className={'App ' + (darkMode ? 'black ' : 'white ') + (doubleUp ? 'red' : '')}>
+    <div className={'App ' + (doubleUp ? 'red ' : ' ') + (darkMode ? 'black ' : 'white ') }>
       <h1>CHIPLESS</h1>
       {(names === 0) && <h2 className="cursive"> Gambling Without the Chips</h2>}
       {(names === 3) && <h2 > Games Played: {games}</h2>}
@@ -308,7 +308,7 @@ function App() {
         {(names === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
-        {(names === 3) && <button className={"double " + (doubleUp ? 'flame' : '')} onClick={double}>
+        {(names === 3) && <button className={"double "} onClick={double}>
           Double Up
         </button>}
         {(names != 0) && <button className={`reset`} onClick={handleReset}>
