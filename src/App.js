@@ -1,28 +1,29 @@
 import PlayerScore from "./components/PlayerScore";
 import PlayerName from "./components/PlayerName";
 import PlayerRules from "./components/PlayerRules"
+import Back from "./components/Back";
 import GameType from "./components/GameType";
 import './App.css';
 import React, { useState } from "react";
 
 function App() {
-  const [position, setPosition] = useState('First');
-  const [games, setGames] = useState(0);
-  const [player1, setPlayer1] = useState(0);
-  const [player2, setPlayer2] = useState(0);
-  const [player3, setPlayer3] = useState(0);
-  const [player4, setPlayer4] = useState(0);
-  const [playerNames, setPlayerNames] = useState(["Player 1", "Player 2", "Player 3", "Player 4"]);
-  const [points, setPoints] = useState([2, 1, -1, -2]);
-  const [history, setHistory] = useState([]);
-  const [color1, setColor1] = useState('btn');
-  const [color2, setColor2] = useState('btn');
-  const [color3, setColor3] = useState('btn');
-  const [color4, setColor4] = useState('btn');
-  const [names, setNames] = useState(0);
-  const [typeOfGame, setTypeOfGame] = useState(2)
-  const [doubleUp, setDoubleUp] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
+  const [position, setPosition] = useState('First');//current position 
+  const [games, setGames] = useState(0);//number of games played
+  const [player1, setPlayer1] = useState(0);//number of points for player 1
+  const [player2, setPlayer2] = useState(0);//number of points for player 2
+  const [player3, setPlayer3] = useState(0);//number of points for player 3
+  const [player4, setPlayer4] = useState(0);//number of points for player 4
+  const [playerNames, setPlayerNames] = useState(["Player 1", "Player 2", "Player 3", "Player 4"]);//player names
+  const [points, setPoints] = useState([2, 1, -1, -2]);//number of points you win (1st, 2nd, 3rd, 4th)
+  const [history, setHistory] = useState([]);//player names in order of click 
+  const [color1, setColor1] = useState('btn');//color of player 1 button
+  const [color2, setColor2] = useState('btn');//color of player 2 button
+  const [color3, setColor3] = useState('btn');//color of player 3 button
+  const [color4, setColor4] = useState('btn');//color of player 4 button
+  const [names, setNames] = useState(0);//which screen you are on
+  const [typeOfGame, setTypeOfGame] = useState(2)//poker vs big2 for setNames
+  const [doubleUp, setDoubleUp] = useState(false)//are point values doubled
+  const [darkMode, setDarkMode] = useState(false)// dark mode and light mode
 
   const handleReset = () => {
     setGames(0);
@@ -62,237 +63,7 @@ function App() {
       setDoubleUp(false);
     }
   }
-  const handleBack = () => {
-    const highestTimeoutId = setTimeout(";");
-    for (var i = 0; i < highestTimeoutId; i++) {
-      clearTimeout(i);
-    }
-    if (history.length >= 1) {
-      if (position === "First") {
-        setPosition("Last");
-        setGames(games - 1);
-        if (history[history.length - 1] === playerNames[0]) {
-          setPlayer1(player1 + points[0]);
-          setColor1('btn');
-          if (history[history.length - 2] === playerNames[1]) {
-            setColor2('bronze');
-            if (history[history.length - 3] === playerNames[2]) {
-              setColor3('silver');
-              setColor4('gold');
-            }
-            if (history[history.length - 3] === playerNames[3]) {
-              setColor4('silver');
-              setColor3('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[2]) {
-            setColor3('bronze');
-            if (history[history.length - 3] === playerNames[1]) {
-              setColor2('silver');
-              setColor4('gold');
-            }
-            if (history[history.length - 3] === playerNames[3]) {
-              setColor4('silver');
-              setColor2('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[3]) {
-            setColor4('bronze');
-            if (history[history.length - 3] === playerNames[1]) {
-              setColor2('silver');
-              setColor3('gold');
-            }
-            if (history[history.length - 3] === playerNames[2]) {
-              setColor3('silver');
-              setColor2('gold');
-            }
-          }
-        }
-        if (history[history.length - 1] === playerNames[1]) {
-          setPlayer2(player2 + points[0]);
-          setColor2('btn');
-          if (history[history.length - 2] === playerNames[0]) {
-            setColor2('bronze');
-            if (history[history.length - 3] === playerNames[2]) {
-              setColor3('silver');
-              setColor4('gold');
-            }
-            if (history[history.length - 3] === playerNames[3]) {
-              setColor4('silver');
-              setColor3('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[2]) {
-            setColor3('bronze');
-            if (history[history.length - 3] === playerNames[0]) {
-              setColor1('silver');
-              setColor4('gold');
-            }
-            if (history[history.length - 3] === playerNames[3]) {
-              setColor4('silver');
-              setColor1('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[3]) {
-            setColor4('bronze');
-            if (history[history.length - 3] === playerNames[0]) {
-              setColor1('silver');
-              setColor3('gold');
-            }
-            if (history[history.length - 3] === playerNames[2]) {
-              setColor3('silver');
-              setColor1('gold');
-            }
-          }
-        }
-        if (history[history.length - 1] === playerNames[2]) {
-          setPlayer3(player3 + points[0]);
-          setColor3('btn');
-          if (history[history.length - 2] === playerNames[1]) {
-            setColor2('bronze');
-            if (history[history.length - 3] === playerNames[0]) {
-              setColor1('silver');
-              setColor4('gold');
-            }
-            if (history[history.length - 3] === playerNames[3]) {
-              setColor4('silver');
-              setColor1('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[0]) {
-            setColor3('bronze');
-            if (history[history.length - 3] === playerNames[1]) {
-              setColor2('silver');
-              setColor4('gold');
-            }
-            if (history[history.length - 3] === playerNames[3]) {
-              setColor4('silver');
-              setColor2('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[3]) {
-            setColor4('bronze');
-            if (history[history.length - 3] === playerNames[0]) {
-              setColor1('silver');
-              setColor2('gold');
-
-            }
-            if (history[history.length - 3] === playerNames[1]) {
-              setColor2('silver');
-              setColor1('gold');
-            }
-          }
-        }
-        if (history[history.length - 1] === playerNames[3]) {
-          setPlayer4(player4 + points[0]);
-          setColor4('btn');
-          if (history[history.length - 2] === playerNames[1]) {
-            setColor2('bronze');
-            if (history[history.length - 3] === playerNames[0]) {
-              setColor1('silver');
-              setColor3('gold');
-            }
-            if (history[history.length - 3] === playerNames[2]) {
-              setColor3('silver');
-              setColor1('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[2]) {
-            setColor3('bronze');
-            if (history[history.length - 3] === playerNames[0]) {
-              setColor1('silver');
-              setColor2('gold');
-            }
-            if (history[history.length - 3] === playerNames[1]) {
-              setColor2('silver');
-              setColor1('gold');
-            }
-          }
-          if (history[history.length - 2] === playerNames[0]) {
-            setColor4('bronze');
-            if (history[history.length - 3] === playerNames[1]) {
-              setColor2('silver');
-              setColor3('gold');
-            }
-            if (history[history.length - 3] === playerNames[2]) {
-              setColor3('silver');
-              setColor2('gold');
-            }
-          }
-        }
-      }
-      if (position === "Second") {
-        setPosition("First");
-        if (history[history.length - 1] === playerNames[0]) {
-          setPlayer1(player1 + points[3]);
-          setColor1('btn');
-        }
-        if (history[history.length - 1] === playerNames[1]) {
-          setPlayer2(player2 + points[3]);
-          setColor2('btn');
-        }
-        if (history[history.length - 1] === playerNames[2]) {
-          setPlayer3(player3 + points[3]);
-          setColor3('btn');
-        }
-        if (history[history.length - 1] === playerNames[3]) {
-          setPlayer4(player4 + points[3]);
-          setColor4('btn');
-        }
-
-      }
-      if (position === "Third") {
-        setPosition("Second");
-        if (history[history.length - 1] === playerNames[0]) {
-          setPlayer1(player1 + points[2]);
-          setColor1('btn');
-        }
-        if (history[history.length - 1] === playerNames[1]) {
-          setPlayer2(player2 + points[2]);
-          setColor2('btn');
-        }
-        if (history[history.length - 1] === playerNames[2]) {
-          setPlayer3(player3 + points[2]);
-          setColor3('btn');
-        }
-        if (history[history.length - 1] === playerNames[3]) {
-          setPlayer4(player4 + points[2]);
-          setColor4('btn');
-        }
-
-      }
-      if (position === "Last") {
-        setPosition("Third");
-        if (history[history.length - 1] === playerNames[0]) {
-          setPlayer1(player1 + points[1]);
-          setColor1('btn');
-        }
-        if (history[history.length - 1] === playerNames[1]) {
-          setPlayer2(player2 + points[1]);
-          setColor2('btn');
-        }
-        if (history[history.length - 1] === playerNames[2]) {
-          setPlayer3(player3 + points[1]);
-          setColor3('btn');
-        }
-        if (history[history.length - 1] === playerNames[3]) {
-          setPlayer4(player4 + points[1]);
-          setColor4('btn');
-        }
-
-      }
-      setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
-    }
-    if (names === 1) {
-      setNames(0);
-    }
-    if (names === 2) {
-      setNames(1);
-    }
-    if (names === 3 && history.length < 1) {
-      setNames(2)
-    }
-  };
+  
   return (
     <div className={'App ' + (doubleUp ? 'red ' : ' ') + (darkMode ? 'black ' : 'white ') }>
       <h1>CHIPLESS</h1>
@@ -302,16 +73,14 @@ function App() {
       {(names === 2) && <h2>Choose your Rule Set</h2>}
       {(names === 3) && <h3 className="position">Who Came {position}?</h3>}
       <div className={`row`}>
-        {(names != 0) && <button className={`back`} onClick={handleBack}>
-          Back
-        </button>}
+        {(names !== 0) && <Back player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} player3={player3} setPlayer3={setPlayer3} player4={player4} setPlayer4={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerNames={playerNames} history={history} setHistory={setHistory}  setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} points={points} setPoints={setPoints} names = {names} setNames={setNames}/>}
         {(names === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
         {(names === 3) && <button className={"double "} onClick={double}>
           Double Up
         </button>}
-        {(names != 0) && <button className={`reset`} onClick={handleReset}>
+        {(names !== 0) && <button className={`reset`} onClick={handleReset}>
           Reset
         </button>}
       </div>
