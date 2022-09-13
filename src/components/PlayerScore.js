@@ -18,6 +18,7 @@ import React from "react";
     const setOtherColor3 = props.setOtherColor3
     const points = props.points
     const setPoints = props.setPoints
+    const darkMode = props.darkMode
 
 
     const handleClick = () => {
@@ -43,10 +44,10 @@ import React from "react";
         setGames(games+1)
         setColor('last')
         setTimeout(() => {
-          setColor('btn')
-          setOtherColor1('btn')
-          setOtherColor2('btn')
-          setOtherColor3('btn')
+          setColor(darkMode ? 'btn':'btn2')
+          setOtherColor1(darkMode ? 'btn':'btn2')
+          setOtherColor2(darkMode ? 'btn':'btn2')
+          setOtherColor3(darkMode ? 'btn':'btn2')
         }, 1000)
       }
       console.log(history);

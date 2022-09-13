@@ -4,6 +4,7 @@ function GameType(props) {
 
   const setNames = props.setNames
   const setTypeOfGame = props.setTypeOfGame
+  const darkMode = props.darkMode
 
   const handleBig2 = () => {
     setTypeOfGame(2)
@@ -18,10 +19,10 @@ function GameType(props) {
 
   return (
     <div className="big2Poker">
-      <button className={`fire`} onClick={handleBig2}>
+      <button className={(darkMode ? 'fire2 ' : 'fire ')} onClick={handleBig2}>
         Big 2
       </button>
-      <button className={`ice`} onClick={handlePoker}>
+      <button className={(darkMode ? 'ice2 ' : 'ice ')} onClick={handlePoker}>
         Poker
       </button>
     </div>

@@ -44,8 +44,8 @@
   text-align: center;
   background: #333;
   color: white;
-  font-family: 'Brush Script MT', cursive;
-  font-size: 50px;
+  font-family: fantasy;
+  font-size: 60px;
 }
 
 .App>h2 {
@@ -94,7 +94,21 @@ main {
 
 .fire {
   padding: 0.75em 1.5em;
+  background-color: black;
+  color: white;
+  border: 4px solid;
+  font-size: 4em;
+  border-radius: 1.65em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.fire2 {
+  padding: 0.75em 1.5em;
   background-color: white;
+  color: black;
   border: 4px solid;
   font-size: 4em;
   border-radius: 1.65em;
@@ -123,7 +137,21 @@ main {
 
 .ice {
   padding: 0.75em 1.5em;
+  background-color: black;
+  color: white;
+  border: 4px solid;
+  font-size: 4em;
+  border-radius: 1.65em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ice2 {
+  padding: 0.75em 1.5em;
   background-color: white;
+  color: black;
   border: 4px solid;
   font-size: 4em;
   border-radius: 1.65em;
@@ -164,8 +192,19 @@ input {
   font-size: 3vh;
   background: white;
   cursor: pointer;
-  border-color: black;
   z-index: 10;
+  border-radius: 1.65em;
+}
+.btn2 {
+  margin: 1em;
+  padding: 1em;
+  width: 40%;
+  font-size: 3vh;
+  background: black;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 1.65em;
 }
 
 .btnNames {
@@ -194,6 +233,7 @@ input {
   background: gold;
   cursor: pointer;
   border-color: black;
+  border-radius: 1.65em;
 }
 
 .silver {
@@ -204,6 +244,7 @@ input {
   background: silver;
   cursor: pointer;
   border-color: black;
+  border-radius: 1.65em;
 }
 
 .bronze {
@@ -214,6 +255,7 @@ input {
   background: burlywood;
   cursor: pointer;
   border-color: black;
+  border-radius: 1.65em;
 }
 
 .last {
@@ -224,6 +266,7 @@ input {
   background: rgb(241, 71, 71);
   cursor: pointer;
   border-color: black;
+  border-radius: 1.65em;
 }
 
 .btn:hover {
@@ -415,6 +458,18 @@ i {
     width: 90%;
     cursor: pointer;
     background: white;
+    border-radius: 1.65em;
+  }
+
+  .btn2 {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    cursor: pointer;
+    background: black;
+    color: white;
+    border-radius: 1.65em;
   }
 
   .gold {
@@ -424,6 +479,7 @@ i {
     width: 90%;
     background: gold;
     cursor: pointer;
+    border-radius: 1.65em;
   }
 
   .silver {
@@ -433,6 +489,7 @@ i {
     width: 90%;
     background: silver;
     cursor: pointer;
+    border-radius: 1.65em;
   }
 
   .bronze {
@@ -442,6 +499,7 @@ i {
     width: 90%;
     background: burlywood;
     cursor: pointer;
+    border-radius: 1.65em;
   }
 
   .last {
@@ -451,6 +509,7 @@ i {
     width: 90%;
     background: rgb(241, 71, 71);
     cursor: pointer;
+    border-radius: 1.65em;
   }
 
   .App>h1 {

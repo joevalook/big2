@@ -33,14 +33,15 @@ function App() {
     setPlayer3(0);
     setPlayer4(0);
     setHistory([]);
-    setColor1('btn');
-    setColor2('btn');
-    setColor3('btn');
-    setColor4('btn');
+    setColor1('btn2');
+    setColor2('btn2');
+    setColor3('btn2');
+    setColor4('btn2');
     setNames(0);
     setPlayerNames(["Player 1", "Player 2", "Player 3", "Player 4"]);
     setPoints([2, 1, -1, -2]);
     setDoubleUp(false);
+    setDarkMode(false)
 
   };
 
@@ -50,6 +51,17 @@ function App() {
 
   const handleDark = () => {
     setDarkMode(!darkMode)
+    setColor1((prev) => (color1==='btn2' ? 'btn' : prev));
+    setColor2((prev) => (color2==='btn2' ? 'btn' : prev));
+    setColor3((prev) => (color3==='btn2' ? 'btn' : prev));
+    setColor4((prev) => (color4==='btn2' ? 'btn' : prev));
+  }
+  const handleLight = () => {
+    setDarkMode(!darkMode)
+    setColor1((prev) => (color1==='btn' ? 'btn2' : prev));
+    setColor2((prev) => (color2==='btn' ? 'btn2' : prev));
+    setColor3((prev) => (color3==='btn' ? 'btn2' : prev));
+    setColor4((prev) => (color4==='btn' ? 'btn2' : prev));
   }
   const double = () => {
     if (doubleUp === false) {
@@ -73,7 +85,7 @@ function App() {
       {(names === 2) && <h2>Choose your Rule Set</h2>}
       {(names === 3) && <h3 className="position">Who Came {position}?</h3>}
       <div className={`row`}>
-        {(names !== 0) && <Back player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} player3={player3} setPlayer3={setPlayer3} player4={player4} setPlayer4={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerNames={playerNames} history={history} setHistory={setHistory}  setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} points={points} setPoints={setPoints} names = {names} setNames={setNames}/>}
+        {(names !== 0) && <Back darkMode={darkMode} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} player3={player3} setPlayer3={setPlayer3} player4={player4} setPlayer4={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerNames={playerNames} history={history} setHistory={setHistory}  setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} points={points} setPoints={setPoints} names = {names} setNames={setNames}/>}
         {(names === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
@@ -86,20 +98,20 @@ function App() {
       </div>
       
 
-      {(names === 0) && <GameType setNames={setNames} setTypeOfGame={setTypeOfGame} />}
+      {(names === 0) && <GameType setNames={setNames} setTypeOfGame={setTypeOfGame} darkMode={darkMode} />}
       {(names === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setNames} points={points} setPoints={setPoints} typeOfGame={typeOfGame} setTypeOfGame={setTypeOfGame} />}
       {(names === 2) && <PlayerRules setNames={setNames} points={points} setPoints={setPoints} />}
       <section>
-        {(names === 3) && <PlayerScore player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
-        {(names === 3) && <PlayerScore player={player2} setPlayer={setPlayer2} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[1]} history={history} setHistory={setHistory} color={color2} setColor={setColor2} setOtherColor1={setColor1} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
-        {(names === 3) && <PlayerScore player={player3} setPlayer={setPlayer3} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
-        {(names === 3) && <PlayerScore player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} color={color4} setColor={setColor4} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor3} points={points} setPoints={setPoints} />}
+        {(names === 3) && <PlayerScore darkMode={darkMode} player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
+        {(names === 3) && <PlayerScore darkMode={darkMode} player={player2} setPlayer={setPlayer2} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[1]} history={history} setHistory={setHistory} color={color2} setColor={setColor2} setOtherColor1={setColor1} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
+        {(names === 3) && <PlayerScore darkMode={darkMode} player={player3} setPlayer={setPlayer3} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
+        {(names === 3) && <PlayerScore darkMode={darkMode} player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} color={color4} setColor={setColor4} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor3} points={points} setPoints={setPoints} />}
       </section>
       {(!darkMode) && <button className={`blackWhite`} onClick={handleDark}>
           Dark Mode
         </button>
       }
-      {(darkMode) && <button className={`whiteBlack`} onClick={handleDark}>
+      {(darkMode) && <button className={`whiteBlack`} onClick={handleLight}>
           Light Mode
         </button>
       }

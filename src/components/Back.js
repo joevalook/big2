@@ -2,6 +2,7 @@ import React from "react";
 
   function Back(props){
     
+    const darkMode = props.darkMode
     const player1 = props.player1
     const setPlayer1 = props.setPlayer1
     const player2 = props.player2
@@ -27,6 +28,7 @@ import React from "react";
 
 
     const handleBack = () => {
+      
       const highestTimeoutId = setTimeout(";");
       for (var i = 0; i < highestTimeoutId; i++) {
         clearTimeout(i);
@@ -34,10 +36,11 @@ import React from "react";
       if (history.length >= 1) {
         if (position === "First") {
           setPosition("Last");
+          console.log(history);
           setGames(games - 1);
           if (history[history.length - 1] === playerNames[0]) {
             setPlayer1((prev) => prev + points[0]);
-            setColor1('btn');
+            setColor1(darkMode ? 'btn':'btn2');
             if (history[history.length - 2] === playerNames[1]) {
               setColor2('bronze');
               if (history[history.length - 3] === playerNames[2]) {
@@ -74,9 +77,9 @@ import React from "react";
           }
           if (history[history.length - 1] === playerNames[1]) {
             setPlayer2((prev) => prev + points[0]);
-            setColor2('btn');
+            setColor2(darkMode ? 'btn':'btn2');
             if (history[history.length - 2] === playerNames[0]) {
-              setColor2('bronze');
+              setColor1('bronze');
               if (history[history.length - 3] === playerNames[2]) {
                 setColor3('silver');
                 setColor4('gold');
@@ -109,9 +112,9 @@ import React from "react";
               }
             }
           }
-          if (history[history.length - 1] === playerNames[2]) {
+          if (history[history.length - 1] === playerNames[2]) { //last
             setPlayer3((prev) => prev + points[0]);
-            setColor3('btn');
+            setColor3(darkMode ? 'btn':'btn2');//button 3 should have been set back to unmarked
             if (history[history.length - 2] === playerNames[1]) {
               setColor2('bronze');
               if (history[history.length - 3] === playerNames[0]) {
@@ -124,7 +127,7 @@ import React from "react";
               }
             }
             if (history[history.length - 2] === playerNames[0]) {
-              setColor3('bronze');
+              setColor1('bronze');
               if (history[history.length - 3] === playerNames[1]) {
                 setColor2('silver');
                 setColor4('gold');
@@ -149,7 +152,7 @@ import React from "react";
           }
           if (history[history.length - 1] === playerNames[3]) {
             setPlayer4((prev) => prev + points[0]);
-            setColor4('btn');
+            setColor4(darkMode ? 'btn':'btn2');
             if (history[history.length - 2] === playerNames[1]) {
               setColor2('bronze');
               if (history[history.length - 3] === playerNames[0]) {
@@ -173,7 +176,7 @@ import React from "react";
               }
             }
             if (history[history.length - 2] === playerNames[0]) {
-              setColor4('bronze');
+              setColor1('bronze');
               if (history[history.length - 3] === playerNames[1]) {
                 setColor2('silver');
                 setColor3('gold');
@@ -187,62 +190,64 @@ import React from "react";
         }
         if (position === "Second") {
           setPosition("First");
+          console.log(history);
           if (history[history.length - 1] === playerNames[0]) {
-            console.log("went to correct if statement")
             setPlayer1((prev) => (prev + points[3]));
-            setColor1('btn');
+            setColor1(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[1]) {
             setPlayer2((prev) => prev + points[3]);
-            setColor2('btn');
+            setColor2(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[2]) {
             setPlayer3((prev) => prev + points[3]);
-            setColor3('btn');
+            setColor3(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[3]) {
             setPlayer4((prev) => prev + points[3]);
-            setColor4('btn');
+            setColor4(darkMode ? 'btn':'btn2');
           }
   
         }
         if (position === "Third") {
           setPosition("Second");
+          console.log(history);
           if (history[history.length - 1] === playerNames[0]) {
             setPlayer1((prev) => prev + points[2]);
-            setColor1('btn');
+            setColor1(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[1]) {
             setPlayer2((prev) => prev + points[2]);
-            setColor2('btn');
+            setColor2(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[2]) {
             setPlayer3((prev) => prev + points[2]);
-            setColor3('btn');
+            setColor3(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[3]) {
             setPlayer4((prev) => prev + points[2]);
-            setColor4('btn');
+            setColor4(darkMode ? 'btn':'btn2');
           }
   
         }
         if (position === "Last") {
           setPosition("Third");
+          console.log(history);
           if (history[history.length - 1] === playerNames[0]) {
             setPlayer1((prev) => prev + points[1]);
-            setColor1('btn');
+            setColor1(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[1]) {
             setPlayer2((prev) => prev + points[1]);
-            setColor2('btn');
+            setColor2(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[2]) {
             setPlayer3((prev) => prev + points[1]);
-            setColor3('btn');
+            setColor3(darkMode ? 'btn':'btn2');
           }
           if (history[history.length - 1] === playerNames[3]) {
             setPlayer4((prev) => prev + points[1]);
-            setColor4('btn');
+            setColor4(darkMode ? 'btn':'btn2');
           }
   
         }
