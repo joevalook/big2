@@ -21,17 +21,17 @@ function NameSetter(props) {
 
   return (
     <main>
-      <form class="form-style-4" action="" method="post">
-        <label for="field1">
+      <form className="form-style-4" >
+        <label>
           <span>Enter Player 1's name</span><input type="text" name="field1" required="true" placeholder={playerNames[0]} onChange={updateNameChanged(0)} />
         </label>
-        <label for="field2">
+        <label>
           <span>Enter Player 2's name</span><input type="text" name="field2" required="true" placeholder={playerNames[1]} onChange={updateNameChanged(1)} />
         </label>
-        <label for="field3">
+        <label>
           <span>Enter Player 3's name</span><input type="text" name="field3" required="true" placeholder={playerNames[2]} onChange={updateNameChanged(2)} />
         </label>
-        <label for="field4">
+        <label>
           <span>Enter Player 3's name</span><input type="text" name="field3" required="true" placeholder={playerNames[3]} onChange={updateNameChanged(3)} />
         </label>
         <button className={'btnNames'} onClick={handleClick} >

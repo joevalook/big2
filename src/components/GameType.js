@@ -7,13 +7,11 @@ function GameType(props) {
   const darkMode = props.darkMode
 
   const handleBig2 = () => {
-    setTypeOfGame(2)
     setNames(1);
   }
 
   const handlePoker = () => {
-    setTypeOfGame(4)
-    setNames(1);
+    setNames(4);
   }
 
 

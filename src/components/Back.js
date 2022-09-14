@@ -259,6 +259,15 @@ import React from "react";
       if (names === 2) {
         setNames(1);
       }
+      if (names === 4) {
+        setNames(0);
+      }
+      if (names === 5) {
+        setNames(4);
+      }
+      if (names === 6) {
+        setNames(5);
+      }
       if (names === 3 && history.length < 1) {
         setNames(2)
       }

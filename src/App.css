@@ -97,7 +97,7 @@ html{
   text-align: center;
   background: rgb(66, 109, 102);
   color: black;
-  font-family: URW Chancery L, cursive;
+  font-family: fantasy;
 }
 
 section {
@@ -111,7 +111,6 @@ section {
 }
 
 main {
-  height: 100%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
