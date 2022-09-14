@@ -10,6 +10,10 @@ html{
   width: 100%;
 }
 
+.bottom{
+  display: flex;
+  flex-direction: column-reverse;
+}
 .red {
   background-color: red !important;
 }
@@ -724,7 +728,7 @@ i {
     padding-bottom: 0px;
     text-align: center;
     color: black;
-    font-size: 25px;
+    font-size: 5vw;
     border-top: #333;
     z-index: 500;
   }
@@ -734,7 +738,7 @@ i {
     padding: 1em;
     text-align: center;
     color: white;
-    font-size: 25px;
+    font-size: 5vw;
     border-top: #333;
     z-index: 500;
     padding-bottom: 0px;

@@ -3,7 +3,6 @@ import React from "react";
 function GameType(props) {
 
   const setNames = props.setNames
-  const setTypeOfGame = props.setTypeOfGame
   const darkMode = props.darkMode
 
   const handleBig2 = () => {

@@ -23,16 +23,16 @@ function NameSetter(props) {
     <main>
       <form className="form-style-4" >
         <label>
-          <span>Enter Player 1's name</span><input type="text" name="field1" required="true" placeholder={playerNames[0]} onChange={updateNameChanged(0)} />
+          <span>Enter Player 1's name</span><input type="text" name="field1" placeholder={playerNames[0]} onChange={updateNameChanged(0)} />
         </label>
         <label>
-          <span>Enter Player 2's name</span><input type="text" name="field2" required="true" placeholder={playerNames[1]} onChange={updateNameChanged(1)} />
+          <span>Enter Player 2's name</span><input type="text" name="field2" placeholder={playerNames[1]} onChange={updateNameChanged(1)} />
         </label>
         <label>
-          <span>Enter Player 3's name</span><input type="text" name="field3" required="true" placeholder={playerNames[2]} onChange={updateNameChanged(2)} />
+          <span>Enter Player 3's name</span><input type="text" name="field3" placeholder={playerNames[2]} onChange={updateNameChanged(2)} />
         </label>
         <label>
-          <span>Enter Player 3's name</span><input type="text" name="field3" required="true" placeholder={playerNames[3]} onChange={updateNameChanged(3)} />
+          <span>Enter Player 3's name</span><input type="text" name="field3" placeholder={playerNames[3]} onChange={updateNameChanged(3)} />
         </label>
         <button className={'btnNames'} onClick={handleClick} >
           Set Rules

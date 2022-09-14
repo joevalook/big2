@@ -3,13 +3,9 @@ import React from "react";
   function Back(props){
     
     const darkMode = props.darkMode
-    const player1 = props.player1
     const setPlayer1 = props.setPlayer1
-    const player2 = props.player2
     const setPlayer2 = props.setPlayer2
-    const player3 = props.player3
     const setPlayer3 = props.setPlayer3
-    const player4 = props.player4
     const setPlayer4 = props.setPlayer4
     const position = props.position
     const setPosition = props.setPosition
