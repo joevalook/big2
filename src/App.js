@@ -42,7 +42,7 @@ function App() {
     setPoints([2, 1, -1, -2]);
     setDoubleUp(false);
     setDarkMode(false)
-    document.getElementsByTagName("html")[0].style.backgroundColor="white"
+    document.getElementsByTagName("html")[0].style.backgroundColor="#333"
   };
 
   const changeRules = () => {
@@ -55,7 +55,7 @@ function App() {
     setColor2((prev) => (color2==='btn2' ? 'btn' : prev));
     setColor3((prev) => (color3==='btn2' ? 'btn' : prev));
     setColor4((prev) => (color4==='btn2' ? 'btn' : prev));
-    document.getElementsByTagName("html")[0].style.backgroundColor="black"
+    document.getElementsByTagName("html")[0].style.backgroundColor='black';
   }
   const handleLight = () => {
     setDarkMode(!darkMode)
@@ -63,13 +63,14 @@ function App() {
     setColor2((prev) => (color2==='btn' ? 'btn2' : prev));
     setColor3((prev) => (color3==='btn' ? 'btn2' : prev));
     setColor4((prev) => (color4==='btn' ? 'btn2' : prev));
-    document.getElementsByTagName("html")[0].style.backgroundColor="white"
+    document.getElementsByTagName("html")[0].style.backgroundColor='#333'
   }
   const double = () => {
     if (doubleUp === false) {
       const doublePoints = points.map(x => x * 2);
       setPoints(doublePoints)
       setDoubleUp(true);
+      document.getElementsByTagName("html")[0].style.backgroundColor="red"
     }
     else{
       const halfPoints = points.map(x => x / 2);
@@ -109,11 +110,11 @@ function App() {
         {(names === 3) && <PlayerScore darkMode={darkMode} player={player3} setPlayer={setPlayer3} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[2]} history={history} setHistory={setHistory} color={color3} setColor={setColor3} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
         {(names === 3) && <PlayerScore darkMode={darkMode} player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} color={color4} setColor={setColor4} setOtherColor1={setColor1} setOtherColor2={setColor2} setOtherColor3={setColor3} points={points} setPoints={setPoints} />}
       {(!darkMode) && <button className={`blackWhite`} onClick={handleDark}>
-          Dark Mode
+          Dark Mode <span className="off"><i>💡</i></span>
         </button>
       }
       {(darkMode) && <button className={`whiteBlack`} onClick={handleLight}>
-          Light Mode
+          Light Mode <span ><i>💡</i></span>
         </button>
       }
       </section>
