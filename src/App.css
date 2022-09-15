@@ -337,6 +337,10 @@ input {
   background-color: antiquewhite;
 }
 
+.btn2:hover {
+  background-color: rgb(59, 59, 59);
+}
+
 .back {
   margin: 0.5em;
   padding: 0.5em;
