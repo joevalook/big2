@@ -12,16 +12,13 @@ import React from "react";
     const playerName = props.playerName
     const history = props.history
     const setHistory = props.setHistory
-    const setColor = props.setColor
-    const setOtherColor1 = props.setOtherColor1
-    const setOtherColor2 = props.setOtherColor2
-    const setOtherColor3 = props.setOtherColor3
     const points = props.points
     const setPoints = props.setPoints
     const darkMode = props.darkMode
     
     let chipColor = ""
     let whiteChipFont = ""
+    let borderColor = ""
     if (amount === chipValues[0]) {
       chipColor = "white"
       whiteChipFont = "black"
@@ -41,6 +38,19 @@ import React from "react";
     if (amount === chipValues[5]) {
       chipColor = "black"
     }
+    if (amount === chipValues[0] ) {
+      borderColor = "black"
+    }
+    if (amount === chipValues[5]) {
+      borderColor = "white"
+    }
+    if ((amount != chipValues[0] && amount != chipValues[5]) && darkMode === true) {
+      borderColor = "white"
+    }
+    if ((amount != chipValues[0] && amount != chipValues[5]) && darkMode === false) {
+      borderColor = "black"
+    }
+    
 
 
     const handleClick = () => {
@@ -48,7 +58,7 @@ import React from "react";
       
     }
     return (
-      <button className='pokerChip' style={{backgroundColor: chipColor, color: whiteChipFont }} onClick={handleClick} >
+      <button className='pokerChip' style={{backgroundColor: chipColor, color: whiteChipFont, borderColor: borderColor }} onClick={handleClick} >
         ${amount} 
       </button>
     );
