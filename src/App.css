@@ -277,10 +277,10 @@ input {
   display:block;
   height: 12vw;
   width: 12vw;
-  font-size: 4vw;
+  font-size: 3vw;
   color: white;
   border-radius: 50%;
-  border: 1px solid red;
+  border: 1vw dashed white;
   margin: 2vw;
   padding: 2vw;
   background: black;
@@ -559,7 +559,7 @@ i {
     font-size: 8vw;
     color: white;
     border-radius: 50%;
-    border: 1vw dashed white;
+    border: 2vw dashed white;
     margin: 1vw;
     padding: 1vw;
     background: black;

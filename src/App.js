@@ -31,6 +31,7 @@ function App() {
   const [pokerNumber, setPokerNumber] = useState(5)//Number of people playing poker
   const [chipValues, setChipValues] = useState([1, 5, 10, 25, 50, 100]); //values for the poker chips
   const [chipHistory, setChipHistory] = useState([]); //values for the chip history
+  const [blind, setBlind] = useState([5,10])
 
   const handleReset = () => {
     setGames(0);
@@ -121,7 +122,7 @@ function App() {
       {(screen === 2) && <PlayerRules setNames={setScreen} points={points} setPoints={setPoints} />}
 
       {/* Poker Setup */}
-      {(screen === 4) && <PokerRules setPokerNumber={setPokerNumber} startingAmount={pokerStartingAmount} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} chipValues={chipValues} setChipValues={setChipValues} />}
+      {(screen === 4) && <PokerRules setPokerNumber={setPokerNumber} startingAmount={pokerStartingAmount} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} chipValues={chipValues} setChipValues={setChipValues} blind={blind} setBlind={setBlind}/>}
       {(screen === 5) && <PokerNames playerNames={playerNames} setPokerNumber={setPokerNumber} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} />}
       <section>
         {/* Big 2 Game */}

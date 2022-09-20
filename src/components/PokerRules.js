@@ -2,7 +2,7 @@ import React from "react";
 
 function PokerRules(props) {
 
-  const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues } = props;
+  const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind } = props;
   const handleClick = () => {
     let a = [];
     for (let i = 1; i <= pokerNumber; i++) {
@@ -20,13 +20,18 @@ function PokerRules(props) {
     setStartingAmount(Number(e.target.value));
   };
   const updateChipsChanged = index => e => {
-    console.log('index: ' + index);
-    console.log('property name: ' + e.target.name);
     let newArr = [...chipValues]; // copying the old datas array
     // a deep copy is not needed as we are overriding the whole object below, and not setting a property of it. this does not mutate the state.
     newArr[index] = Number(e.target.value); // replace e.target.value with whatever you want to change it to
 
     setChipValues(newArr);
+  };
+  const updateblindChanged = index => e => {
+    let newArr = [...chipValues]; // copying the old datas array
+    // a deep copy is not needed as we are overriding the whole object below, and not setting a property of it. this does not mutate the state.
+    newArr[index] = Number(e.target.value); // replace e.target.value with whatever you want to change it to
+
+    setBlind(newArr);
   };
   return (
     <main>
@@ -54,6 +59,12 @@ function PokerRules(props) {
         </label>
         <label>
           <span>Enter the Purple chip's value</span><input type="text" name="field3" placeholder={chipValues[5]} onChange={updateChipsChanged(5)} />
+        </label>
+        <label>
+          <span>Enter the Big Blind value</span><input type="text" name="field3" placeholder={blind[1]} onChange={updateblindChanged(1)} />
+        </label>
+        <label>
+          <span>Enter the Small Blind value</span><input type="text" name="field3" placeholder={blind[0]} onChange={updateblindChanged(0)} />
         </label>
         <button className={'btnNames'} onClick={handleClick} >
           Set Names
