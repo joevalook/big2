@@ -12,7 +12,10 @@ html{
 
 .bottom{
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: row;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
 }
 .red {
   background-color: red !important;
@@ -270,7 +273,20 @@ input {
   z-index: 10;
   border-radius: 1.65em;
 }
-
+.pokerChip {
+  display:block;
+  height: 12vw;
+  width: 12vw;
+  font-size: 4vw;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid red;
+  margin: 2vw;
+  padding: 2vw;
+  background: black;
+  cursor: pointer;
+  z-index: 10;
+}
 .btnNames {
   margin: 0.5em;
   width: 40%;
@@ -388,7 +404,7 @@ input {
   margin: 0.5em;
   padding: 0.5em;
   font-size: 1.5em;
-  background-color: rgb(62, 94, 235);
+  background-color: rgb(235, 122, 57);
   cursor: pointer;
 }
 
@@ -397,6 +413,12 @@ input {
 }
 
 .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -529,6 +551,24 @@ i {
     background: black;
     color: white;
     border-radius: 1.65em;
+  }
+  .pokerChip {
+    display:block;
+    height: 30vw;
+    width: 30vw;
+    font-size: 8vw;
+    color: white;
+    border-radius: 50%;
+    border: 1vw dashed white;
+    margin: 1vw;
+    padding: 1vw;
+    background: black;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .row{
+    justify-content: center;
   }
 
   .gold {
@@ -746,5 +786,12 @@ i {
     border-top: #333;
     z-index: 500;
     padding-bottom: 0px;
+  }
+  .bottom{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
   }
 }
