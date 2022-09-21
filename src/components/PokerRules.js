@@ -2,7 +2,7 @@ import React from "react";
 
 function PokerRules(props) {
 
-  const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind } = props;
+  const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore } = props;
   const handleClick = () => {
     let a = [];
     for (let i = 1; i <= pokerNumber; i++) {
@@ -14,6 +14,7 @@ function PokerRules(props) {
   const updateNumber = () => e => {
 
     setPokerNumber(Number(e.target.value));
+    setPokerScore(new Array(Number(e.target.value)).fill(0));
 
   };
   const updateStart = () => e => {

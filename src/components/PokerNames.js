@@ -25,7 +25,7 @@ function PokerNames(props) {
           playerNames.map((el,index) => {
           return(
             <label key={index}>
-              <span>Enter {el}'s name</span><input type="text" name="field1"  placeholder={playerNames[index]} onChange={updateNameChanged(index)} />
+              <span>Enter Player {index+1}'s name</span><input type="text" name="field1"  placeholder={playerNames[index]} onChange={updateNameChanged(index)} />
             </label>
           )})
         }

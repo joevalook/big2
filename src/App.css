@@ -520,9 +520,23 @@ i {
   background: #394D61;
 }
 
+.outline {
+  border: 2px dashed #576E86;
+  margin-left: 50px;
+  margin-right: 50px;
+  background: #495C70;
+  color: white;
+}
 
+.table {
+  display: flex;
+  font-size: 3vw;
+  text-align: center;
+  justify-content: space-around;
+  
+}
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1800px) {
   section {
     height: 100%;
     display: flex;
