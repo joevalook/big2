@@ -180,6 +180,7 @@ function App() {
 
         {/* Poker Game */}
         <main>
+        {(screen === 6) && <h5 className={darkMode ? 'bet2 ' : 'bet '} style={{marginBottom: "0px;"}}>Bet: $ {pokerScore[currentIndex]}</h5>}
           {(screen === 6) && <div className="bottom">
             <div className="row">
               <PokerChip amount={chipValues[0]} chipValues={chipValues} darkMode={darkMode} player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} />

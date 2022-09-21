@@ -30,23 +30,25 @@ html{
 }
 
 .blackWhite {
-  margin: 0.5em;
+  margin: auto;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.8em;
   background-color: black;
   color: white;
   cursor: pointer;
   margin-bottom: 1em;
+  width: 20vw
 }
 
 .whiteBlack {
-  margin: 0.5em;
+  margin: auto;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.8em;
   background-color: white;
   color: black;
   cursor: pointer;
-  margin-bottom: 1em;
+  margin-bottom: 1.8em;
+  width: 20vw
 }
 
 .App>h1 {
@@ -111,7 +113,27 @@ html{
   z-index: 500;
   margin-bottom: 10vh;
 }
+.bet {
+  margin: auto;
+  padding: 1em;
+  padding-bottom: 0px;
+  text-align: center;
+  color: black;
+  font-size: 35px;
+  border-top: #333;
+  z-index: 500;
+}
 
+.bet2 {
+  margin: auto;
+  padding: 1em;
+  padding-bottom: 0px;
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  border-top: #333;
+  z-index: 500;
+}
 
 .big2Poker {
   height: 100%;
@@ -556,10 +578,9 @@ i {
 
 .table {
   display: flex;
-  font-size: 3vw;
+  font-size: 3em;
   text-align: center;
   justify-content: space-around;
-  
 }
 
 @media screen and (max-width: 800px) {
@@ -836,9 +857,36 @@ i {
     margin: auto;
     justify-content: center;
   }
+  .table {
+    display: flex;
+    font-size: 1em;
+    text-align: center;
+    justify-content: space-around;
+  }
+  .blackWhite {
+    margin: auto;
+    padding: 0.5em;
+    font-size: 1em;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1em;
+    width: 30vw
+  }
+  
+  .whiteBlack {
+    margin: auto;
+    padding: 0.5em;
+    font-size: 1.8em;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    margin-bottom: 1em;
+    width: 30vw
+  }
 }
 
-@media screen and (max-width: 1164px) {
+@media screen and (max-width: 1164px) and (min-width: 800px) {
 
   .btn {
     margin: 0em;
@@ -900,7 +948,32 @@ i {
     cursor: pointer;
     border-radius: 1.65em;
   }
-
-
+  .table {
+    display: flex;
+    font-size: 2em;
+    text-align: center;
+    justify-content: space-around;
+  }
+  .blackWhite {
+    margin: auto;
+    padding: 0.5em;
+    font-size: 1.3em;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 1em;
+    width: 20vw
+  }
+  
+  .whiteBlack {
+    margin: auto;
+    padding: 0.5em;
+    font-size: 1.3em;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    margin-bottom: 1.8em;
+    width: 20vw
+  }
 
 }
