@@ -14,8 +14,8 @@ html{
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: auto;
   justify-content: center;
+  margin-bottom: 0px;
 }
 .red {
   background-color: red !important;
@@ -88,6 +88,30 @@ html{
   z-index: 500;
   padding-bottom: 0px;
 }
+.money {
+  margin: auto;
+  padding: 1em;
+  padding-bottom: 0px;
+  text-align: center;
+  color: black;
+  font-size: 35px;
+  border-top: #333;
+  z-index: 500;
+  margin-bottom: 10vh;
+}
+
+.money2 {
+  margin: auto;
+  padding: 1em;
+  padding-bottom: 0px;
+  text-align: center;
+  color: white;
+  font-size: 35px;
+  border-top: #333;
+  z-index: 500;
+  margin-bottom: 10vh;
+}
+
 
 .big2Poker {
   height: 100%;
@@ -277,6 +301,8 @@ input {
   display:block;
   height: 12vw;
   width: 12vw;
+  max-width: 200px;
+  max-height: 200px;
   font-size: 3vw;
   color: white;
   border-radius: 50%;
@@ -536,7 +562,7 @@ i {
   
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 800px) {
   section {
     height: 100%;
     display: flex;
@@ -568,9 +594,11 @@ i {
   }
   .pokerChip {
     display:block;
-    height: 30vw;
-    width: 30vw;
-    font-size: 8vw;
+    height: 20vw;
+    width: 20vw;
+    max-width: 150px;
+    max-height: 150px;
+    font-size: 5vw;
     color: white;
     border-radius: 50%;
     border: 2vw dashed white;
@@ -808,4 +836,71 @@ i {
     margin: auto;
     justify-content: center;
   }
+}
+
+@media screen and (max-width: 1164px) {
+
+  .btn {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    cursor: pointer;
+    background: white;
+    border-radius: 1.65em;
+  }
+
+  .btn2 {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    cursor: pointer;
+    background: black;
+    color: white;
+    border-radius: 1.65em;
+  }
+
+  .gold {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    background: gold;
+    cursor: pointer;
+    border-radius: 1.65em;
+  }
+
+  .silver {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    background: silver;
+    cursor: pointer;
+    border-radius: 1.65em;
+  }
+
+  .bronze {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    background: burlywood;
+    cursor: pointer;
+    border-radius: 1.65em;
+  }
+
+  .last {
+    margin: 0em;
+    padding: 1em;
+    font-size: 3vh;
+    width: 90%;
+    background: rgb(241, 71, 71);
+    cursor: pointer;
+    border-radius: 1.65em;
+  }
+
+
+
 }
