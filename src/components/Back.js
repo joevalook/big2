@@ -270,7 +270,7 @@ import React from "react";
     };
     return (
        <button className={`back`} onClick={handleBack}>
-          Back
+          Undo
         </button>
     );
   }

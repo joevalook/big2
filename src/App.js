@@ -99,6 +99,9 @@ function App() {
       {(screen === 3) && <h2 > Games Played: {games}</h2>}
       {(screen === 1) && <h2>Choose Your Character</h2>}
       {(screen === 2) && <h2>Choose your Rule Set</h2>}
+      {(screen === 4) && <h2>Choose your Rule Set</h2>}
+      {(screen === 5) && <h2>Choose Your Character</h2>}
+      {(screen === 6) && <h2>Choose your Rule Set</h2>}
 
       {/* Top Nav Bar */}
       <div className={`navRow`}>
@@ -143,12 +146,12 @@ function App() {
 
       {/* Big 2 Setup */}
       {(screen === 1) && <PlayerName playerNames={playerNames} setPlayerNames={setPlayerNames} setNames={setScreen} points={points} setPoints={setPoints} typeOfGame={typeOfGame} setTypeOfGame={setTypeOfGame} />}
-      {(screen === 2) && <PlayerRules setNames={setScreen} points={points} setPoints={setPoints} />}
+      {(screen === 2) && <PlayerRules setNames={setScreen} points={points} setPoints={setPoints} darkMode={darkMode} setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4}/>}
 
       {/* Poker Setup */}
       {(screen === 4) && <PokerRules setPokerNumber={setPokerNumber} startingAmount={pokerStartingAmount} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} chipValues={chipValues} setChipValues={setChipValues} blind={blind} setBlind={setBlind} pokerScore={pokerScore} setPokerScore={setPokerScore} />}
       {(screen === 5) && <PokerNames playerNames={playerNames} setPokerNumber={setPokerNumber} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} />}
-      <section>
+      <section className={'section'}>
         {/* Big 2 Game */}
         {(screen === 3) && <PlayerScore darkMode={darkMode} player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} color={color1} setColor={setColor1} setOtherColor1={setColor2} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}
         {(screen === 3) && <PlayerScore darkMode={darkMode} player={player2} setPlayer={setPlayer2} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[1]} history={history} setHistory={setHistory} color={color2} setColor={setColor2} setOtherColor1={setColor1} setOtherColor2={setColor3} setOtherColor3={setColor4} points={points} setPoints={setPoints} />}

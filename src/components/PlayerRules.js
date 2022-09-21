@@ -2,11 +2,16 @@ import React from "react";
 
   function NameSetter(props){
     
-    const playGame = props.setNames
-    const points = props.points
-    const setPoints = props.setPoints
+    const { setNames, points, setPoints, darkMode, setColor1, setColor2, setColor3, setColor4 } = props
+    
     const handleClick = () => {
-      playGame(3);
+      if (darkMode === false) {
+        setColor1('btn2')
+        setColor2('btn2')
+        setColor3('btn2')
+        setColor4('btn2')
+      } 
+      setNames(3);
     }
     const updateRuleChanged = index => e => {
       
@@ -15,6 +20,7 @@ import React from "react";
       newArr[index] = Number(e.target.value); // replace e.target.value with whatever you want to change it to
     
       setPoints(newArr);
+      
     }
 
     return (

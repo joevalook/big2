@@ -255,7 +255,7 @@ input {
 .btn {
   margin: 1em;
   padding: 1em;
-  width: 40%;
+  width: 45%;
   font-size: 3vh;
   background: white;
   cursor: pointer;
@@ -265,7 +265,7 @@ input {
 .btn2 {
   margin: 1em;
   padding: 1em;
-  width: 40%;
+  width: 45%;
   font-size: 3vh;
   background: black;
   color: white;
@@ -281,8 +281,8 @@ input {
   color: white;
   border-radius: 50%;
   border: 1vw dashed white;
-  margin: 2vw;
-  padding: 2vw;
+  margin: 1vw;
+  padding: 1vw;
   background: black;
   cursor: pointer;
   z-index: 10;
@@ -308,7 +308,7 @@ input {
 .gold {
   margin: 1em;
   padding: 1em;
-  width: 40%;
+  width: 45%;
   font-size: 3vh;
   background: gold;
   cursor: pointer;
@@ -319,7 +319,7 @@ input {
 .silver {
   margin: 1em;
   padding: 1em;
-  width: 40%;
+  width: 45%;
   font-size: 3vh;
   background: silver;
   cursor: pointer;
@@ -330,7 +330,7 @@ input {
 .bronze {
   margin: 1em;
   padding: 1em;
-  width: 40%;
+  width: 45%;
   font-size: 3vh;
   background: burlywood;
   cursor: pointer;
@@ -341,7 +341,7 @@ input {
 .last {
   margin: 1em;
   padding: 1em;
-  width: 40%;
+  width: 45%;
   font-size: 3vh;
   background: rgb(241, 71, 71);
   cursor: pointer;
@@ -360,7 +360,7 @@ input {
 .back {
   margin: 0.5em;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.7em;
   background-color: rgb(235, 80, 80);
   cursor: pointer;
 }
@@ -372,7 +372,7 @@ input {
 .reset {
   margin: 0.5em;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.7em;
   background-color: rgb(44, 177, 75);
   cursor: pointer;
 }
@@ -384,7 +384,7 @@ input {
 .double {
   margin: 0.5em;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.7em;
   background-color: rgb(214, 88, 187);
   cursor: pointer;
   z-index: 2;
@@ -403,13 +403,13 @@ input {
 .changeRules {
   margin: 0.5em;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.7em;
   background-color: rgb(235, 122, 57);
   cursor: pointer;
 }
 
 .changeRules:hover {
-  background-color: rgb(59, 156, 201);
+  background-color: rgb(226, 151, 108);
 }
 
 .row {
@@ -536,7 +536,7 @@ i {
   
 }
 
-@media screen and (max-width: 1800px) {
+@media screen and (max-width: 1160px) {
   section {
     height: 100%;
     display: flex;
@@ -644,7 +644,7 @@ i {
   .back {
     margin: 0.5em;
     padding: 0.5em;
-    font-size: 1em;
+    font-size: 1.4em;
     font-weight: bold;
     background-color: rgb(235, 80, 80);
     cursor: pointer;
@@ -657,7 +657,7 @@ i {
   .reset {
     margin: 0.5em;
     padding: 0.5em;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     background-color: rgb(44, 177, 75);
     cursor: pointer;
@@ -670,7 +670,7 @@ i {
   .double {
     margin: 0.5em;
     padding: 0.5em;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     background-color: rgb(214, 88, 187);
     cursor: pointer;
@@ -685,14 +685,14 @@ i {
   .changeRules {
     margin: 0.5em;
     padding: 0.5em;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
-    background-color: rgb(62, 94, 235);
+    background-color: rgb(235, 122, 57);
     cursor: pointer;
   }
 
   .changeRules:hover {
-    background-color: rgb(59, 156, 201);
+    background-color: rgb(226, 151, 108);
   }
 
   .blackWhite {
