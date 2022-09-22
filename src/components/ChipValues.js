@@ -4,15 +4,7 @@ function ChipValues(props) {
 
   const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore, currentIndex, setCurrentIndex, setPot } = props;
   const handleClick = () => {
-    let a = [];
-    for (let i = 1; i <= pokerNumber; i++) {
-      a.push(`Player ${i}`);
-    }
-    setPlayerNames(a);
     setScreen(6);
-    setPokerScore(new Array(pokerNumber).fill(startingAmount));
-    setPot(new Array(pokerNumber).fill(0));
-    setCurrentIndex(Math.floor(Math.random() * pokerNumber));
   };
   const updateNumber = () => e => {
 

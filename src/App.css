@@ -55,7 +55,7 @@ html{
 
 .App>h1 {
   margin: 0;
-  padding: 0.5em;
+  padding-top: 0.5em;
   text-align: center;
   background: #333;
   color: white;
@@ -117,7 +117,8 @@ html{
 }
 .bet {
   margin: auto;
-  padding: 5vh;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   text-align: center;
   color: black;
   font-size: 35px;
@@ -127,7 +128,8 @@ html{
 
 .bet2 {
   margin: auto;
-  padding: 5vh;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   text-align: center;
   color: white;
   font-size: 35px;

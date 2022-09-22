@@ -44,10 +44,10 @@ import React from "react";
     if (amount === chipValues[5]) {
       borderColor = "white"
     }
-    if ((amount != chipValues[0] && amount != chipValues[5]) && darkMode === true) {
+    if ((amount !== chipValues[0] && amount !== chipValues[5]) && darkMode === true) {
       borderColor = "white"
     }
-    if ((amount != chipValues[0] && amount != chipValues[5]) && darkMode === false) {
+    if ((amount !== chipValues[0] && amount !== chipValues[5]) && darkMode === false) {
       borderColor = "black"
     }
     
