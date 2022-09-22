@@ -117,8 +117,7 @@ html{
 }
 .bet {
   margin: auto;
-  padding: 1em;
-  padding-bottom: 0px;
+  padding: 5vh;
   text-align: center;
   color: black;
   font-size: 35px;
@@ -128,8 +127,7 @@ html{
 
 .bet2 {
   margin: auto;
-  padding: 1em;
-  padding-bottom: 0px;
+  padding: 5vh;
   text-align: center;
   color: white;
   font-size: 35px;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function PokerRules(props) {
+function ChipValues(props) {
 
   const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore, currentIndex, setCurrentIndex, setPot } = props;
   const handleClick = () => {
@@ -9,7 +9,7 @@ function PokerRules(props) {
       a.push(`Player ${i}`);
     }
     setPlayerNames(a);
-    setScreen(5);
+    setScreen(6);
     setPokerScore(new Array(pokerNumber).fill(startingAmount));
     setPot(new Array(pokerNumber).fill(0));
     setCurrentIndex(Math.floor(Math.random() * pokerNumber));
@@ -41,16 +41,22 @@ function PokerRules(props) {
     <main className="longForm">
       <form className="form-style-4">
         <label>
-          <span>Enter Number of Players</span><input type="text" name="field1" onChange={updateNumber()} placeholder={pokerNumber} />
+          <span>Enter the White chip's value</span><input type="text" name="field1" placeholder={chipValues[0]} onChange={updateChipsChanged(0)} />
         </label>
         <label>
-          <span>Enter Starting Amount</span><input type="text" name="field2" onChange={updateStart()} placeholder={startingAmount} />
+          <span>Enter the Red chip's value</span><input type="text" name="field2" placeholder={chipValues[1]} onChange={updateChipsChanged(1)} />
         </label>
         <label>
-          <span>Enter the Big Blind value</span><input type="text" name="field3" placeholder={blind[1]} onChange={updateblindChanged(1)} />
+          <span>Enter the Blue chip's value</span><input type="text" name="field3" placeholder={chipValues[2]} onChange={updateChipsChanged(2)} />
         </label>
         <label>
-          <span>Enter the Small Blind value</span><input type="text" name="field3" placeholder={blind[0]} onChange={updateblindChanged(0)} />
+          <span>Enter the Green chip's value</span><input type="text" name="field3" placeholder={chipValues[3]} onChange={updateChipsChanged(3)} />
+        </label>
+        <label>
+          <span>Enter the Black chip's value</span><input type="text" name="field3" placeholder={chipValues[4]} onChange={updateChipsChanged(4)} />
+        </label>
+        <label>
+          <span>Enter the Purple chip's value</span><input type="text" name="field3" placeholder={chipValues[5]} onChange={updateChipsChanged(5)} />
         </label>
         <button className={'btnNames'} onClick={handleClick} >
           Set Names
@@ -60,4 +66,4 @@ function PokerRules(props) {
   );
 }
 
-export default PokerRules;
+export default ChipValues;

@@ -5,7 +5,7 @@ function PokerNames(props) {
   const playerNames = props.playerNames;
   const setPlayerNames = props.setPlayerNames;
   const handleClick = () => {
-    setScreen(6);
+    setScreen(7);
   };
   const updateNameChanged = index => e => {
     console.log('index: ' + index);
@@ -30,7 +30,7 @@ function PokerNames(props) {
           )})
         }
           <button className={'btnNames'} onClick={handleClick} >
-            Start Game
+            Set Chip Values
           </button>
       </form>
     </main>
