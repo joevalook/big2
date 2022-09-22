@@ -78,7 +78,7 @@ function App() {
     setColor2((prev) => (color2 === 'btn' ? 'btn2' : prev));
     setColor3((prev) => (color3 === 'btn' ? 'btn2' : prev));
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
-    document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
+    document.getElementsByTagName("html")[0].style.backgroundColor = 'white';
   };
   const double = () => {
     if (doubleUp === false) {

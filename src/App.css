@@ -37,6 +37,7 @@ html{
   color: white;
   cursor: pointer;
   margin-bottom: 1em;
+  margin-top: 1em;
   width: 20vw
 }
 
@@ -47,7 +48,8 @@ html{
   background-color: white;
   color: black;
   cursor: pointer;
-  margin-bottom: 1.8em;
+  margin-bottom: 1em;
+  margin-top: 1em;
   width: 20vw
 }
 
@@ -99,7 +101,7 @@ html{
   font-size: 35px;
   border-top: #333;
   z-index: 500;
-  margin-bottom: 10vh;
+  margin-bottom: 2vh;
 }
 
 .money2 {
@@ -111,7 +113,7 @@ html{
   font-size: 35px;
   border-top: #333;
   z-index: 500;
-  margin-bottom: 10vh;
+  margin-bottom: 2vh;
 }
 .bet {
   margin: auto;
@@ -582,6 +584,10 @@ i {
   text-align: center;
   justify-content: space-around;
 }
+.longForm{
+  display:flex;
+  flex-direction: row;
+}
 
 @media screen and (max-width: 800px) {
   section {
@@ -743,26 +749,6 @@ i {
   .changeRules:hover {
     background-color: rgb(226, 151, 108);
   }
-
-  .blackWhite {
-    margin: 0.5em;
-    padding: 0.5em;
-    font-size: 1.5em;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    margin-top: 0px;
-  }
-
-  .whiteBlack {
-    margin: 0.5em;
-    padding: 0.5em;
-    font-size: 1.5em;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    margin-top: 0px;
-  }
   .flame {
     border-width: 5px;
     border-color: red;
@@ -871,18 +857,24 @@ i {
     color: white;
     cursor: pointer;
     margin-bottom: 1em;
+    margin-top: 1em;
     width: 30vw
   }
   
   .whiteBlack {
     margin: auto;
     padding: 0.5em;
-    font-size: 1.8em;
+    font-size: 1em;
     background-color: white;
     color: black;
     cursor: pointer;
     margin-bottom: 1em;
+    margin-top: 1em;
     width: 30vw
+  }
+  .longForm{
+    display:flex;
+    flex-direction: column;
   }
 }
 
@@ -962,7 +954,8 @@ i {
     color: white;
     cursor: pointer;
     margin-bottom: 1em;
-    width: 20vw
+    width: 20vw;
+    margin-top: 1em;
   }
   
   .whiteBlack {
@@ -972,8 +965,13 @@ i {
     background-color: white;
     color: black;
     cursor: pointer;
-    margin-bottom: 1.8em;
-    width: 20vw
+    margin-bottom: 1em;
+    width: 20vw;
+    margin-top: 1em;
+  }
+  .longForm{
+    display:flex;
+    flex-direction: row;
   }
 
 }

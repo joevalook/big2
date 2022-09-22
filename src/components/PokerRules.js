@@ -11,13 +11,13 @@ function PokerRules(props) {
     setPlayerNames(a);
     setScreen(5);
     setPokerScore(new Array(pokerNumber).fill(startingAmount));
-    setPot(new Array(pokerNumber).fill(0))
-    setCurrentIndex(Math.floor(Math.random() * pokerNumber))
+    setPot(new Array(pokerNumber).fill(0));
+    setCurrentIndex(Math.floor(Math.random() * pokerNumber));
   };
   const updateNumber = () => e => {
 
     setPokerNumber(Number(e.target.value));
-    
+
 
   };
   const updateStart = () => e => {
@@ -38,14 +38,8 @@ function PokerRules(props) {
     setBlind(newArr);
   };
   return (
-    <main>
+    <main className="longForm">
       <form className="form-style-4">
-        <label>
-          <span>Enter Number of Players</span><input type="text" name="field1" onChange={updateNumber()} placeholder={pokerNumber} />
-        </label>
-        <label>
-          <span>Enter Starting Amount</span><input type="text" name="field2" onChange={updateStart()} placeholder={startingAmount} />
-        </label>
         <label>
           <span>Enter the White chip's value</span><input type="text" name="field1" placeholder={chipValues[0]} onChange={updateChipsChanged(0)} />
         </label>
@@ -63,6 +57,14 @@ function PokerRules(props) {
         </label>
         <label>
           <span>Enter the Purple chip's value</span><input type="text" name="field3" placeholder={chipValues[5]} onChange={updateChipsChanged(5)} />
+        </label>
+      </form>
+      <form className="form-style-4">
+        <label>
+          <span>Enter Number of Players</span><input type="text" name="field1" onChange={updateNumber()} placeholder={pokerNumber} />
+        </label>
+        <label>
+          <span>Enter Starting Amount</span><input type="text" name="field2" onChange={updateStart()} placeholder={startingAmount} />
         </label>
         <label>
           <span>Enter the Big Blind value</span><input type="text" name="field3" placeholder={blind[1]} onChange={updateblindChanged(1)} />
