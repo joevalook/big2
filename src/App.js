@@ -31,7 +31,7 @@ function App() {
   const [pokerStartingAmount, setPokerStartingAmount] = useState(810);//starting amount of money each player has in poker
   const [pokerNumber, setPokerNumber] = useState(5);//Number of people playing poker
   const [chipValues, setChipValues] = useState([1, 5, 10, 25, 50, 100]); //values for the poker chips
-  const [chipHistory, setChipHistory] = useState([]); //values for the chip history
+  const [chipHistory, setChipHistory] = useState([[]]); //values for the chip history
   const [blind, setBlind] = useState([5, 10]); //the blind values
   const [pokerScore, setPokerScore] = useState([810, 810, 810, 810, 810]); //the amount in the bank for all players
   const [currentIndex, setCurrentIndex] = useState(3);//current player index
@@ -39,7 +39,9 @@ function App() {
   const [dealer, setDealer] = useState(0);//dealers index
   const [bigBlindIndex, setBigBlindIndex] = useState(2);//big blind index
   const [smallBlindIndex, setSmallBlindIndex] = useState(1); //small blind index
-  const [currentBet, setCurrentBet] = useState(0); //currentBet
+  const [turn, setTurn] = useState(0); //which turn it is
+  const [tempMoney, setTempMoney] = useState(0);//tempMoney used for player page
+  const [tempBet, setTempBet] = useState(0);//temp bet used for player page
 
 
 
@@ -63,11 +65,14 @@ function App() {
     setPokerStartingAmount(810);
     setPokerNumber(5);
     setChipValues([1, 5, 10, 25, 50, 100]);
-    setChipHistory([]);
+    setChipHistory([[]]);
     setBlind([5, 10]);
     setPokerScore([810, 810, 810, 810, 810]);
     setCurrentIndex(2);
     setPot([0, 0, 0, 0, 0]);
+    setTurn(0);
+    setTempMoney(0);
+    setTempBet(0);
     document.getElementsByTagName("html")[0].style.backgroundColor = "#333";
   };
 
@@ -82,10 +87,7 @@ function App() {
     setColor3((prev) => (color3 === 'btn2' ? 'btn' : prev));
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
-    console.log(pot);
-    console.log(pokerScore);
-    console.log(playerNames);
-    console.log(pokerNumber)
+    console.log(history);
   };
   const handleLight = () => {
     setDarkMode(!darkMode);
@@ -94,10 +96,7 @@ function App() {
     setColor3((prev) => (color3 === 'btn' ? 'btn2' : prev));
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'white';
-    console.log(pot);
-    console.log(pokerScore);
-    console.log(playerNames);
-    console.log(pokerNumber)
+
   };
   const double = () => {
     if (doubleUp === false) {
@@ -113,17 +112,26 @@ function App() {
       document.getElementsByTagName("html")[0].style.backgroundColor = (darkMode ? "black" : "#333");
     }
   };
+  const handleClear = () => {
+    setTempBet(pot[currentIndex])
+    setTempMoney(pokerScore[currentIndex])
+  }
+  const handleAllIn = () => {
+    setTempBet(pokerScore[currentIndex])
+    setTempMoney(0)
+  }
 
   return (
     <div className={'App ' + (doubleUp ? 'red ' : ' ') + (darkMode ? 'black ' : 'white ')}>
       {/* Title and Instructions */}
-      <h1>CHIPLESS</h1>
+      {(screen !== 6) && <h1>CHIPLESS</h1>}
       {(screen === 0) && <h2 className="cursive"> Gambling Without the Chips</h2>}
       {(screen === 3) && <h2 > Games Played: {games}</h2>}
       {(screen === 1) && <h2>Choose Your Character</h2>}
       {(screen === 2) && <h2>Choose your Rule Set</h2>}
       {(screen === 4) && <h2>Choose your Rule Set</h2>}
       {(screen === 5) && <h2>Choose Your Character</h2>}
+      {(screen === 7) && <h2>Choose Your Chip Values</h2>}
       {(screen === 6) && <h2>{playerNames[dealer]} deals</h2>}
 
       {/* Top Nav Bar */}
@@ -189,7 +197,7 @@ function App() {
       {(screen === 2) && <PlayerRules setNames={setScreen} points={points} setPoints={setPoints} darkMode={darkMode} setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} />}
 
       {/* Poker Setup */}
-      {(screen === 4) && <PokerRules setPokerNumber={setPokerNumber} startingAmount={pokerStartingAmount} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} chipValues={chipValues} setChipValues={setChipValues} blind={blind} setBlind={setBlind} pokerScore={pokerScore} setPokerScore={setPokerScore} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} pot={pot} setPot={setPot} setDealer={setDealer} setBigBlindIndex={setBigBlindIndex} setSmallBlindIndex={setSmallBlindIndex} />}
+      {(screen === 4) && <PokerRules setPokerNumber={setPokerNumber} startingAmount={pokerStartingAmount} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} chipValues={chipValues} setChipValues={setChipValues} blind={blind} setBlind={setBlind} pokerScore={pokerScore} setPokerScore={setPokerScore} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} pot={pot} setPot={setPot} setDealer={setDealer} setBigBlindIndex={setBigBlindIndex} setSmallBlindIndex={setSmallBlindIndex} setTempMoney={setTempMoney} setTempBet={setTempBet} setHistory={setHistory} playerNames={playerNames} />}
       {(screen === 5) && <PokerNames playerNames={playerNames} setPokerNumber={setPokerNumber} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} />}
       {(screen === 7) && <ChipValues setPokerNumber={setPokerNumber} startingAmount={pokerStartingAmount} setStartingAmount={setPokerStartingAmount} setScreen={setScreen} setPlayerNames={setPlayerNames} pokerNumber={pokerNumber} chipValues={chipValues} setChipValues={setChipValues} blind={blind} setBlind={setBlind} pokerScore={pokerScore} setPokerScore={setPokerScore} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setPot={setPot} />}
       <section className={'section'}>
@@ -201,37 +209,37 @@ function App() {
 
         {/* Poker Game */}
         <main style={{ marginBottom: "0px" }}>
-          {(screen === 6) && <h5 className={darkMode ? 'bet2 ' : 'bet '} >Bet: $ {pot[currentIndex]}</h5>}
+          {(screen === 6) && <h5 className={darkMode ? 'bet2 ' : 'bet '} >Bet: $ {tempBet}</h5>}
           {(screen === 6) && <div className="bottom">
             <div className="row">
-              <PokerChip amount={chipValues[0]} chipValues={chipValues} darkMode={darkMode} player={player1} setPlayer={setPlayer1} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} currentBet={currentBet} setCurrentBet={setCurrentBet} />
-              <PokerChip amount={chipValues[1]} chipValues={chipValues} darkMode={darkMode} player={player2} setPlayer={setPlayer2} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[1]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} currentBet={currentBet} setCurrentBet={setCurrentBet} />
-              <PokerChip amount={chipValues[2]} chipValues={chipValues} darkMode={darkMode} player={player3} setPlayer={setPlayer3} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[2]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} currentBet={currentBet} setCurrentBet={setCurrentBet} />
+              <PokerChip amount={chipValues[0]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} />
+              <PokerChip amount={chipValues[1]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} />
+              <PokerChip amount={chipValues[2]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} />
             </div>
             <div className="row">
-              <PokerChip amount={chipValues[3]} chipValues={chipValues} darkMode={darkMode} player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} currentBet={currentBet} setCurrentBet={setCurrentBet} />
-              <PokerChip amount={chipValues[4]} chipValues={chipValues} darkMode={darkMode} player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} currentBet={currentBet} setCurrentBet={setCurrentBet} />
-              <PokerChip amount={chipValues[5]} chipValues={chipValues} darkMode={darkMode} player={player4} setPlayer={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[3]} history={history} setHistory={setHistory} points={points} setPoints={setPoints} currentBet={currentBet} setCurrentBet={setCurrentBet} />
+              <PokerChip amount={chipValues[3]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} />
+              <PokerChip amount={chipValues[4]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} />
+              <PokerChip amount={chipValues[5]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} />
             </div>
 
           </div>}
 
-          {(screen === 6) && <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {pokerScore[currentIndex]}</h5>}
+          {(screen === 6) && <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {tempMoney}</h5>}
 
           <div className={`navRow`}>
-            {(screen === 6) && <button className={"double "} onClick={double}>
+            {(screen === 6) && <button className={"pokerButton "} onClick={handleClear}>
               Clear
             </button>}
-            {(screen === 6) && <button className={`changeRules`} onClick={changeRules}>
+            {(screen === 6) && <button className={`pokerButton`} onClick={changeRules}>
               Fold
             </button>}
-            {(screen === 6) && <button className={`changeRules`} onClick={changeRules}>
+            {(screen === 6) && <button className={`betButton`} onClick={changeRules}>
               Bet
             </button>}
-            {(screen === 6) && <button className={"double "} onClick={double}>
+            {(screen === 6) && <button className={"pokerButton "} onClick={double}>
               Check
             </button>}
-            {(screen === 6) && <button className={`changeRules`} onClick={changeRules}>
+            {(screen === 6) && <button className={`pokerButton`} onClick={handleAllIn}>
               All In
             </button>}
           </div>

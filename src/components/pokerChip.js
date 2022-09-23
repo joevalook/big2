@@ -1,21 +1,7 @@
 import React from "react";
 
   function PokerChip(props){
-    const amount = props.amount
-    const chipValues = props.chipValues
-    const clickAmount = props.player
-    const setClickAmount = props.setPlayer
-    const position = props.position
-    const setPosition = props.setPosition
-    const games = props.games
-    const setGames = props.setGames
-    const playerName = props.playerName
-    const history = props.history
-    const setHistory = props.setHistory
-    const points = props.points
-    const setPoints = props.setPoints
-    const darkMode = props.darkMode
-    
+    const { amount, chipValues, position, setPosition, games, setGames, playerName, chipHistory, setChipHistory, points, setPoints, darkMode, setTempBet, setTempMoney, turn} = props
     let chipColor = ""
     let whiteChipFont = ""
     let borderColor = ""
@@ -54,8 +40,14 @@ import React from "react";
 
 
     const handleClick = () => {
-      setHistory(history => [...history, playerName])
-      
+      let a = chipHistory
+      let b = chipHistory[turn]
+      b.push(amount)
+      a[turn] = b
+      setChipHistory(a)
+      console.log(chipHistory)
+      setTempBet((prev) => (prev + amount))     
+      setTempMoney((prev) => (prev - amount)) 
     }
     return (
       <button className='pokerChip' style={{backgroundColor: chipColor, color: whiteChipFont, borderColor: borderColor }} onClick={handleClick} >
