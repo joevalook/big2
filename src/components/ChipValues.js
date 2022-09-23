@@ -3,6 +3,7 @@ import React from "react";
 function ChipValues(props) {
 
   const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore, currentIndex, setCurrentIndex, setPot } = props;
+
   const handleClick = () => {
     setScreen(6);
   };
@@ -51,7 +52,7 @@ function ChipValues(props) {
           <span>Enter the Purple chip's value</span><input type="text" name="field3" placeholder={chipValues[5]} onChange={updateChipsChanged(5)} />
         </label>
         <button className={'btnNames'} onClick={handleClick} >
-          Set Names
+          Start Game
         </button>
       </form>
     </main>

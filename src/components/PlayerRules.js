@@ -2,7 +2,7 @@ import React from "react";
 
   function NameSetter(props){
     
-    const { setNames, points, setPoints, darkMode, setColor1, setColor2, setColor3, setColor4 } = props
+    const { setScreen, points, setPoints, darkMode, setColor1, setColor2, setColor3, setColor4 } = props
     
     const handleClick = () => {
       if (darkMode === false) {
@@ -11,7 +11,7 @@ import React from "react";
         setColor3('btn2')
         setColor4('btn2')
       } 
-      setNames(3);
+      setScreen(3);
     }
     const updateRuleChanged = index => e => {
       

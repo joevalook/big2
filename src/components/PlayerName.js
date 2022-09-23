@@ -2,12 +2,10 @@ import React from "react";
 
 function NameSetter(props) {
 
-  const setRules = props.setNames
-  const playerNames = props.playerNames
-  const setPlayerNames = props.setPlayerNames
-  const typeOfGame = props.typeOfGame;
+  const { setScreen, playerNames, setPlayerNames, typeOfGame } = props
+  
   const handleClick = () => {
-    setRules(typeOfGame);
+    setScreen(2);
   }
   const updateNameChanged = index => e => {
     console.log('index: ' + index);

@@ -1,62 +1,45 @@
 import React from "react";
 
-  function CounterButton(props){
-    
-    const clickAmount = props.player
-    const setClickAmount = props.setPlayer
-    const position = props.position
-    const setPosition = props.setPosition
-    const games = props.games
-    const setGames = props.setGames
-    const playerName = props.playerName
-    const history = props.history
-    const setHistory = props.setHistory
-    const color = props.color
-    const setColor = props.setColor
-    const setOtherColor1 = props.setOtherColor1
-    const setOtherColor2 = props.setOtherColor2
-    const setOtherColor3 = props.setOtherColor3
-    const points = props.points
-    const setPoints = props.setPoints
-    const darkMode = props.darkMode
+function CounterButton(props) {
 
+  const { player, setPlayer, position, setPosition, games, setGames, playerName, history, setHistory, color, setColor, setOtherColor1, setOtherColor2, setOtherColor3, points, darkMode } = props;
 
-    const handleClick = () => {
-      setHistory(history => [...history, playerName])
-      if (position === "First") {
-        setPosition("Second")
-        setClickAmount(clickAmount + points[0])
-        setColor('gold')
-      }
-      if (position === "Second") {
-        setPosition("Third")
-        setClickAmount(clickAmount + points[1])
-        setColor('silver')
-      }
-      if (position === "Third") {
-        setPosition("Last")
-        setClickAmount(clickAmount + points[2])
-        setColor('bronze')
-      }
-      if (position === "Last") {
-        setPosition("First")
-        setClickAmount(clickAmount + points[3])
-        setGames(games+1)
-        setColor('last')
-        setTimeout(() => {
-          setColor(darkMode ? 'btn':'btn2')
-          setOtherColor1(darkMode ? 'btn':'btn2')
-          setOtherColor2(darkMode ? 'btn':'btn2')
-          setOtherColor3(darkMode ? 'btn':'btn2')
-        }, 1000)
-      }
-      console.log(history);
+  const handleClick = () => {
+    setHistory(history => [...history, playerName]);
+    if (position === "First") {
+      setPosition("Second");
+      setPlayer(player + points[0]);
+      setColor('gold');
     }
-    return (
-      <button className={color}onClick={handleClick} >
-        {playerName} is at ${clickAmount} 
-      </button>
-    );
-  }
+    if (position === "Second") {
+      setPosition("Third");
+      setPlayer(player + points[1]);
+      setColor('silver');
+    }
+    if (position === "Third") {
+      setPosition("Last");
+      setPlayer(player + points[2]);
+      setColor('bronze');
+    }
+    if (position === "Last") {
+      setPosition("First");
+      setPlayer(player + points[3]);
+      setGames(games + 1);
+      setColor('last');
+      setTimeout(() => {
+        setColor(darkMode ? 'btn' : 'btn2');
+        setOtherColor1(darkMode ? 'btn' : 'btn2');
+        setOtherColor2(darkMode ? 'btn' : 'btn2');
+        setOtherColor3(darkMode ? 'btn' : 'btn2');
+      }, 1000);
+    }
+    console.log(history);
+  };
+  return (
+    <button className={color} onClick={handleClick} >
+      {playerName} is at ${player}
+    </button>
+  );
+}
 
-  export default CounterButton;
+export default CounterButton;

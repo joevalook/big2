@@ -390,7 +390,7 @@ input {
 }
 
 .gold {
-  margin: 0.5em;
+  margin: 1em;
   padding: 1em;
   width: 45%;
   font-size: 3vh;
@@ -401,7 +401,7 @@ input {
 }
 
 .silver {
-  margin: 0.5em;
+  margin: 1em;
   padding: 1em;
   width: 45%;
   font-size: 3vh;
@@ -412,7 +412,7 @@ input {
 }
 
 .bronze {
-  margin: 0.5em;
+  margin: 1em;
   padding: 1em;
   width: 45%;
   font-size: 3vh;
@@ -423,7 +423,7 @@ input {
 }
 
 .last {
-  margin: 0.5em;
+  margin: 1em;
   padding: 1em;
   width: 45%;
   font-size: 3vh;
@@ -863,18 +863,22 @@ i {
     z-index: 1;
   }
   .position {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
     padding-bottom: 0px;
     text-align: center;
     color: black;
-    font-size: 5vw;
+    font-size: 6vw;
     border-top: #333;
     z-index: 500;
   }
   
   .position2 {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
     text-align: center;
     color: white;
-    font-size: 5vw;
+    font-size: 6vw;
     border-top: #333;
     z-index: 500;
     padding-bottom: 0px;

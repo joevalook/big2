@@ -1,9 +1,8 @@
 import React from "react";
 
 function PokerNames(props) {
-  const setScreen = props.setScreen;
-  const playerNames = props.playerNames;
-  const setPlayerNames = props.setPlayerNames;
+  const { setScreen, playerNames, setPlayerNames } = props
+
   const handleClick = () => {
     setScreen(7);
   };

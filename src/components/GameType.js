@@ -2,15 +2,16 @@ import React from "react";
 
 function GameType(props) {
 
-  const setNames = props.setNames
-  const darkMode = props.darkMode
-
+  const { setScreen, darkMode, setTypeOfGame} = props
+  
   const handleBig2 = () => {
-    setNames(1);
+    setScreen(1);
+    setTypeOfGame('big2')
   }
 
   const handlePoker = () => {
-    setNames(4);
+    setScreen(4);
+    setTypeOfGame('poker')
   }
 
 
