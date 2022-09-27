@@ -12,6 +12,7 @@ import ChipValues from "./components/ChipValues";
 import Bet from "./components/Bet";
 import Call from "./components/Call";
 import { nextIndex } from "./components/helpers/PokerNextTurn";
+import Fold from "./components/Fold";
 
 function App() {
   const [position, setPosition] = useState('First');//current position 
@@ -45,8 +46,9 @@ function App() {
   const [turn, setTurn] = useState(0); //which turn it is
   const [tempMoney, setTempMoney] = useState(0);//tempMoney used for player page
   const [tempBet, setTempBet] = useState(0);//temp bet used for player page
-  const foldedIndex = [];
-  const bankruptIndex = [];
+  const [foldedIndex, setFoldedIndex] = useState([]);
+  const [bankruptIndex, setBankruptIndex] = useState([]);
+  const [stage, setStage] = useState('preflop')
 
   const handleReset = () => {
     setTypeOfGame('');
@@ -91,6 +93,7 @@ function App() {
     setColor3((prev) => (color3 === 'btn2' ? 'btn' : prev));
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
+    console.log(document.getElementsByName('1')[0])
     console.log(history);
   };
   const handleLight = () => {
@@ -100,7 +103,7 @@ function App() {
     setColor3((prev) => (color3 === 'btn' ? 'btn2' : prev));
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'white';
-
+    console.log(document.getElementsByName('1')[0])
   };
   const double = () => {
     if (doubleUp === false) {
@@ -179,7 +182,7 @@ function App() {
               {
                 playerNames.map((el, index) => {
                   return (
-                    <td key={index} className="outline" style={{ borderStyle: "solid" }}>{el}</td>
+                    <td key={index} name={index} className="outline" style={{  }}>{el}</td>
                   );
                 })
               }
@@ -191,7 +194,7 @@ function App() {
               {
                 playerNames.map((el, index) => {
                   return (
-                    <td key={index} className="outline">${pokerScore[index]}</td>
+                    <td key={index} name={index} className="outline">${pokerScore[index]}</td>
                   );
                 })
               }
@@ -203,7 +206,7 @@ function App() {
               {
                 playerNames.map((el, index) => {
                   return (
-                    <td key={index} className="outline">${pot[index]}</td>
+                    <td key={index} name={index} className="outline">${pot[index]}</td>
                   );
                 })
               }
@@ -255,9 +258,7 @@ function App() {
             {(screen === 6) && <button className={"pokerButton "} onClick={handleClear}>
               Clear
             </button>}
-            {(screen === 6) && <button className={`pokerButton`} onClick={double}>
-              Fold
-            </button>}
+            {(screen === 6) && <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex}/>}
             
             {(screen === 6) && <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
             {(screen === 6) && <button className={`pokerButton`} onClick={handleAllIn}>
