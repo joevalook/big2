@@ -9,6 +9,8 @@ import PokerChip from "./components/pokerChip";
 import './App.css';
 import React, { useState } from "react";
 import ChipValues from "./components/ChipValues";
+import Bet from "./components/Bet";
+import Call from "./components/Call";
 import { nextIndex } from "./components/helpers/PokerNextTurn";
 
 function App() {
@@ -131,61 +133,11 @@ function App() {
     setChipHistory(a);
     setTempMoney(0);
   };
-  const handleCall = () => {
-    let a = chipHistory;
-    let b = chipHistory[turn];
-    b.push(Math.max(...pot) - tempBet);
-    a[turn] = b;
-    setChipHistory(a);
-    let tempPot = pot;
-    tempPot[currentIndex] = Math.max(...pot);
-    setPot(tempPot);
-    let tempBank = pokerScore;
-    tempBank[currentIndex] = tempMoney - (Math.max(...pot) - tempBet);
-    setPokerScore(tempBank);
-    let c = (currentIndex + 1) % pokerNumber;
-    setCurrentIndex(c);
-    setTempBet(pot[c]);
-    setTempMoney(pokerScore[c]);
-    while (foldedIndex.includes(c) || bankruptIndex.includes(c)) {
-      c = (c + 1) % pokerNumber;
-      setCurrentIndex((prev) => ((prev + 1) % pokerNumber));
-      setTempBet(pot(c));
-      setTempMoney(pokerScore[c]);
-    }
-    setTurn((prev => prev + 1));
-    let d = chipHistory;
-    d.push([]);
-    setChipHistory(d);
 
-  };
-
-  const handleBet = () => {
-    let tempPot = pot;
-    tempPot[currentIndex] = tempBet;
-    setPot(tempPot);
-    let tempBank = pokerScore;
-    tempBank[currentIndex] = tempMoney;
-    setPokerScore(tempBank);
-    let a = (currentIndex + 1) % pokerNumber;
-    setCurrentIndex(a);
-    setTempBet(pot[a]);
-    setTempMoney(pokerScore[a]);
-    while (foldedIndex.includes(a) || bankruptIndex.includes(a)) {
-      a = (a + 1) % pokerNumber;
-      setCurrentIndex((prev) => ((prev + 1) % pokerNumber));
-      setTempBet(pot(a));
-      setTempMoney(pokerScore[a]);
-    }
-    setTurn((prev => prev + 1));
-    let b = chipHistory;
-    b.push([]);
-    setChipHistory(b);
-  };
 
   return (
     <div className={'App ' + (doubleUp ? 'red ' : ' ') + (darkMode ? 'black ' : 'white ')}>
-      {/* Title and Instructions */}
+      {/* Title, Instructions, Light/Dark Mode Button */}
       {(screen !== 6) && <h1>CHIPLESS</h1>}
       {(screen === 0) && <h2 className="cursive"> Gambling Without the Chips</h2>}
       {(screen === 3) && <h2 > Games Played: {games}</h2>}
@@ -194,7 +146,15 @@ function App() {
       {(screen === 4) && <h2>Choose your Rule Set</h2>}
       {(screen === 5) && <h2>Choose Your Character</h2>}
       {(screen === 7) && <h2>Choose Your Chip Values</h2>}
-      {(screen === 6) && <h2>{playerNames[dealer]} deals</h2>}
+      {(screen === 6) && <h2 className='dealer'>{playerNames[dealer]} deals</h2>}
+      {(!darkMode) && (screen === 6) && <button className={`lightbulb`} onClick={handleDark}>
+        <span className="off"><i>💡</i></span>
+      </button>
+      }
+      {(darkMode) && (screen === 6) && <button className={`lightbulb`} onClick={handleLight}>
+        <span ><i>💡</i></span>
+      </button>
+      }
 
       {/* Top Nav Bar */}
       <div className={`navRow`}>
@@ -286,9 +246,11 @@ function App() {
 
           </div>}
           <div className="row">
-          {(screen === 6) && <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {tempMoney}</h5>}
-          {(screen === 6) && Math.max(...pot) > tempBet && <h5 className={darkMode ? 'money2 ' : 'money '}>Call Amount: $ {Math.max(...pot) - tempBet}</h5>} 
-          </div>     
+            {(screen === 6) && <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {tempMoney}</h5>}
+            {(screen === 6) && Math.max(...pot) > tempBet && <h5 className={darkMode ? 'money2 ' : 'money '}>Call: $ {Math.max(...pot) - tempBet}</h5>}
+            {(screen === 6) && Math.max(...pot) < tempBet && <h5 className={darkMode ? 'money2 ' : 'money '} style={{ color: 'red' }}>Raise: $ {tempBet - Math.max(...pot)}</h5>}
+          </div>
+          <div className={'column'}>
           <div className={`navRow`}>
             {(screen === 6) && <button className={"pokerButton "} onClick={handleClear}>
               Clear
@@ -296,23 +258,20 @@ function App() {
             {(screen === 6) && <button className={`pokerButton`} onClick={double}>
               Fold
             </button>}
-            {(screen === 6) && <button className={`betButton`} onClick={handleBet}>
-              Bet
-            </button>}
-            {(screen === 6) && <button className={"pokerButton "} onClick={handleCall}>
-              {Math.max(...pot) === pot[currentIndex] && "Check"}
-              {Math.max(...pot) !== pot[currentIndex] && "Call"}
-            </button>}
+            
+            {(screen === 6) && <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
             {(screen === 6) && <button className={`pokerButton`} onClick={handleAllIn}>
               All In
             </button>}
           </div>
+          {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
+          </div>
           {/* Light/Dark Mode */}
-          {(!darkMode) && <button className={`blackWhite`} onClick={handleDark}>
+          {(!darkMode) && (screen !== 6) && <button className={`blackWhite`} onClick={handleDark}>
             Dark Mode <span className="off"><i>💡</i></span>
           </button>
           }
-          {(darkMode) && <button className={`whiteBlack`} onClick={handleLight}>
+          {(darkMode) && (screen !== 6) && <button className={`whiteBlack`} onClick={handleLight}>
             Light Mode <span ><i>💡</i></span>
           </button>
           }

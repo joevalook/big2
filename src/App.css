@@ -36,6 +36,13 @@ main {
   justify-content: center;
   margin-bottom: 0px;
 }
+.column{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
 .red {
   background-color: red !important;
 }
@@ -71,6 +78,14 @@ main {
   margin-top: 1em;
   width: 20vw
 }
+.lightbulb{
+  position: absolute;
+  background-color: transparent;
+  margin-left: 90vw;
+  margin-top: 0.3vw;
+  width: 5vw;
+  height: 7vh;
+}
 
 .App>h1 {
   margin: 0;
@@ -88,6 +103,10 @@ main {
   text-align: center;
   background: rgb(66, 109, 102);
   color: black;
+}
+.dealer {
+  font-size: 40px;
+  padding: 0.5em !important;
 }
 
 .position {
@@ -135,8 +154,8 @@ main {
 }
 .bet {
   margin: auto;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.3em;
   text-align: center;
   color: black;
   font-size: 40px;
@@ -146,8 +165,8 @@ main {
 
 .bet2 {
   margin: auto;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.3em;
   text-align: center;
   color: white;
   font-size: 40px;
@@ -376,6 +395,7 @@ input {
 }
 .betButton{
   min-width: 10vw;
+  width: 30%;
   margin: 0.5em;
   padding: 0.5em;
   font-size: 1.7em;
@@ -528,6 +548,7 @@ input {
 
 i {
   font-style: normal;
+  font-size: 2.5vw;
 }
 
 
@@ -890,6 +911,7 @@ i {
     margin: auto;
     justify-content: center;
   }
+
   .table {
     display: flex;
     font-size: 1em;
@@ -926,7 +948,7 @@ i {
   .pokerButton {
     margin: 0.2em;
     padding: 0.5em;
-    font-size: 1.3em;
+    font-size: 1.5em;
     cursor: pointer;
     z-index: 2;
     color: black;
@@ -935,7 +957,7 @@ i {
   .betButton {
     margin: 0.2em;
     padding: 0.5em;
-    font-size: 1.3em;
+    font-size: 1.7em;
     cursor: pointer;
     z-index: 2;
     color: black;
@@ -947,7 +969,7 @@ i {
     padding-bottom: 0.5em;
     text-align: center;
     color: black;
-    font-size: 35px;
+    font-size: 25px;
     border-top: #333;
     z-index: 500;
   }
@@ -958,9 +980,48 @@ i {
     padding-bottom: 0.5em;
     text-align: center;
     color: white;
-    font-size: 35px;
+    font-size: 25px;
     border-top: #333;
     z-index: 500;
+  }
+  .money {
+    margin: auto;
+    padding: 1em;
+    padding-bottom: 0px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    border-top: #333;
+    z-index: 500;
+    margin-bottom: 2vh;
+  }
+  
+  .money2 {
+    margin: auto;
+    padding: 1em;
+    padding-bottom: 0px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    border-top: #333;
+    z-index: 500;
+    margin-bottom: 2vh;
+  }
+  .lightbulb{
+    position: absolute;
+    background-color: transparent;
+    margin-left: 80vw;
+    margin-top: 2vw;
+    width: 10vw;
+    height: 8vw;
+  }
+  i {
+    font-style: normal;
+    font-size: 20px;
+  }
+  .dealer {
+    font-size: 25px;
+    padding: 1em;
   }
 }
 

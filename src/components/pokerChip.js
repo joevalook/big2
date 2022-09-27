@@ -2,6 +2,7 @@ import React from "react";
 
   function PokerChip(props){
     const { amount, chipValues, position, setPosition, games, setGames, playerName, chipHistory, setChipHistory, points, setPoints, darkMode, setTempBet, setTempMoney, turn, tempMoney} = props
+    
     let chipColor = ""
     let whiteChipFont = ""
     let borderColor = ""
