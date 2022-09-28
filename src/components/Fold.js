@@ -1,8 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 
 function Fold(props) {
 
   const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, setFoldedIndex, bankruptIndex, turn, setTurn, pokerNumber, setWinner, winner } = props;
+
 
   const handleFold = () => {
     document.getElementsByName(currentIndex)[0].style.color = "black";
@@ -44,15 +46,19 @@ function Fold(props) {
       let sumPot = [...pot].reduce((a, b) => a + b, 0)
       console.log(sumPot)
       let tempPokerScore =  pokerScore
+      tempPokerScore[a] += sumPot
+      setPokerScore(tempPokerScore)
       // for(let i = 0; i < sumPot; i++){
       //   setTimeout(() => {
       //     let tempPokerScore = pokerScore 
       //     tempPokerScore[a] += 1
       //     setPokerScore(tempPokerScore)
       //     console.log(pokerScore)
-      //   }, 1000*i)
+      //     ;
+      //   }, 100*i)
+        
       // }
-      setPokerScore([0,0,0,0,0])
+     
     }
   };
 
