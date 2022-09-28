@@ -50,8 +50,8 @@ function App() {
   const [foldedIndex, setFoldedIndex] = useState([]);
   const [bankruptIndex, setBankruptIndex] = useState([]);
   const [winner, setWinner] = useState('');
-  const [stage, setStage] = useState('preflop');
-
+  const [stage, setStage] = useState(['Pre Flop', 'Flop', 'Turn', 'River', 'Showdown']);
+  const [stageIndex, setStageIndex] = useState(0);
   const handleReset = () => {
     setTypeOfGame('');
     setGames(0);
@@ -81,6 +81,10 @@ function App() {
     setTurn(0);
     setTempMoney(0);
     setTempBet(0);
+    setFoldedIndex([]);
+    setBankruptIndex([]);
+    setWinner('');
+    setStageIndex(0);
     document.getElementsByTagName("html")[0].style.backgroundColor = "#333";
   };
 
@@ -139,15 +143,12 @@ function App() {
     setTempMoney(0);
   };
   const handleNewGame = () => {
-    setWinner('');
     setFoldedIndex([]);
-    for (let i = 0; i < pokerNumber; i++) {
-      if (!bankruptIndex.includes(i)) {
-        document.getElementsByName(i)[0].style.color = "white";
-        document.getElementsByName(i)[1].style.color = "white";
-        document.getElementsByName(i)[2].style.color = "white";
-      }
-    }
+    document.getElementsByName(winner)[0].style.color = "white";
+    document.getElementsByName(winner)[1].style.color = "white";
+    document.getElementsByName(winner)[2].style.color = "white";
+    setWinner('');
+    setStage('Pre Flop');
   };
 
   return (
@@ -161,7 +162,7 @@ function App() {
       {(screen === 4) && <h2>Choose your Rule Set</h2>}
       {(screen === 5) && <h2>Choose Your Character</h2>}
       {(screen === 7) && <h2>Choose Your Chip Values</h2>}
-      {(screen === 6) && (winner === '') && <h2 className='dealer'>{playerNames[dealer]} deals</h2>}
+      {(screen === 6) && (winner === '') && <h2 className='dealer'>{playerNames[dealer]} Deals {stage[stageIndex]}</h2>}
       {(screen === 6) && (winner !== '') && <h2 className='dealer'>🎉 🎉 🎉 🎉 🎉 🎉 🎉 </h2>}
       {(!darkMode) && (screen === 6) && <button className={`lightbulb`} onClick={handleDark}>
         <span className="off"><i>💡</i></span>
@@ -285,7 +286,7 @@ function App() {
                 All In
               </button>
             </div>
-            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
+            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>}
           </div>}
           {/* Poker next game Screen */}
           {(screen === 6) && winner !== '' && <button className={"pokerButton "} onClick={handleNewGame}>

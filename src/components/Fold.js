@@ -28,37 +28,49 @@ function Fold(props) {
       let b = chipHistory;
       b.push([]);
       setChipHistory(b);
-      console.log(foldedIndex)
+      console.log(foldedIndex);
     }
 
     else {
       let x = foldedIndex;
       x.push(currentIndex);
       setFoldedIndex(x);
-      console.log(x)
-      let a = 0
+      console.log(x);
+      let a = 0;
       for (let i = 0; i < pokerScore.length; i++) {
         if (!x.includes(i)) {
           setWinner(i);
-          a = i
-        }        
+          a = i;
+        }
       }
-      let sumPot = [...pot].reduce((a, b) => a + b, 0)
-      console.log(sumPot)
-      let tempPokerScore =  pokerScore
-      tempPokerScore[a] += sumPot
-      setPokerScore(tempPokerScore)
-      // for(let i = 0; i < sumPot; i++){
-      //   setTimeout(() => {
-      //     let tempPokerScore = pokerScore 
-      //     tempPokerScore[a] += 1
-      //     setPokerScore(tempPokerScore)
-      //     console.log(pokerScore)
-      //     ;
-      //   }, 100*i)
-        
-      // }
-     
+      for (let i = 0; i < pokerNumber; i++) {
+        if (!bankruptIndex.includes(i) && x.includes(i)) {
+          document.getElementsByName(i)[0].style.color = "white";
+          document.getElementsByName(i)[1].style.color = "white";
+          document.getElementsByName(i)[2].style.color = "white";
+        }
+        if (!bankruptIndex.includes(i) && !x.includes(i)) {
+          document.getElementsByName(i)[0].style.color = "gold";
+          document.getElementsByName(i)[1].style.color = "gold";
+          document.getElementsByName(i)[2].style.color = "gold";
+        }
+      }
+      let sumPot = [...pot].reduce((a, b) => a + b, 0);
+      console.log(sumPot);
+      let tempPokerScore = pokerScore;
+      for (let i = 0; i < sumPot; i++) {
+        setTimeout(() => {
+          let tempPokerScore = pokerScore;
+          tempPokerScore[a] += 1;
+          setPokerScore([...tempPokerScore]);
+          console.log(pokerScore);
+        }, (2000 * i) / sumPot);
+      }
+      let e = []
+      for (let i = 1; i <= pokerNumber; i++) {
+        e.push(0)
+      }
+      setPot(e)
     }
   };
 
