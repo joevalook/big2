@@ -14,6 +14,7 @@ import Call from "./components/Call";
 import { nextIndex } from "./components/helpers/PokerNextTurn";
 import Fold from "./components/Fold";
 
+
 function App() {
   const [position, setPosition] = useState('First');//current position 
   const [games, setGames] = useState(0);//number of games played
@@ -48,7 +49,8 @@ function App() {
   const [tempBet, setTempBet] = useState(0);//temp bet used for player page
   const [foldedIndex, setFoldedIndex] = useState([]);
   const [bankruptIndex, setBankruptIndex] = useState([]);
-  const [stage, setStage] = useState('preflop')
+  const [winner, setWinner] = useState('');
+  const [stage, setStage] = useState('preflop');
 
   const handleReset = () => {
     setTypeOfGame('');
@@ -93,7 +95,7 @@ function App() {
     setColor3((prev) => (color3 === 'btn2' ? 'btn' : prev));
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
-    console.log(document.getElementsByName('1')[0])
+    console.log(playerNames[winner]);
     console.log(history);
   };
   const handleLight = () => {
@@ -102,8 +104,8 @@ function App() {
     setColor2((prev) => (color2 === 'btn' ? 'btn2' : prev));
     setColor3((prev) => (color3 === 'btn' ? 'btn2' : prev));
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
-    document.getElementsByTagName("html")[0].style.backgroundColor = 'white';
-    console.log(document.getElementsByName('1')[0])
+    document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
+    console.log(document.getElementsByName('1')[0]);
   };
   const double = () => {
     if (doubleUp === false) {
@@ -136,7 +138,17 @@ function App() {
     setChipHistory(a);
     setTempMoney(0);
   };
-
+  const handleNewGame = () => {
+    setWinner('');
+    setFoldedIndex([]);
+    for (let i = 0; i < pokerNumber; i++) {
+      if (!bankruptIndex.includes(i)) {
+        document.getElementsByName(i)[0].style.color = "white";
+        document.getElementsByName(i)[1].style.color = "white";
+        document.getElementsByName(i)[2].style.color = "white";
+      }
+    }
+  };
 
   return (
     <div className={'App ' + (doubleUp ? 'red ' : ' ') + (darkMode ? 'black ' : 'white ')}>
@@ -149,7 +161,8 @@ function App() {
       {(screen === 4) && <h2>Choose your Rule Set</h2>}
       {(screen === 5) && <h2>Choose Your Character</h2>}
       {(screen === 7) && <h2>Choose Your Chip Values</h2>}
-      {(screen === 6) && <h2 className='dealer'>{playerNames[dealer]} deals</h2>}
+      {(screen === 6) && (winner === '') && <h2 className='dealer'>{playerNames[dealer]} deals</h2>}
+      {(screen === 6) && (winner !== '') && <h2 className='dealer'>🎉 🎉 🎉 🎉 🎉 🎉 🎉 </h2>}
       {(!darkMode) && (screen === 6) && <button className={`lightbulb`} onClick={handleDark}>
         <span className="off"><i>💡</i></span>
       </button>
@@ -162,18 +175,25 @@ function App() {
       {/* Top Nav Bar */}
       <div className={`navRow`}>
         {(screen !== 0) && <Back darkMode={darkMode} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} player3={player3} setPlayer3={setPlayer3} player4={player4} setPlayer4={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerNames={playerNames} history={history} setHistory={setHistory} setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} points={points} setPoints={setPoints} screen={screen} setScreen={setScreen} chipHistory={chipHistory} setChipHistory={setChipHistory} typeOfGame={typeOfGame} />}
+        {/* Big 2 only */}
         {(screen === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
         </button>}
-        {(screen === 6) && <h3 className={darkMode ? 'position2 ' : 'position '} style={{ paddingTop: '0px' }}>{playerNames[currentIndex]}'s turn</h3>}
+        {/* Poker only */}
+        {(screen === 6) && winner === '' && <h3 className={darkMode ? 'position2 ' : 'position '} style={{ paddingTop: '0px' }}>{playerNames[currentIndex]}'s turn</h3>}
+        {/* Poker: When someone wins the pot */}
+        {(screen === 6) && winner !== '' && <h3 className='animate-character'>{playerNames[winner]} Wins The Pot</h3>}
+        {/* Big 2 double up */}
         {(screen === 3) && <button className={"double "} onClick={double}>
           Double Up
         </button>}
+        {/* Both games */}
         {(screen !== 0) && <button className={`reset`} onClick={handleReset}>
           Reset
         </button>}
       </div>
       {(screen === 3) && <h3 className={darkMode ? 'position2 ' : 'position '}>Who Came {position}?</h3>}
+      {/* Poker table */}
       {(screen === 6) && <div className="table">
         <table className="outline">
           <thead>
@@ -182,7 +202,7 @@ function App() {
               {
                 playerNames.map((el, index) => {
                   return (
-                    <td key={index} name={index} className="outline" style={{  }}>{el}</td>
+                    <td key={index} name={index} className="outline" style={{}}>{el}</td>
                   );
                 })
               }
@@ -234,8 +254,8 @@ function App() {
 
         {/* Poker Game */}
         <main style={{ marginBottom: "0px" }}>
-          {(screen === 6) && <h5 className={darkMode ? 'bet2 ' : 'bet '} >Bet: $ {tempBet}</h5>}
-          {(screen === 6) && <div className="bottom">
+          {(screen === 6) && winner === '' && <h5 className={darkMode ? 'bet2 ' : 'bet '} >Bet: $ {tempBet}</h5>}
+          {(screen === 6) && winner === '' && <div className="bottom">
             <div className="row">
               <PokerChip amount={chipValues[0]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} tempMoney={tempMoney} />
               <PokerChip amount={chipValues[1]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} tempMoney={tempMoney} />
@@ -248,25 +268,29 @@ function App() {
             </div>
 
           </div>}
-          <div className="row">
-            {(screen === 6) && <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {tempMoney}</h5>}
-            {(screen === 6) && Math.max(...pot) > tempBet && <h5 className={darkMode ? 'money2 ' : 'money '}>Call: $ {Math.max(...pot) - tempBet}</h5>}
-            {(screen === 6) && Math.max(...pot) < tempBet && <h5 className={darkMode ? 'money2 ' : 'money '} style={{ color: 'red' }}>Raise: $ {tempBet - Math.max(...pot)}</h5>}
-          </div>
-          <div className={'column'}>
-          <div className={`navRow`}>
-            {(screen === 6) && <button className={"pokerButton "} onClick={handleClear}>
-              Clear
-            </button>}
-            {(screen === 6) && <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex}/>}
-            
-            {(screen === 6) && <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
-            {(screen === 6) && <button className={`pokerButton`} onClick={handleAllIn}>
-              All In
-            </button>}
-          </div>
-          {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
-          </div>
+          {(screen === 6) && winner === '' && <div className="row">
+            <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {tempMoney}</h5>
+            {Math.max(...pot) > tempBet && <h5 className={darkMode ? 'money2 ' : 'money '}>Call: $ {Math.max(...pot) - tempBet}</h5>}
+            {Math.max(...pot) < tempBet && <h5 className={darkMode ? 'money2 ' : 'money '} style={{ color: 'red' }}>Raise: $ {tempBet - Math.max(...pot)}</h5>}
+          </div>}
+          {(screen === 6) && winner === '' && <div className={'column'}>
+            <div className={`navRow`}>
+              <button className={"pokerButton "} onClick={handleClear}>
+                Clear
+              </button>
+              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} />
+
+              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />
+              <button className={`pokerButton`} onClick={handleAllIn}>
+                All In
+              </button>
+            </div>
+            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />}
+          </div>}
+          {/* Poker next game Screen */}
+          {(screen === 6) && winner !== '' && <button className={"pokerButton "} onClick={handleNewGame}>
+            Start Next Game
+          </button>}
           {/* Light/Dark Mode */}
           {(!darkMode) && (screen !== 6) && <button className={`blackWhite`} onClick={handleDark}>
             Dark Mode <span className="off"><i>💡</i></span>
