@@ -2,7 +2,7 @@ import React from "react";
 
 function Call(props) {
 
-  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber } = props;
+  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, stageIndex, smallBlindIndex, setStageIndex } = props;
 
   const handleCall = () => {
     let a = chipHistory;
@@ -23,13 +23,33 @@ function Call(props) {
     while (foldedIndex.includes(c) || bankruptIndex.includes(c)) {
       c = (c + 1) % pokerNumber;
       setCurrentIndex((prev) => ((prev + 1) % pokerNumber));
-      setTempBet(pot(c));
+      setTempBet(pot[c]);
       setTempMoney(pokerScore[c]);
     }
     setTurn((prev => prev + 1));
     let d = chipHistory;
     d.push([]);
     setChipHistory(d);
+    let equalPot = []
+    for (let j =0; j < pot.length; j++){
+      if (!foldedIndex.includes(j)) {
+        equalPot.push(pot[j])
+      }
+    }
+    console.log(equalPot)
+    console.log((turn + 2) > (pokerNumber - foldedIndex.length))
+    console.log();
+    console.log();
+    if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 4) {
+      let realCI = smallBlindIndex
+      while(foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
+        console.log(realCI)
+        realCI = (realCI+1)%pokerNumber
+      }
+      setCurrentIndex(realCI)
+      setStageIndex((prev) => prev + 1);
+      setTurn(0);
+    }
 
   };
 

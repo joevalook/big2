@@ -148,7 +148,19 @@ function App() {
     document.getElementsByName(winner)[1].style.color = "white";
     document.getElementsByName(winner)[2].style.color = "white";
     setWinner('');
-    setStage('Pre Flop');
+    setStageIndex(0);
+    let a = pot
+    let b = pokerScore
+    a[(smallBlindIndex+1)%pokerNumber] = blind[0]
+    a[(bigBlindIndex+1)%pokerNumber] = blind[1]
+    b[(smallBlindIndex+1)%pokerNumber] -= blind[0]
+    b[(bigBlindIndex+1)%pokerNumber] -= blind[1]
+    setPokerScore([...bankruptIndex])
+    setPot([...a])
+    setCurrentIndex((dealer+4)%pokerNumber)
+    setDealer((prev) => (prev+1)%pokerNumber)
+    setBigBlindIndex((prev) => (prev+1)%pokerNumber)
+    setSmallBlindIndex((prev) => (prev+1)%pokerNumber)
   };
 
   return (
@@ -281,8 +293,8 @@ function App() {
               </button>
               <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} />
 
-              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} />
-              <button className={`pokerButton`} onClick={handleAllIn}>
+              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>
+              <button className={`pokerButton`} onClick={handleAllIn} >
                 All In
               </button>
             </div>

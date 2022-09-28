@@ -24,7 +24,7 @@ function Fold(props) {
         setTempBet(pot[a]);
         setTempMoney(pokerScore[a]);
       }
-      setTurn((prev => prev + 1));
+      //setTurn((prev => prev + 1));
       let b = chipHistory;
       b.push([]);
       setChipHistory(b);

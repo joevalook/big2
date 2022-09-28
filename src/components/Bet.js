@@ -2,15 +2,12 @@ import React from "react";
 
 function Bet(props) {
 
-  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex} = props;
+  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex } = props;
 
   const handleBet = () => {
     if (tempBet >= Math.max(...pot)) {
-      if (turn > (pokerNumber - foldedIndex.length) && pot.every( (val, i, arr) => val === arr[0]) && stageIndex !== 3) {
-        setCurrentIndex(smallBlindIndex)
-        setStageIndex((prev) => prev+1)
-        setTurn(0)
-      }
+
+
       let tempPot = pot;
       tempPot[currentIndex] = tempBet;
       setPot(tempPot);
@@ -19,7 +16,7 @@ function Bet(props) {
       setPokerScore(tempBank);
       let a = (currentIndex + 1) % pokerNumber;
       while (foldedIndex.includes(a)) {
-        a = (a+1) % pokerNumber;
+        a = (a + 1) % pokerNumber;
       }
       setCurrentIndex(a);
       setTempBet(pot[a]);
@@ -34,9 +31,29 @@ function Bet(props) {
       let b = chipHistory;
       b.push([]);
       setChipHistory(b);
+      let equalPot = [];
+      for (let j = 0; j < pot.length; j++) {
+        if (!foldedIndex.includes(j)) {
+          equalPot.push(pot[j]);
+        }
+      }
+      console.log(equalPot);
+      console.log((turn + 2) > (pokerNumber - foldedIndex.length));
+      console.log();
+      console.log();
+      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 4) {
+        let realCI = smallBlindIndex;
+        while (foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
+          console.log(realCI);
+          realCI = (realCI + 1) % pokerNumber;
+        }
+        setCurrentIndex(realCI);
+        setStageIndex((prev) => prev + 1);
+        setTurn(0);
+      }
     }
     else {
-      console.log('invalid bet')
+      console.log('invalid bet');
     }
   };
   return (
