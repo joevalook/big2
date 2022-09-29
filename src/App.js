@@ -155,7 +155,7 @@ function App() {
     a[(bigBlindIndex+1)%pokerNumber] = blind[1]
     b[(smallBlindIndex+1)%pokerNumber] -= blind[0]
     b[(bigBlindIndex+1)%pokerNumber] -= blind[1]
-    setPokerScore([...bankruptIndex])
+    setPokerScore([...b])
     setPot([...a])
     setCurrentIndex((dealer+4)%pokerNumber)
     setDealer((prev) => (prev+1)%pokerNumber)
@@ -291,7 +291,7 @@ function App() {
               <button className={"pokerButton "} onClick={handleClear}>
                 Clear
               </button>
-              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} />
+              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>
 
               <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>
               <button className={`pokerButton`} onClick={handleAllIn} >

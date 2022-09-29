@@ -3,16 +3,17 @@ import { useEffect } from "react";
 
 function Fold(props) {
 
-  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, setFoldedIndex, bankruptIndex, turn, setTurn, pokerNumber, setWinner, winner } = props;
+  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, setFoldedIndex, bankruptIndex, turn, setTurn, pokerNumber, setWinner, winner, stageIndex, smallBlindIndex, setStageIndex } = props;
 
 
   const handleFold = () => {
     document.getElementsByName(currentIndex)[0].style.color = "black";
     document.getElementsByName(currentIndex)[1].style.color = "black";
     document.getElementsByName(currentIndex)[2].style.color = "black";
-    if (foldedIndex.length < (pot.length - bankruptIndex.length - 2)) {
-      let x = foldedIndex;
-      x.push(currentIndex);
+    let x = foldedIndex;
+    x.push(currentIndex);
+    setFoldedIndex(x);
+    if (x.length < (pot.length - bankruptIndex.length - 1)) {
       setFoldedIndex(x);
       let a = (currentIndex + 1) % pokerNumber;
       setCurrentIndex(a);
@@ -29,12 +30,29 @@ function Fold(props) {
       b.push([]);
       setChipHistory(b);
       console.log(foldedIndex);
+      let equalPot = [];
+      for (let j = 0; j < pot.length; j++) {
+        if (!foldedIndex.includes(j)) {
+          equalPot.push(pot[j]);
+        }
+      }
+      console.log(equalPot);
+      console.log((turn + 2) > (pokerNumber - foldedIndex.length));
+      console.log(stageIndex);
+      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 4) {
+        let realCI = smallBlindIndex;
+        while (foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
+          console.log(realCI);
+          realCI = (realCI + 1) % pokerNumber;
+        }
+        setCurrentIndex(realCI);
+        setStageIndex((prev) => prev + 1);
+        setTurn(0);
+      }
+
     }
 
     else {
-      let x = foldedIndex;
-      x.push(currentIndex);
-      setFoldedIndex(x);
       console.log(x);
       let a = 0;
       for (let i = 0; i < pokerScore.length; i++) {
@@ -66,11 +84,11 @@ function Fold(props) {
           console.log(pokerScore);
         }, (2000 * i) / sumPot);
       }
-      let e = []
+      let e = [];
       for (let i = 1; i <= pokerNumber; i++) {
-        e.push(0)
+        e.push(0);
       }
-      setPot(e)
+      setPot(e);
     }
   };
 

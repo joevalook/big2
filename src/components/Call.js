@@ -38,8 +38,7 @@ function Call(props) {
     }
     console.log(equalPot)
     console.log((turn + 2) > (pokerNumber - foldedIndex.length))
-    console.log();
-    console.log();
+    console.log(stageIndex)
     if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 4) {
       let realCI = smallBlindIndex
       while(foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
