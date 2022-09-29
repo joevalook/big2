@@ -149,18 +149,53 @@ function App() {
     document.getElementsByName(winner)[2].style.color = "white";
     setWinner('');
     setStageIndex(0);
-    let a = pot
-    let b = pokerScore
-    a[(smallBlindIndex+1)%pokerNumber] = blind[0]
-    a[(bigBlindIndex+1)%pokerNumber] = blind[1]
-    b[(smallBlindIndex+1)%pokerNumber] -= blind[0]
-    b[(bigBlindIndex+1)%pokerNumber] -= blind[1]
-    setPokerScore([...b])
-    setPot([...a])
-    setCurrentIndex((dealer+4)%pokerNumber)
-    setDealer((prev) => (prev+1)%pokerNumber)
-    setBigBlindIndex((prev) => (prev+1)%pokerNumber)
-    setSmallBlindIndex((prev) => (prev+1)%pokerNumber)
+    let a = pot;
+    let b = pokerScore;
+    a[(smallBlindIndex + 1) % pokerNumber] = blind[0];
+    a[(bigBlindIndex + 1) % pokerNumber] = blind[1];
+    b[(smallBlindIndex + 1) % pokerNumber] -= blind[0];
+    b[(bigBlindIndex + 1) % pokerNumber] -= blind[1];
+    setPokerScore([...b]);
+    setPot([...a]);
+    setCurrentIndex((dealer + 4) % pokerNumber);
+    setDealer((prev) => (prev + 1) % pokerNumber);
+    setBigBlindIndex((prev) => (prev + 1) % pokerNumber);
+    setSmallBlindIndex((prev) => (prev + 1) % pokerNumber);
+  };
+
+  const handleWinner = (ind) => {
+    console.log('winner went through');
+    setWinner(ind);
+    let a = ind;
+    console.log(ind);
+    for (let i = 0; i < pokerNumber; i++) {
+      if (!bankruptIndex.includes(i)) {
+        document.getElementsByName(i)[0].style.color = "white";
+        document.getElementsByName(i)[1].style.color = "white";
+        document.getElementsByName(i)[2].style.color = "white";
+      }
+
+      document.getElementsByName(ind)[0].style.color = "gold";
+      document.getElementsByName(ind)[1].style.color = "gold";
+      document.getElementsByName(ind)[2].style.color = "gold";
+
+    }
+    let sumPot = [...pot].reduce((a, b) => a + b, 0);
+    console.log(sumPot);
+    let tempPokerScore = pokerScore;
+    for (let i = 0; i < sumPot; i++) {
+      setTimeout(() => {
+        let tempPokerScore = pokerScore;
+        tempPokerScore[a] += 1;
+        setPokerScore([...tempPokerScore]);
+        console.log(pokerScore);
+      }, (2000 * i) / sumPot);
+    }
+    let e = [];
+    for (let i = 1; i <= pokerNumber; i++) {
+      e.push(0);
+    }
+    setPot(e);
   };
 
   return (
@@ -174,7 +209,8 @@ function App() {
       {(screen === 4) && <h2>Choose your Rule Set</h2>}
       {(screen === 5) && <h2>Choose Your Character</h2>}
       {(screen === 7) && <h2>Choose Your Chip Values</h2>}
-      {(screen === 6) && (winner === '') && <h2 className='dealer'>{playerNames[dealer]} Deals {stage[stageIndex]}</h2>}
+      {(screen === 6) && (winner === '') && stageIndex !== 4 && <h2 className='dealer'>{playerNames[dealer]} Deals {stage[stageIndex]}</h2>}
+      {(screen === 6) && (winner === '') && stageIndex === 4 && <h2 className='dealer'>🔥🔥🔥 SHOWDOWN 🔥🔥🔥</h2>}
       {(screen === 6) && (winner !== '') && <h2 className='dealer'>🎉 🎉 🎉 🎉 🎉 🎉 🎉 </h2>}
       {(!darkMode) && (screen === 6) && <button className={`lightbulb`} onClick={handleDark}>
         <span className="off"><i>💡</i></span>
@@ -193,7 +229,8 @@ function App() {
           Change Rules
         </button>}
         {/* Poker only */}
-        {(screen === 6) && winner === '' && <h3 className={darkMode ? 'position2 ' : 'position '} style={{ paddingTop: '0px' }}>{playerNames[currentIndex]}'s turn</h3>}
+        {(screen === 6) && winner === '' && stageIndex !== 4 && <h3 className={darkMode ? 'position2 ' : 'position '} style={{ paddingTop: '0px' }}>{playerNames[currentIndex]}'s Turn</h3>}
+        {(screen === 6) && winner === '' && stageIndex === 4 && <h3 className={darkMode ? 'position2 ' : 'position '} style={{ paddingTop: '0px' }}>Who Won?</h3>}
         {/* Poker: When someone wins the pot */}
         {(screen === 6) && winner !== '' && <h3 className='animate-character'>{playerNames[winner]} Wins The Pot</h3>}
         {/* Big 2 double up */}
@@ -267,8 +304,8 @@ function App() {
 
         {/* Poker Game */}
         <main style={{ marginBottom: "0px" }}>
-          {(screen === 6) && winner === '' && <h5 className={darkMode ? 'bet2 ' : 'bet '} >Bet: $ {tempBet}</h5>}
-          {(screen === 6) && winner === '' && <div className="bottom">
+          {(screen === 6) && winner === '' && stageIndex !== 4 && <h5 className={darkMode ? 'bet2 ' : 'bet '} >Bet: $ {tempBet}</h5>}
+          {(screen === 6) && winner === '' && stageIndex !== 4 && <div className="bottom">
             <div className="row">
               <PokerChip amount={chipValues[0]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} tempMoney={tempMoney} />
               <PokerChip amount={chipValues[1]} chipValues={chipValues} darkMode={darkMode} position={position} setPosition={setPosition} games={games} setGames={setGames} playerName={playerNames[0]} chipHistory={chipHistory} setChipHistory={setChipHistory} points={points} setPoints={setPoints} setTempMoney={setTempMoney} setTempBet={setTempBet} turn={turn} tempMoney={tempMoney} />
@@ -281,24 +318,39 @@ function App() {
             </div>
 
           </div>}
-          {(screen === 6) && winner === '' && <div className="row">
+          {(screen === 6) && winner === '' && stageIndex !== 4 && <div className="row">
             <h5 className={darkMode ? 'money2 ' : 'money '}>Money: $ {tempMoney}</h5>
             {Math.max(...pot) > tempBet && <h5 className={darkMode ? 'money2 ' : 'money '}>Call: $ {Math.max(...pot) - tempBet}</h5>}
             {Math.max(...pot) < tempBet && <h5 className={darkMode ? 'money2 ' : 'money '} style={{ color: 'red' }}>Raise: $ {tempBet - Math.max(...pot)}</h5>}
           </div>}
-          {(screen === 6) && winner === '' && <div className={'column'}>
+          {(screen === 6) && winner === '' && stageIndex !== 4 && <div className={'column'}>
             <div className={`navRow`}>
               <button className={"pokerButton "} onClick={handleClear}>
                 Clear
               </button>
-              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>
+              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} />
 
-              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>
+              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} />
               <button className={`pokerButton`} onClick={handleAllIn} >
                 All In
               </button>
             </div>
-            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}/>}
+            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} />}
+          </div>}
+          {(screen === 6) && winner === '' && stageIndex === 4 && <div className={'column'}>
+            <div className={`navRow`}>
+              {
+
+                playerNames.map((el, index) => {
+                  return (
+                    <button key={index} className={"pokerButton "} onClick={() => handleWinner(index)}>
+                      {el}
+                    </button>
+                  );
+                })
+              }
+
+            </div>
           </div>}
           {/* Poker next game Screen */}
           {(screen === 6) && winner !== '' && <button className={"pokerButton "} onClick={handleNewGame}>

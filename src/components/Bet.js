@@ -39,9 +39,9 @@ function Bet(props) {
       }
       console.log(equalPot);
       console.log((turn + 2) > (pokerNumber - foldedIndex.length));
+      console.log(stageIndex);
       console.log();
-      console.log();
-      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 4) {
+      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 3) {
         let realCI = smallBlindIndex;
         while (foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
           console.log(realCI);
@@ -50,6 +50,9 @@ function Bet(props) {
         setCurrentIndex(realCI);
         setStageIndex((prev) => prev + 1);
         setTurn(0);
+      }
+      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex === 3) {
+        setStageIndex((prev) => prev + 1);
       }
     }
     else {
