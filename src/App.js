@@ -52,6 +52,10 @@ function App() {
   const [winner, setWinner] = useState('');
   const [stage, setStage] = useState(['Pre Flop', 'Flop', 'Turn', 'River', 'Showdown']);
   const [stageIndex, setStageIndex] = useState(0);
+  const [playersLeft, setPlayersLeft] = useState([])
+  const [audio, setAudio] = useState( new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg'))
+
+
   const handleReset = () => {
     setTypeOfGame('');
     setGames(0);
@@ -99,6 +103,7 @@ function App() {
     setColor3((prev) => (color3 === 'btn2' ? 'btn' : prev));
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
+    audio.play();
     console.log(playerNames[winner]);
     console.log(history);
   };
@@ -110,7 +115,11 @@ function App() {
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
     console.log(document.getElementsByName('1')[0]);
+    audio.pause('');
   };
+  const playMusic = () => {
+    let audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3')
+  }
   const double = () => {
     if (doubleUp === false) {
       const doublePoints = points.map(x => x * 2);
@@ -340,7 +349,7 @@ function App() {
           {(screen === 6) && winner === '' && stageIndex === 4 && <div className={'column'}>
             <div className={`navRow`}>
               {
-
+              
                 playerNames.map((el, index) => {
                   return (
                     <button key={index} className={"pokerButton "} onClick={() => handleWinner(index)}>
