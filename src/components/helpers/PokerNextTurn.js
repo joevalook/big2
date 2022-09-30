@@ -25,9 +25,9 @@ function nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, se
       equalPot.push(pot[j]);
     }
   }
-  console.log(equalPot);
-  console.log((turn + 2) > (pokerNumber - foldedIndex.length));
-  console.log(stageIndex);
+  // console.log(equalPot);
+  // console.log((turn + 2) > (pokerNumber - foldedIndex.length));
+  // console.log(stageIndex);
   if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 3) {
     document.getElementsByName(c)[0].style.color = "white";
     document.getElementsByName(c)[1].style.color = "white";
