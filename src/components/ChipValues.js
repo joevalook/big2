@@ -6,6 +6,11 @@ function ChipValues(props) {
 
   const handleClick = () => {
     setScreen(6);
+    setTimeout(() => {
+    document.getElementsByName(currentIndex)[0].style.color = "limegreen";
+    document.getElementsByName(currentIndex)[1].style.color = "limegreen";
+    document.getElementsByName(currentIndex)[2].style.color = "limegreen";
+    }, 1)
   };
   const updateNumber = () => e => {
 

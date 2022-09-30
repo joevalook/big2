@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import { nextTurn } from "./helpers/PokerNextTurn";
 
 function Fold(props) {
 
@@ -15,44 +16,8 @@ function Fold(props) {
     setFoldedIndex(x);
     if (x.length < (pot.length - bankruptIndex.length - 1)) {
       setFoldedIndex(x);
-      let a = (currentIndex + 1) % pokerNumber;
-      setCurrentIndex(a);
-      setTempBet(pot[a]);
-      setTempMoney(pokerScore[a]);
-      while (foldedIndex.includes(a) || bankruptIndex.includes(a)) {
-        a = (a + 1) % pokerNumber;
-        setCurrentIndex((prev) => ((prev + 1) % pokerNumber));
-        setTempBet(pot[a]);
-        setTempMoney(pokerScore[a]);
-      }
-      //setTurn((prev => prev + 1));
-      let b = chipHistory;
-      b.push([]);
-      setChipHistory(b);
-      console.log(foldedIndex);
-      let equalPot = [];
-      for (let j = 0; j < pot.length; j++) {
-        if (!foldedIndex.includes(j)) {
-          equalPot.push(pot[j]);
-        }
-      }
-      console.log(equalPot);
-      console.log((turn + 2) > (pokerNumber - foldedIndex.length));
-      console.log(stageIndex);
-      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 3) {
-        let realCI = smallBlindIndex;
-        while (foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
-          console.log(realCI);
-          realCI = (realCI + 1) % pokerNumber;
-        }
-        setCurrentIndex(realCI);
-        setStageIndex((prev) => prev + 1);
-        setTurn(0);
-      }
-      if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex === 3) {
-        setStageIndex((prev) => prev + 1);
-      }
-
+      setTurn((prev => prev - 1)) // correction for next round to correctly commence
+      nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex )
     }
 
     else {

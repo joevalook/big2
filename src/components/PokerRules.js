@@ -28,6 +28,7 @@ function PokerRules(props) {
     setPot(e)
     setTempMoney(startingAmount)
     setHistory(a[b])
+
   };
   const updateNumber = () => e => {
 

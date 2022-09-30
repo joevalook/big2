@@ -13,6 +13,7 @@ import Bet from "./components/Bet";
 import Call from "./components/Call";
 import { nextIndex } from "./components/helpers/PokerNextTurn";
 import Fold from "./components/Fold";
+import { useEffect } from "react";
 
 
 function App() {
@@ -115,10 +116,10 @@ function App() {
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
     console.log(document.getElementsByName('1')[0]);
-    audio.pause('');
+    audio.pause();
   };
   const playMusic = () => {
-    let audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3')
+    audio.play()
   }
   const double = () => {
     if (doubleUp === false) {
@@ -170,6 +171,8 @@ function App() {
     setDealer((prev) => (prev + 1) % pokerNumber);
     setBigBlindIndex((prev) => (prev + 1) % pokerNumber);
     setSmallBlindIndex((prev) => (prev + 1) % pokerNumber);
+    setTempBet(0);
+    setTempMoney(pokerScore[(dealer + 4) % pokerNumber])
   };
 
   const handleWinner = (ind) => {

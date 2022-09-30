@@ -681,6 +681,10 @@ i {
 }
 
 @media screen and (max-width: 800px) {
+  .animate-character{
+    text-align: center;
+    font-size: 6vw;
+  }
   section {
     height: 100%;
     display: flex;
@@ -1049,7 +1053,7 @@ i {
     font-size: 20px;
   }
   .dealer {
-    font-size: 25px;
+    font-size: 20px;
     padding: 1em;
   }
 }

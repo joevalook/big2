@@ -1,4 +1,5 @@
 import React from "react";
+import { nextTurn } from "./helpers/PokerNextTurn";
 
 function Call(props) {
 
@@ -16,42 +17,7 @@ function Call(props) {
     let tempBank = pokerScore;
     tempBank[currentIndex] = tempMoney - (Math.max(...pot) - tempBet);
     setPokerScore(tempBank);
-    let c = (currentIndex + 1) % pokerNumber;
-    setCurrentIndex(c);
-    setTempBet(pot[c]);
-    setTempMoney(pokerScore[c]);
-    while (foldedIndex.includes(c) || bankruptIndex.includes(c)) {
-      c = (c + 1) % pokerNumber;
-      setCurrentIndex((prev) => ((prev + 1) % pokerNumber));
-      setTempBet(pot[c]);
-      setTempMoney(pokerScore[c]);
-    }
-    setTurn((prev => prev + 1));
-    let d = chipHistory;
-    d.push([]);
-    setChipHistory(d);
-    let equalPot = []
-    for (let j =0; j < pot.length; j++){
-      if (!foldedIndex.includes(j)) {
-        equalPot.push(pot[j])
-      }
-    }
-    console.log(equalPot)
-    console.log((turn + 2) > (pokerNumber - foldedIndex.length))
-    console.log(stageIndex)
-    if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex !== 3) {
-      let realCI = smallBlindIndex
-      while(foldedIndex.includes(realCI) || bankruptIndex.includes(realCI)) {
-        console.log(realCI)
-        realCI = (realCI+1)%pokerNumber
-      }
-      setCurrentIndex(realCI)
-      setStageIndex((prev) => prev + 1);
-      setTurn(0);
-    }
-    if ((turn + 2) > (pokerNumber - foldedIndex.length) && equalPot.every((val, i, arr) => val === arr[0]) && stageIndex === 3) {
-      setStageIndex((prev) => prev + 1);
-    }
+    nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex )
 
   };
 
