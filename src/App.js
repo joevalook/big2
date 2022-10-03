@@ -53,8 +53,8 @@ function App() {
   const [winner, setWinner] = useState('');
   const [stage, setStage] = useState(['Pre Flop', 'Flop', 'Turn', 'River', 'Showdown']);
   const [stageIndex, setStageIndex] = useState(0);
-  const [playersLeft, setPlayersLeft] = useState([])
-  const [audio, setAudio] = useState( new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg'))
+  const [playersLeft, setPlayersLeft] = useState([]);
+  const [audio, setAudio] = useState(new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg'));
 
 
   const handleReset = () => {
@@ -105,7 +105,7 @@ function App() {
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
     audio.play();
-    console.log(playersLeft);
+    console.log(bankruptIndex);
   };
   const handleLight = () => {
     setDarkMode(!darkMode);
@@ -114,13 +114,12 @@ function App() {
     setColor3((prev) => (color3 === 'btn' ? 'btn2' : prev));
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
-    console.log(document.getElementsByName('1')[0]);
     audio.pause();
-    console.log(playersLeft);
+    console.log(bankruptIndex);
   };
   const playMusic = () => {
-    audio.play()
-  }
+    audio.play();
+  };
   const double = () => {
     if (doubleUp === false) {
       const doublePoints = points.map(x => x * 2);
@@ -172,11 +171,11 @@ function App() {
     setBigBlindIndex((prev) => (prev + 1) % pokerNumber);
     setSmallBlindIndex((prev) => (prev + 1) % pokerNumber);
     setTempBet(0);
-    setTempMoney(pokerScore[(dealer + 4) % pokerNumber])
+    setTempMoney(pokerScore[(dealer + 4) % pokerNumber]);
+    setTurn(0);
   };
 
   const handleWinner = (ind) => {
-    console.log('winner went through');
     setWinner(ind);
     let a = ind;
     console.log(ind);
@@ -204,8 +203,19 @@ function App() {
       }, (2000 * i) / sumPot);
     }
     let e = [];
-    for (let i = 1; i <= pokerNumber; i++) {
+    for (let i = 0; i < pokerNumber; i++) {
       e.push(0);
+    }
+    for (let i = 0; i < pokerNumber; i++) {
+      console.log(pokerScore[i]);
+      if (pokerScore[i] === 0) {
+        document.getElementsByName(i)[0].style.color = "red";
+        document.getElementsByName(i)[1].style.color = "red";
+        document.getElementsByName(i)[2].style.color = "red";
+        let a = bankruptIndex;
+        a.push(i);
+        setBankruptIndex([...a]);
+      }
     }
     setPot(e);
   };
@@ -340,7 +350,7 @@ function App() {
               <button className={"pokerButton "} onClick={handleClear}>
                 Clear
               </button>
-              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} playersLeft={playersLeft} setPlayersLeft={setPlayersLeft}/>
+              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} playersLeft={playersLeft} setPlayersLeft={setPlayersLeft} />
 
               <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} />
               <button className={`pokerButton`} onClick={handleAllIn} >
@@ -352,7 +362,7 @@ function App() {
           {(screen === 6) && winner === '' && stageIndex === 4 && <div className={'column'}>
             <div className={`navRow`}>
               {
-              
+
                 playersLeft.map((el, index) => {
                   return (
                     <button key={index} className={"pokerButton "} onClick={() => handleWinner(el)}>

@@ -1153,6 +1153,19 @@ i {
     display:flex;
     flex-direction: row;
   }
+  .lightbulb{
+    position: absolute;
+    background-color: transparent;
+    margin-left: 85vw;
+    margin-top: 0.35vw;
+    width: 8vw;
+    height: 7vh;
+    border-color: black;
+  }
+  i {
+    font-style: normal;
+    font-size: 40px;
+  }
 
 }
 
@@ -1160,5 +1173,6 @@ i {
   .pokerChip{
     font-size: 40px;
   }
+
 
 } 
