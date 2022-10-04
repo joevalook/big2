@@ -2,7 +2,7 @@ import React from "react";
 
 function PokerRules(props) {
 
-  const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore, currentIndex, setCurrentIndex, pot, setPot, setBigBlindIndex, setSmallBlindIndex, setDealer, setTempBet, setTempMoney, setHistory, setPlayersLeft } = props;
+  const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore, currentIndex, setCurrentIndex, pot, setPot, setBigBlindIndex, setSmallBlindIndex, setDealer, setTempBet, setTempMoney, setHistory, setPlayersLeft, history } = props;
 
   
   
@@ -32,7 +32,9 @@ function PokerRules(props) {
     setPokerScore(f)
     setPot(e)
     setTempMoney(startingAmount)
-    setHistory(a[b])
+    let hist = history
+    hist.push(b)
+    setHistory(hist)
 
   };
   const updateNumber = () => e => {

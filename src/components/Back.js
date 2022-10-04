@@ -2,7 +2,7 @@ import React from "react";
 
 function Back(props) {
 
-  const { darkMode, setPlayer1, setPlayer2, setPlayer3, setPlayer4, position, setPosition, games, setGames, playerNames, history, setHistory, setColor1, setColor2, setColor3, setColor4, points, screen, setScreen, typeOfGame} = props;
+  const { darkMode, setPlayer1, setPlayer2, setPlayer3, setPlayer4, position, setPosition, games, setGames, playerNames, history, setHistory, setColor1, setColor2, setColor3, setColor4, points, screen, setScreen, typeOfGame, chipHistory, setChipHistory, foldedIndex, setFoldedIndex, bankruptIndex, setBankruptIndex, tempBet, tempMoney, setTempBet, setTempMoney, currentIndex, setCurrentIndex, pot, setPot, pokerScore, setPokerScore, setTurn } = props;
 
   const handleBack = () => {
 
@@ -231,25 +231,93 @@ function Back(props) {
         }
         setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
       }
-      if (screen === 1) {
-        setScreen(0);
+    }
+    if (screen === 6 && chipHistory[0].length < 1) {
+      setScreen(7);
+    }
+    if (screen === 6 && chipHistory[0].length >= 1) {
+      console.log(history);
+      console.log(chipHistory);
+      if (chipHistory[chipHistory.length - 1] === 'fold') {
+        let tempFoldIndex = [...foldedIndex];
+        let tempIndex = tempFoldIndex.pop();
+        setFoldedIndex(tempFoldIndex);
+        setTempBet(pot[tempFoldIndex]);
+        setTempMoney(pokerScore[tempFoldIndex]);
+        let b = [...chipHistory];
+        b.pop();
+        b.push([]);
+        setChipHistory(b);
       }
-      if (screen === 2) {
-        setScreen(1);
+      else if (chipHistory[chipHistory.length - 1].length === 0 && history.length > 1) {
+        console.log('length is 0');
+        document.getElementsByName(history[history.length - 1])[0].style.color = "white";
+        document.getElementsByName(history[history.length - 1])[1].style.color = "white";
+        document.getElementsByName(history[history.length - 1])[2].style.color = "white";
+        let a = [...history];
+        let b = [...chipHistory];
+        b.pop();
+        a.pop();
+        setChipHistory(b);
+        setHistory(a);
+        setCurrentIndex(a[a.length - 1]);
+        document.getElementsByName(a[a.length - 1])[0].style.color = "limegreen";
+        document.getElementsByName(a[a.length - 1])[1].style.color = "limegreen";
+        document.getElementsByName(a[a.length - 1])[2].style.color = "limegreen";
+
+        if (b[b.length - 1] !== 'fold') {
+          setTurn(prev => prev - 1);
+          let sumChips = [...b[b.length - 1]].reduce((a, b) => a + b, 0);
+          console.log(a[a.length - 1]);
+          setTempBet(pot[a[a.length - 1]]);
+          setTempMoney(pokerScore[a[a.length - 1]]);
+          let tempPokerScore = pokerScore;
+          tempPokerScore[a[a.length - 1]] += sumChips;
+          setPokerScore(tempPokerScore);
+          let tempPot = pot;
+          tempPot[a[a.length - 1]] -= sumChips;
+          setPot(tempPot);
+          console.log(tempBet);
+          console.log(tempMoney);
+        }
+        if (b[b.length - 1] === 'fold') {
+          setTempBet(pot[a[a.length - 1]])
+          setTempMoney(pokerScore[a[a.length - 1]])
+          let tempChipHistory = [...b]
+          tempChipHistory[tempChipHistory.length-1] = []
+          setChipHistory(tempChipHistory)
+        }
+
       }
-      if (screen === 4) {
-        setScreen(0);
-      }
-      if (screen === 5) {
-        setScreen(4);
-      }
-      if (screen === 6) {
-        setScreen(5);
-      }
-      if (screen === 3 && history.length < 1) {
-        setScreen(2);
+      if (chipHistory[chipHistory.length - 1].length > 0 && chipHistory[chipHistory.length - 1] !== 'fold') {
+        let a = tempMoney;
+        a += chipHistory[chipHistory.length - 1][chipHistory[chipHistory.length - 1].length - 1];
+        let b = tempBet;
+        b -= chipHistory[chipHistory.length - 1][chipHistory[chipHistory.length - 1].length - 1];
+        setTempMoney(a);
+        setTempBet(b);
+        chipHistory[chipHistory.length - 1].pop();
       }
     }
+    if (screen === 1) {
+      setScreen(0);
+    }
+    if (screen === 2) {
+      setScreen(1);
+    }
+    if (screen === 4) {
+      setScreen(0);
+    }
+    if (screen === 5) {
+      setScreen(4);
+    }
+    if (screen === 7) {
+      setScreen(5);
+    }
+    if (screen === 3 && history.length < 1) {
+      setScreen(2);
+    }
+
   };
   return (
     <button className={`back`} onClick={handleBack}>
