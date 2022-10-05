@@ -113,7 +113,15 @@ main {
   margin-left: 90vw;
   margin-top: 0.3vw;
   width: 5vw;
-  height: 7vh;
+  height: 6vh;
+}
+.off i {
+  filter: grayscale(100%);
+}
+
+i {
+  font-style: normal;
+  font-size: 3vh;
 }
 
 .App>h1 {
@@ -571,14 +579,7 @@ input {
   /* Firefox */
 }
 
-.off i {
-  filter: grayscale(100%);
-}
 
-i {
-  font-style: normal;
-  font-size: 2.5vw;
-}
 
 
 .form-style-4 {
