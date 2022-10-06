@@ -4,12 +4,12 @@ import { nextTurn } from "./helpers/PokerNextTurn";
 
 function Fold(props) {
 
-  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, setFoldedIndex, bankruptIndex, turn, setTurn, pokerNumber, setWinner, winner, stageIndex, smallBlindIndex, setStageIndex, playersLeft, setPlayersLeft, history, setHistory, playerNames } = props;
+  const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, setFoldedIndex, bankruptIndex, turn, setTurn, pokerNumber, setWinner, winner, stageIndex, smallBlindIndex, setStageIndex, playersLeft, setPlayersLeft, history, setHistory, playerNames, turnHistory, setTurnHistory } = props;
 
 
   const handleFold = () => {
     const index = playersLeft.indexOf(currentIndex);
-    console.log(index);
+    // console.log(index);
     let remaining = [...playersLeft];
     remaining.splice(index, 1);
     setPlayersLeft(remaining);
@@ -26,7 +26,7 @@ function Fold(props) {
       setChipHistory([...a])
       setFoldedIndex(x);
       setTurn((prev => prev - 1)); // correction for next round to correctly commence
-      nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex, history, setHistory, playerNames)
+      nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex, history, setHistory, playerNames, turnHistory, setTurnHistory)
     }
 
     else {

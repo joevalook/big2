@@ -2,7 +2,7 @@ import React from "react";
 
 function Back(props) {
 
-  const { darkMode, setPlayer1, setPlayer2, setPlayer3, setPlayer4, position, setPosition, games, setGames, playerNames, history, setHistory, setColor1, setColor2, setColor3, setColor4, points, screen, setScreen, typeOfGame, chipHistory, setChipHistory, foldedIndex, setFoldedIndex, bankruptIndex, setBankruptIndex, tempBet, tempMoney, setTempBet, setTempMoney, currentIndex, setCurrentIndex, pot, setPot, pokerScore, setPokerScore, setTurn } = props;
+  const { darkMode, setPlayer1, setPlayer2, setPlayer3, setPlayer4, position, setPosition, games, setGames, playerNames, history, setHistory, setColor1, setColor2, setColor3, setColor4, points, screen, setScreen, typeOfGame, chipHistory, setChipHistory, foldedIndex, setFoldedIndex, bankruptIndex, setBankruptIndex, tempBet, tempMoney, setTempBet, setTempMoney, currentIndex, setCurrentIndex, pot, setPot, pokerScore, setPokerScore, turn, setTurn, stageIndex, setStageIndex, turnHistory, setTurnHistory } = props;
 
   const handleBack = () => {
 
@@ -236,21 +236,10 @@ function Back(props) {
       setScreen(7);
     }
     if (screen === 6 && chipHistory[0].length >= 1) {
-      console.log(history);
-      console.log(chipHistory);
-      if (chipHistory[chipHistory.length - 1] === 'fold') {
-        let tempFoldIndex = [...foldedIndex];
-        let tempIndex = tempFoldIndex.pop();
-        setFoldedIndex(tempFoldIndex);
-        setTempBet(pot[tempFoldIndex]);
-        setTempMoney(pokerScore[tempFoldIndex]);
-        let b = [...chipHistory];
-        b.pop();
-        b.push([]);
-        setChipHistory(b);
-      }
-      else if (chipHistory[chipHistory.length - 1].length === 0 && history.length > 1) {
-        console.log('length is 0');
+      // console.log(history);
+      // console.log(chipHistory);
+      console.log(turn);
+      if (chipHistory[chipHistory.length - 1].length === 0 && history.length > 1) {
         document.getElementsByName(history[history.length - 1])[0].style.color = "white";
         document.getElementsByName(history[history.length - 1])[1].style.color = "white";
         document.getElementsByName(history[history.length - 1])[2].style.color = "white";
@@ -264,11 +253,16 @@ function Back(props) {
         document.getElementsByName(a[a.length - 1])[0].style.color = "limegreen";
         document.getElementsByName(a[a.length - 1])[1].style.color = "limegreen";
         document.getElementsByName(a[a.length - 1])[2].style.color = "limegreen";
-
+        if (turn === 0) {
+          setStageIndex(prev => prev - 1)
+        }
+        let tempTurn = [...turnHistory]
+        setTurn(tempTurn[tempTurn.length-2])
+        tempTurn.pop()
+        setTurnHistory(tempTurn);
         if (b[b.length - 1] !== 'fold') {
-          setTurn(prev => prev - 1);
           let sumChips = [...b[b.length - 1]].reduce((a, b) => a + b, 0);
-          console.log(a[a.length - 1]);
+          // console.log(a[a.length - 1]);
           setTempBet(pot[a[a.length - 1]]);
           setTempMoney(pokerScore[a[a.length - 1]]);
           let tempPokerScore = pokerScore;
@@ -277,14 +271,17 @@ function Back(props) {
           let tempPot = pot;
           tempPot[a[a.length - 1]] -= sumChips;
           setPot(tempPot);
-          console.log(tempBet);
-          console.log(tempMoney);
+          // console.log(tempBet);
+          // console.log(tempMoney);
         }
         if (b[b.length - 1] === 'fold') {
+          let tempFoldIndex = [...foldedIndex];
+          let tempIndex = tempFoldIndex.pop();
+          setFoldedIndex(tempFoldIndex);
           setTempBet(pot[a[a.length - 1]])
           setTempMoney(pokerScore[a[a.length - 1]])
           let tempChipHistory = [...b]
-          tempChipHistory[tempChipHistory.length-1] = []
+          tempChipHistory[tempChipHistory.length - 1] = []
           setChipHistory(tempChipHistory)
         }
 

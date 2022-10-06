@@ -55,6 +55,7 @@ function App() {
   const [stageIndex, setStageIndex] = useState(0);
   const [playersLeft, setPlayersLeft] = useState([]);
   const [audio, setAudio] = useState(new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg'));
+  const [turnHistory, setTurnHistory] = useState([0]);
 
 
   const handleReset = () => {
@@ -105,8 +106,12 @@ function App() {
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
     audio.play();
-    console.log(history);
-    console.log(chipHistory);
+    console.log(turn);
+    // console.log(history);
+    // console.log(chipHistory);
+    // console.log(foldedIndex)
+    console.log(turnHistory)
+
   };
   const handleLight = () => {
     setDarkMode(!darkMode);
@@ -116,8 +121,12 @@ function App() {
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
     audio.pause();
-    console.log(history);
-    console.log(chipHistory);
+    console.log(turn);
+    // console.log(history);
+    // console.log(chipHistory);
+    // console.log(foldedIndex)
+    console.log(turnHistory)
+
   };
   const playMusic = () => {
     audio.play();
@@ -247,7 +256,7 @@ function App() {
 
       {/* Top Nav Bar */}
       <div className={`navRow`}>
-        {(screen !== 0) && <Back darkMode={darkMode} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} player3={player3} setPlayer3={setPlayer3} player4={player4} setPlayer4={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerNames={playerNames} history={history} setHistory={setHistory} setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} points={points} setPoints={setPoints} screen={screen} setScreen={setScreen} chipHistory={chipHistory} setChipHistory={setChipHistory} typeOfGame={typeOfGame} chipHistory={chipHistory} setChipHistory={setChipHistory} setFoldedIndex={setFoldedIndex} foldedIndex={foldedIndex} setBankruptIndex={setBankruptIndex} bankruptIndex={bankruptIndex} tempBet={tempBet} tempMoney={tempMoney} setTempBet={setTempBet} setTempMoney={setTempMoney} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setPot={setPot} pokerScore={pokerScore} pot={pot} setPokerScore={setPokerScore} setTurn={setTurn}/>}
+        {(screen !== 0) && <Back darkMode={darkMode} player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} player3={player3} setPlayer3={setPlayer3} player4={player4} setPlayer4={setPlayer4} position={position} setPosition={setPosition} games={games} setGames={setGames} playerNames={playerNames} history={history} setHistory={setHistory} setColor1={setColor1} setColor2={setColor2} setColor3={setColor3} setColor4={setColor4} points={points} setPoints={setPoints} screen={screen} setScreen={setScreen} chipHistory={chipHistory} setChipHistory={setChipHistory} typeOfGame={typeOfGame} setFoldedIndex={setFoldedIndex} foldedIndex={foldedIndex} setBankruptIndex={setBankruptIndex} bankruptIndex={bankruptIndex} tempBet={tempBet} tempMoney={tempMoney} setTempBet={setTempBet} setTempMoney={setTempMoney} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setPot={setPot} pokerScore={pokerScore} pot={pot} setPokerScore={setPokerScore} turn={turn} setTurn={setTurn} stageIndex = {stageIndex} setStageIndex = {setStageIndex} turnHistory={turnHistory} setTurnHistory={setTurnHistory}/>}
         {/* Big 2 only */}
         {(screen === 3) && <button className={`changeRules`} onClick={changeRules}>
           Change Rules
@@ -352,15 +361,15 @@ function App() {
               <button className={"pokerButton "} onClick={handleClear}>
                 Clear
               </button>
-              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} playersLeft={playersLeft} setPlayersLeft={setPlayersLeft} history={history} setHistory={setHistory} playerNames={playerNames}/>
+              <Fold chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} setFoldedIndex={setFoldedIndex} setWinner={setWinner} winner={winner} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} playersLeft={playersLeft} setPlayersLeft={setPlayersLeft} history={history} setHistory={setHistory} playerNames={playerNames} turnHistory={turnHistory} setTurnHistory={setTurnHistory}/>
 
-              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}  history={history} setHistory={setHistory} playerNames={playerNames}/>
+              <Call chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex}  history={history} setHistory={setHistory} playerNames={playerNames} turnHistory={turnHistory} setTurnHistory={setTurnHistory} />
               
               <button className={`pokerButton`} onClick={handleAllIn}>
                 All In
               </button>
             </div>
-            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} history={history} setHistory={setHistory} playerNames={playerNames}/>}
+            {(screen === 6) && <Bet chipHistory={chipHistory} tempBet={tempBet} pot={pot} setChipHistory={setChipHistory} setPot={setPot} pokerScore={pokerScore} currentIndex={currentIndex} tempMoney={tempMoney} setPokerScore={setPokerScore} setCurrentIndex={setCurrentIndex} setTempBet={setTempBet} setTempMoney={setTempMoney} foldedIndex={foldedIndex} bankruptIndex={bankruptIndex} turn={turn} setTurn={setTurn} pokerNumber={pokerNumber} smallBlindIndex={smallBlindIndex} stageIndex={stageIndex} setStageIndex={setStageIndex} history={history} setHistory={setHistory} playerNames={playerNames} turnHistory={turnHistory} setTurnHistory={setTurnHistory}/>}
           </div>}
           {(screen === 6) && winner === '' && stageIndex === 4 && <div className={'column'}>
             <div className={`navRow`}>

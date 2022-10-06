@@ -47,8 +47,9 @@ import React from "react";
         b.push(amount)
         a[chipHistory.length-1] = b
         setChipHistory(a)
-        console.log(chipHistory)
-        console.log(history)
+        console.log(turn);
+        // console.log(chipHistory)
+        // console.log(history)
         setTempBet((prev) => (prev + amount))     
         setTempMoney((prev) => (prev - amount)) 
       }
