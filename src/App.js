@@ -91,6 +91,8 @@ function App() {
     setBankruptIndex([]);
     setWinner('');
     setStageIndex(0);
+    setPlayersLeft([]);
+    setTurnHistory([0])
     document.getElementsByTagName("html")[0].style.backgroundColor = "#333";
   };
 
@@ -107,9 +109,9 @@ function App() {
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
     audio.play();
     console.log(turn);
-    // console.log(history);
-    // console.log(chipHistory);
-    // console.log(foldedIndex)
+    console.log(history);
+    console.log(chipHistory);
+    console.log(foldedIndex)
     console.log(turnHistory)
 
   };
@@ -122,9 +124,9 @@ function App() {
     document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
     audio.pause();
     console.log(turn);
-    // console.log(history);
-    // console.log(chipHistory);
-    // console.log(foldedIndex)
+    console.log(history);
+    console.log(chipHistory);
+    console.log(foldedIndex)
     console.log(turnHistory)
 
   };
@@ -178,12 +180,23 @@ function App() {
     setPokerScore([...b]);
     setPot([...a]);
     setCurrentIndex((dealer + 4) % pokerNumber);
+    document.getElementsByName((dealer + 4) % pokerNumber)[0].style.color = "limegreen";
+    document.getElementsByName((dealer + 4) % pokerNumber)[1].style.color = "limegreen";
+    document.getElementsByName((dealer + 4) % pokerNumber)[2].style.color = "limegreen";
     setDealer((prev) => (prev + 1) % pokerNumber);
     setBigBlindIndex((prev) => (prev + 1) % pokerNumber);
     setSmallBlindIndex((prev) => (prev + 1) % pokerNumber);
     setTempBet(0);
     setTempMoney(pokerScore[(dealer + 4) % pokerNumber]);
     setTurn(0);
+    setTurnHistory([])
+    setHistory([])
+    setChipHistory([[]])
+    let g = []
+    for (let i = 1; i <= pokerNumber; i++) {
+      g.push(i-1)
+    }
+    setPlayersLeft(g)
   };
 
   const handleWinner = (ind) => {
