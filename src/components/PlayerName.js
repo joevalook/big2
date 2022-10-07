@@ -6,6 +6,8 @@ function NameSetter(props) {
   
   const handleClick = () => {
     setScreen(2);
+    let buttonAudio = new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3');
+    buttonAudio.play();
   }
   const updateNameChanged = index => e => {
     console.log('index: ' + index);

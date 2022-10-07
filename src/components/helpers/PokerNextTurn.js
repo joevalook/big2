@@ -28,7 +28,7 @@ function nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, se
   setChipHistory(d);
   let equalPot = [];
   for (let j = 0; j < pot.length; j++) {
-    if (!foldedIndex.includes(j)) {
+    if (!foldedIndex.includes(j) && !bankruptIndex.includes(j)) {
       equalPot.push(pot[j]);
     }
   }
@@ -54,6 +54,8 @@ function nextTurn(chipHistory, pot, setChipHistory, pokerScore, currentIndex, se
     document.getElementsByName(realCI)[0].style.color = "limegreen";
     document.getElementsByName(realCI)[1].style.color = "limegreen";
     document.getElementsByName(realCI)[2].style.color = "limegreen";
+    setTempMoney(pokerScore[realCI]);
+    setTempBet(pot[realCI]);
     setCurrentIndex(realCI);
     setStageIndex((prev) => prev + 1);
     setTurn(0);

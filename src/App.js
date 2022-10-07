@@ -54,11 +54,12 @@ function App() {
   const [stage, setStage] = useState(['Pre Flop', 'Flop', 'Turn', 'River', 'Showdown']);
   const [stageIndex, setStageIndex] = useState(0);
   const [playersLeft, setPlayersLeft] = useState([]);
-  const [audio, setAudio] = useState(new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg'));
+  const [backgroundAudio, setBackgroundAudio] = useState(new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/Epoq-Lepidoptera.ogg'));
   const [turnHistory, setTurnHistory] = useState([0]);
 
-
   const handleReset = () => {
+    let buttonAudio = new Audio('http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg');
+    buttonAudio.play();
     setTypeOfGame('');
     setGames(0);
     setPosition('First');
@@ -95,7 +96,62 @@ function App() {
     setTurnHistory([0])
     document.getElementsByTagName("html")[0].style.backgroundColor = "#333";
   };
+  
+  const handleNewGame = () => {
 
+    setFoldedIndex([]);
+    document.getElementsByName(winner)[0].style.color = "white";
+    document.getElementsByName(winner)[1].style.color = "white";
+    document.getElementsByName(winner)[2].style.color = "white";
+    setWinner('');
+    setStageIndex(0);
+    let a = [...pot];
+    let b = [...pokerScore];
+    let deal = dealer;
+    deal = (deal+1)%pokerNumber;
+    while (bankruptIndex.includes(deal)){
+      deal = (deal+1)%pokerNumber;
+    }
+    let small = (deal+1)%pokerNumber;
+    while (bankruptIndex.includes(small)){
+      small = (small+1)%pokerNumber;
+    }
+    let big = (small+1)%pokerNumber
+    while (bankruptIndex.includes(big)){
+      big = (big+1)%pokerNumber;
+    }
+    let current = (big+1)%pokerNumber
+    while (bankruptIndex.includes(current)){
+      current = (current+1)%pokerNumber;
+    }
+
+    a[small] = blind[0];
+    a[big] = blind[1];
+    b[small] -= blind[0];
+    b[big] -= blind[1];
+    setPokerScore([...b]);
+    setPot([...a]);
+    setCurrentIndex(current);
+    document.getElementsByName(current)[0].style.color = "limegreen";
+    document.getElementsByName(current)[1].style.color = "limegreen";
+    document.getElementsByName(current)[2].style.color = "limegreen";
+    setDealer(deal);
+    setBigBlindIndex(big);
+    setSmallBlindIndex(small);
+    setTempBet(0);
+    setTempMoney(pokerScore[current]);
+    setTurn(0);
+    setTurnHistory([0])
+    setHistory([current])
+    setChipHistory([[]])
+    let g = []
+    for (let i = 0; i < pokerNumber; i++) {
+      if (!bankruptIndex.includes(i)){
+        g.push(i)
+      }
+    }
+    setPlayersLeft(g)
+  };
   const changeRules = () => {
     setScreen(2);
   };
@@ -107,12 +163,13 @@ function App() {
     setColor3((prev) => (color3 === 'btn2' ? 'btn' : prev));
     setColor4((prev) => (color4 === 'btn2' ? 'btn' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = 'black';
-    audio.play();
+   // audio.play();
     console.log(turn);
     console.log(history);
     console.log(chipHistory);
     console.log(foldedIndex)
     console.log(turnHistory)
+    console.log(bankruptIndex)
 
   };
   const handleLight = () => {
@@ -122,16 +179,17 @@ function App() {
     setColor3((prev) => (color3 === 'btn' ? 'btn2' : prev));
     setColor4((prev) => (color4 === 'btn' ? 'btn2' : prev));
     document.getElementsByTagName("html")[0].style.backgroundColor = '#333';
-    audio.pause();
+   // audio.pause();
     console.log(turn);
     console.log(history);
     console.log(chipHistory);
     console.log(foldedIndex)
     console.log(turnHistory)
+    console.log(bankruptIndex)
 
   };
   const playMusic = () => {
-    audio.play();
+    //audio.play();
   };
   const double = () => {
     if (doubleUp === false) {
@@ -163,40 +221,6 @@ function App() {
     a[turn] = b;
     setChipHistory(a);
     setTempMoney(0);
-  };
-  const handleNewGame = () => {
-    setFoldedIndex([]);
-    document.getElementsByName(winner)[0].style.color = "white";
-    document.getElementsByName(winner)[1].style.color = "white";
-    document.getElementsByName(winner)[2].style.color = "white";
-    setWinner('');
-    setStageIndex(0);
-    let a = pot;
-    let b = pokerScore;
-    a[(smallBlindIndex + 1) % pokerNumber] = blind[0];
-    a[(bigBlindIndex + 1) % pokerNumber] = blind[1];
-    b[(smallBlindIndex + 1) % pokerNumber] -= blind[0];
-    b[(bigBlindIndex + 1) % pokerNumber] -= blind[1];
-    setPokerScore([...b]);
-    setPot([...a]);
-    setCurrentIndex((dealer + 4) % pokerNumber);
-    document.getElementsByName((dealer + 4) % pokerNumber)[0].style.color = "limegreen";
-    document.getElementsByName((dealer + 4) % pokerNumber)[1].style.color = "limegreen";
-    document.getElementsByName((dealer + 4) % pokerNumber)[2].style.color = "limegreen";
-    setDealer((prev) => (prev + 1) % pokerNumber);
-    setBigBlindIndex((prev) => (prev + 1) % pokerNumber);
-    setSmallBlindIndex((prev) => (prev + 1) % pokerNumber);
-    setTempBet(0);
-    setTempMoney(pokerScore[(dealer + 4) % pokerNumber]);
-    setTurn(0);
-    setTurnHistory([])
-    setHistory([])
-    setChipHistory([[]])
-    let g = []
-    for (let i = 1; i <= pokerNumber; i++) {
-      g.push(i-1)
-    }
-    setPlayersLeft(g)
   };
 
   const handleWinner = (ind) => {
@@ -230,17 +254,18 @@ function App() {
     for (let i = 0; i < pokerNumber; i++) {
       e.push(0);
     }
-    for (let i = 0; i < pokerNumber; i++) {
-      console.log(pokerScore[i]);
-      if (pokerScore[i] === 0) {
-        document.getElementsByName(i)[0].style.color = "red";
-        document.getElementsByName(i)[1].style.color = "red";
-        document.getElementsByName(i)[2].style.color = "red";
-        let a = bankruptIndex;
-        a.push(i);
-        setBankruptIndex([...a]);
+    let tempBankruptIndex = [...bankruptIndex]
+    setTimeout(() => {
+      for (let i = 0; i < pokerNumber; i++) {
+        if (pokerScore[i] === 0 && !bankruptIndex.includes(i)) {
+          document.getElementsByName(i)[0].style.color = "red";
+          document.getElementsByName(i)[1].style.color = "red";
+          document.getElementsByName(i)[2].style.color = "red";
+          tempBankruptIndex.push(i);
+        }
       }
-    }
+      setBankruptIndex(tempBankruptIndex)
+    }, 2001);
     setPot(e);
   };
 

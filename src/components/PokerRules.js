@@ -7,6 +7,8 @@ function PokerRules(props) {
   
   
   const handleClick = () => {
+    let buttonAudio = new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3');
+    buttonAudio.play();
     let a = [];
     let e = []
     let f = []

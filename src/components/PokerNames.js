@@ -4,6 +4,8 @@ function PokerNames(props) {
   const { setScreen, playerNames, setPlayerNames } = props
 
   const handleClick = () => {
+    let buttonAudio = new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3');
+    buttonAudio.play();
     setScreen(7);
   };
   const updateNameChanged = index => e => {

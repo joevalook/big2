@@ -6,9 +6,14 @@ function Bet(props) {
   const { chipHistory, tempBet, pot, setChipHistory, setPot, pokerScore, currentIndex, tempMoney, setPokerScore, setCurrentIndex, setTempBet, setTempMoney, foldedIndex, bankruptIndex, turn, setTurn, pokerNumber, smallBlindIndex, setStageIndex, stageIndex, history, setHistory, playerNames, turnHistory, setTurnHistory } = props;
 
   const handleBet = () => {
-    if (tempBet >= Math.max(...pot)) {
-
-
+    let total = []
+    for (let i =0; i<pokerNumber; i++) {
+      if (!foldedIndex.includes(i) && !bankruptIndex.includes(i))
+      total.push(pokerScore[i] + pot[i])
+    }
+    if (tempBet >= Math.max(...pot) && tempBet <= Math.min(...total)) {
+      let aud = new Audio ('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/pause.wav')
+      aud.play();
       let tempPot = pot;
       tempPot[currentIndex] = tempBet;
       setPot(tempPot);

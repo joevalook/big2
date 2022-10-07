@@ -5,7 +5,8 @@ function Back(props) {
   const { darkMode, setPlayer1, setPlayer2, setPlayer3, setPlayer4, position, setPosition, games, setGames, playerNames, history, setHistory, setColor1, setColor2, setColor3, setColor4, points, screen, setScreen, typeOfGame, chipHistory, setChipHistory, foldedIndex, setFoldedIndex, bankruptIndex, setBankruptIndex, tempBet, tempMoney, setTempBet, setTempMoney, currentIndex, setCurrentIndex, pot, setPot, pokerScore, setPokerScore, turn, setTurn, stageIndex, setStageIndex, turnHistory, setTurnHistory } = props;
 
   const handleBack = () => {
-
+    let buttonAudio = new Audio('http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg');
+    buttonAudio.play();
     if (typeOfGame === 'big2') {
       const highestTimeoutId = setTimeout(";");
       for (var i = 0; i < highestTimeoutId; i++) {
