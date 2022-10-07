@@ -58,6 +58,8 @@ function Fold(props) {
         let tempPokerScore = pokerScore;
         for (let i = 0; i < sumPot; i++) {
           setTimeout(() => {
+            let aud = new Audio ('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/pause.wav')
+            aud.play();
             let tempPokerScore = pokerScore;
             tempPokerScore[a] += 1;
             setPokerScore([...tempPokerScore]);

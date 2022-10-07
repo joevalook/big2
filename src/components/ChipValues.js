@@ -5,7 +5,7 @@ function ChipValues(props) {
   const { setPokerNumber, startingAmount, setStartingAmount, setScreen, setPlayerNames, pokerNumber, chipValues, setChipValues, blind, setBlind, pokerScore, setPokerScore, currentIndex, setCurrentIndex, setPot } = props;
 
   const handleClick = () => {
-    let buttonAudio = new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3');
+    let buttonAudio = new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3');
     buttonAudio.play();
     setScreen(6);
     setTimeout(() => {

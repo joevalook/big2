@@ -7,7 +7,7 @@ function GameType(props) {
   let buttonAudio = new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3');
   
   const handleBig2 = () => {
-    setScreen(-1);
+    setScreen(1);
     setTypeOfGame('big2')
     buttonAudio.play()
   }

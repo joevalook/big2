@@ -42,6 +42,8 @@ import React from "react";
 
     const handleClick = () => {
       if ((tempMoney-amount) >= 0){
+        let buttonAudio = new Audio('http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg');
+        buttonAudio.play();
         let a = chipHistory
         let b = chipHistory[chipHistory.length-1]
         b.push(amount)

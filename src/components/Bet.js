@@ -12,7 +12,7 @@ function Bet(props) {
       total.push(pokerScore[i] + pot[i])
     }
     if (tempBet >= Math.max(...pot) && tempBet <= Math.min(...total)) {
-      let aud = new Audio ('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/pause.wav')
+      let aud = new Audio ('http://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3')
       aud.play();
       let tempPot = pot;
       tempPot[currentIndex] = tempBet;

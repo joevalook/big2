@@ -5,7 +5,7 @@ import React from "react";
     const { setScreen, points, setPoints, darkMode, setColor1, setColor2, setColor3, setColor4 } = props
     
     const handleClick = () => {
-      let buttonAudio = new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3');
+      let buttonAudio = new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3');
       buttonAudio.play();
       if (darkMode === false) {
         setColor1('btn2')
