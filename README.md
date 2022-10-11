@@ -12,23 +12,7 @@ Chipless is a full stack web application built with React and Javascript that al
 
 !["You can customize everything, from Chip Values, to blind amounnts and many more"](https://github.com/joevalook/chipless/blob/master/docs/chipValues.png?raw=true)
 
-!["You can also create a round where point values are doubled!"](https://github.com/joevalook/chipless/blob/master/docs/chipValues.png?raw=true)
-
-
-
-
-## Dependencies
-
-- Node.js
-- Express
-- EJS
-- bcrypt
-- body-parser
-- cookie-session
-- bootstrap
-- mocha and chai
-- nodemon
-- method-override
+!["You can also create a round where point values are doubled!"](https://github.com/joevalook/chipless/blob/master/docs/doubleUp.png?raw=true)
 
 ## Getting Started
 
