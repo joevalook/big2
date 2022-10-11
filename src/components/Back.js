@@ -18,7 +18,7 @@ function Back(props) {
           console.log(history);
           setGames(games - 1);
           if (history[history.length - 1] === playerNames[0]) {
-            setPlayer1((prev) => prev + points[0]);
+            setPlayer1((prev) => prev - points[3]);
             setColor1(darkMode ? 'btn' : 'btn2');
             if (history[history.length - 2] === playerNames[1]) {
               setColor2('bronze');
@@ -55,7 +55,7 @@ function Back(props) {
             }
           }
           if (history[history.length - 1] === playerNames[1]) {
-            setPlayer2((prev) => prev + points[0]);
+            setPlayer2((prev) => prev - points[3]);
             setColor2(darkMode ? 'btn' : 'btn2');
             if (history[history.length - 2] === playerNames[0]) {
               setColor1('bronze');
@@ -92,7 +92,7 @@ function Back(props) {
             }
           }
           if (history[history.length - 1] === playerNames[2]) { //last
-            setPlayer3((prev) => prev + points[0]);
+            setPlayer3((prev) => prev - points[3]);
             setColor3(darkMode ? 'btn' : 'btn2');//button 3 should have been set back to unmarked
             if (history[history.length - 2] === playerNames[1]) {
               setColor2('bronze');
@@ -130,7 +130,7 @@ function Back(props) {
             }
           }
           if (history[history.length - 1] === playerNames[3]) {
-            setPlayer4((prev) => prev + points[0]);
+            setPlayer4((prev) => prev - points[3]);
             setColor4(darkMode ? 'btn' : 'btn2');
             if (history[history.length - 2] === playerNames[1]) {
               setColor2('bronze');
@@ -171,19 +171,19 @@ function Back(props) {
           setPosition("First");
           console.log(history);
           if (history[history.length - 1] === playerNames[0]) {
-            setPlayer1((prev) => (prev + points[3]));
+            setPlayer1((prev) => (prev - points[0]));
             setColor1(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[1]) {
-            setPlayer2((prev) => prev + points[3]);
+            setPlayer2((prev) => prev - points[0]);
             setColor2(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[2]) {
-            setPlayer3((prev) => prev + points[3]);
+            setPlayer3((prev) => prev - points[0]);
             setColor3(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[3]) {
-            setPlayer4((prev) => prev + points[3]);
+            setPlayer4((prev) => prev - points[0]);
             setColor4(darkMode ? 'btn' : 'btn2');
           }
 
@@ -192,19 +192,19 @@ function Back(props) {
           setPosition("Second");
           console.log(history);
           if (history[history.length - 1] === playerNames[0]) {
-            setPlayer1((prev) => prev + points[2]);
+            setPlayer1((prev) => prev - points[1]);
             setColor1(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[1]) {
-            setPlayer2((prev) => prev + points[2]);
+            setPlayer2((prev) => prev - points[1]);
             setColor2(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[2]) {
-            setPlayer3((prev) => prev + points[2]);
+            setPlayer3((prev) => prev - points[1]);
             setColor3(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[3]) {
-            setPlayer4((prev) => prev + points[2]);
+            setPlayer4((prev) => prev - points[1]);
             setColor4(darkMode ? 'btn' : 'btn2');
           }
 
@@ -213,19 +213,19 @@ function Back(props) {
           setPosition("Third");
           console.log(history);
           if (history[history.length - 1] === playerNames[0]) {
-            setPlayer1((prev) => prev + points[1]);
+            setPlayer1((prev) => prev - points[2]);
             setColor1(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[1]) {
-            setPlayer2((prev) => prev + points[1]);
+            setPlayer2((prev) => prev - points[2]);
             setColor2(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[2]) {
-            setPlayer3((prev) => prev + points[1]);
+            setPlayer3((prev) => prev - points[2]);
             setColor3(darkMode ? 'btn' : 'btn2');
           }
           if (history[history.length - 1] === playerNames[3]) {
-            setPlayer4((prev) => prev + points[1]);
+            setPlayer4((prev) => prev - points[2]);
             setColor4(darkMode ? 'btn' : 'btn2');
           }
 
