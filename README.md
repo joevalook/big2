@@ -1,6 +1,43 @@
-# Getting Started with Create React App
+# Chipless
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Chipless is a full stack web application built with React and Javascript that allows user play games that require chips without them (still need a deck of cards)).
+
+## Final Product
+
+!["A picture of the poker page (light mode)"](https://github.com/joevalook/chipless/blob/master/docs/lightmodePoker.png?raw=true)
+
+!["A picture of the Big 2 page (dark mode)"](https://github.com/joevalook/chipless/blob/master/docs/big2GameBlack.png?raw=true)
+
+!["A picture of the Player Names page"](https://github.com/joevalook/chipless/blob/master/docs/pokerNames.png?raw=true)
+
+!["You can customize everything, from Chip Values, to blind amounnts and many more"](https://github.com/joevalook/chipless/blob/master/docs/chipValues.png?raw=true)
+
+!["You can also create a round where point values are doubled!"](https://github.com/joevalook/chipless/blob/master/docs/chipValues.png?raw=true)
+
+
+
+
+## Dependencies
+
+- Node.js
+- Express
+- EJS
+- bcrypt
+- body-parser
+- cookie-session
+- bootstrap
+- mocha and chai
+- nodemon
+- method-override
+
+## Getting Started
+
+- Install all dependencies (using the `npm install` command).
+- Run the development web server using the `node express_server.js` command.
+- Run the development web server utilizing nodemon using the `npm start` command.
+- If not registered, you can only see the URL database and access any short URL coded website
+- Once registered and logged in, you can create URLs, see a database of the URLs you created and edit or delete URLs you created.
+- The edit page holds interesting analytical information about how many times a page has been accessed.
 
 ## Available Scripts
 
