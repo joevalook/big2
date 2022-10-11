@@ -1,0 +1,7 @@
+{
+  "name": "chipless",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

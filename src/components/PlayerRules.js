@@ -2,7 +2,7 @@ import React from "react";
 
   function NameSetter(props){
     
-    const { setScreen, points, setPoints, darkMode, setColor1, setColor2, setColor3, setColor4 } = props
+    const { setScreen, points, setPoints, darkMode, setColor1, setColor2, setColor3, setColor4, setChipHistory } = props
     
     const handleClick = () => {
       let buttonAudio = new Audio('http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3');
@@ -14,6 +14,7 @@ import React from "react";
         setColor4('btn2')
       } 
       setScreen(3);
+      setChipHistory([])
     }
     const updateRuleChanged = index => e => {
       
