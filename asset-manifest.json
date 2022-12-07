@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.20b4f79d.css",
-    "main.js": "/static/js/main.b086e7f2.js",
-    "static/js/787.52a1b5c3.chunk.js": "/static/js/787.52a1b5c3.chunk.js",
-    "index.html": "/index.html",
-    "main.20b4f79d.css.map": "/static/css/main.20b4f79d.css.map",
-    "main.b086e7f2.js.map": "/static/js/main.b086e7f2.js.map",
-    "787.52a1b5c3.chunk.js.map": "/static/js/787.52a1b5c3.chunk.js.map"
+    "main.css": "//joevalook.github.io/chipless/static/css/main.20b4f79d.css",
+    "main.js": "//joevalook.github.io/chipless/static/js/main.a79f7414.js",
+    "static/js/787.52a1b5c3.chunk.js": "//joevalook.github.io/chipless/static/js/787.52a1b5c3.chunk.js",
+    "index.html": "//joevalook.github.io/chipless/index.html",
+    "main.20b4f79d.css.map": "//joevalook.github.io/chipless/static/css/main.20b4f79d.css.map",
+    "main.a79f7414.js.map": "//joevalook.github.io/chipless/static/js/main.a79f7414.js.map",
+    "787.52a1b5c3.chunk.js.map": "//joevalook.github.io/chipless/static/js/787.52a1b5c3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.20b4f79d.css",
-    "static/js/main.b086e7f2.js"
+    "static/js/main.a79f7414.js"
   ]
 }
